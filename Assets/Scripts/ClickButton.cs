@@ -12,17 +12,16 @@ public class MainButton : MonoBehaviour
 
     public void OnClickCostumeRoom()
     {
-
-    }
-
-    public void OnClickRanking()
-    {
-
+        SceneManager.LoadScene("CostumeScene");
     }
     public void OnClickSettings()
     {
 
     }
 
+    public void OnClickBack()
+    {
+        SceneManager.LoadScene("StartScene");
+    }
 
 }
