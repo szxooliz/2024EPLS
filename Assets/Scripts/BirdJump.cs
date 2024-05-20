@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,7 +12,7 @@ public class BirdJump : MonoBehaviour
     
     private Rigidbody2D rb;
     private int jumpCount = 0;
-    private bool isGrounded = false;
+    private bool isGrounded = true;
     
     // Start is called before the first frame update
     void Start()
@@ -22,25 +23,20 @@ public class BirdJump : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
-        CheckGrounded();
-        
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetButtonDown("Jump") && isGrounded)
         {
             Jump();
         }
     }
 
-    private void CheckGrounded()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, jumpCheckRadius, groundLayer);
-        isGrounded = colliders.Length > 0;
-
-        if (isGrounded)
+        if (collision.gameObject.name == "Ground")
         {
             jumpCount = 0;
         }
     }
-    
+
     public void Jump()
     {
         if (jumpCount < maxJumpCount)
@@ -48,6 +44,7 @@ public class BirdJump : MonoBehaviour
             rb.velocity = Vector2.zero;
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
             jumpCount++;
+            isGrounded = false;
         }
     }
 }
