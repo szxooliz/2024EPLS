@@ -8,12 +8,7 @@ public class BackGroundLoop : MonoBehaviour
     [SerializeField] private float speed = 4f;
 
     private float backgroundWidth;
-
-<<<<<<< HEAD
     private Vector3 startPosition;
-=======
-    private new Vector3 startPosition;
->>>>>>> 5810174e85b8de407e334a3a57d68b9216db6afa
     
     // Start is called before the first frame update
     void Start()
