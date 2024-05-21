@@ -6,14 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="de1be263-39f0-4958-9d3f-cb92618110d3" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.EPLS/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.EPLS/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/PlayScene 1.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/PlayScene 1.unity.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/PlayScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/PlayScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BirdJump.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BirdJump.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MakePipe.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MakePipe.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +17,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/BackGroundLoop.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/CoinSpawnManager.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
@@ -106,6 +100,7 @@
       <workItem from="1715614917545" duration="809000" />
       <workItem from="1715671897375" duration="921000" />
       <workItem from="1716191049260" duration="3545000" />
+      <workItem from="1716266820921" duration="1937000" />
     </task>
     <servers />
   </component>
