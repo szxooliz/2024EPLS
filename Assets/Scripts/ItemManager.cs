@@ -32,6 +32,15 @@ public class ItemManager : MonoBehaviour
             Debug.Log("Á¡¼ö -1");
         }
 
+        else if (collision.gameObject.CompareTag("LifeMinus"))
+        {
+            HealthManager.health--;
+            if(HealthManager.health <= 0 )
+            {
+                PlayerManager.isGameOver = true;
+                gameObject.SetActive(false);
+            }
+        }
         Destroy(collision.gameObject);
     }
 }
