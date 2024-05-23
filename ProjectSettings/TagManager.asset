@@ -7,6 +7,8 @@ TagManager:
   - Coin
   - LifePlus
   - ScoreMinus
+  - Pipe
+  - LifeMinus
   layers:
   - Default
   - TransparentFX
