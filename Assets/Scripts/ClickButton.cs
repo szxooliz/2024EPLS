@@ -7,7 +7,7 @@ public class MainButton : MonoBehaviour
 {
     public void OnClickGameStart()
     {
-        SceneManager.LoadScene("PlayScene");
+        SceneManager.LoadScene("PlayScene 2");
     }
 
     public void OnClickCostumeRoom()
