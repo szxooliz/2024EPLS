@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainButton : MonoBehaviour
+public class ClickButton : MonoBehaviour
 {
     public void OnClickGameStart()
     {
@@ -14,11 +14,6 @@ public class MainButton : MonoBehaviour
     {
         SceneManager.LoadScene("CostumeScene");
     }
-    public void OnClickSettings()
-    {
-
-    }
-
     public void OnClickBack()
     {
         SceneManager.LoadScene("StartScene");

@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerCoin : MonoBehaviour
+public static class PlayerCoin
 {
     // 플레이어가 보유하고 있는 코인
-    public int playerCoin;
+    public static int playerCoin;
 
     /// <summary>
     /// 상점에서 스킨 구매 시 코인 삭감
     /// </summary>
     /// <param name="coinToRemove"></param>
     /// <returns></returns>
-    public bool TryRemoveCoin(int coinToRemove)
+    public static bool TryRemoveCoin(int coinToRemove)
     {
         if (playerCoin >= coinToRemove)
         {
@@ -21,6 +21,7 @@ public class PlayerCoin : MonoBehaviour
         }
         else
         {
+            // 코인 부족 알림 팝업 뜨도록
             return false;
         }
     }
