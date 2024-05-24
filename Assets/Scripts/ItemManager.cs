@@ -20,6 +20,9 @@ public class ItemManager : MonoBehaviour
         if (collision.gameObject.CompareTag("Coin"))
         {
             Debug.Log("코인 +1");
+            //이효주 삽입
+            ScoreManager.scoreCount += 1;
+            //삽입 끝
         }
 
         else if (collision.gameObject.CompareTag("LifePlus"))
@@ -30,8 +33,12 @@ public class ItemManager : MonoBehaviour
         else if (collision.gameObject.CompareTag("ScoreMinus"))
         {
             Debug.Log("점수 -1");
+            //이효주 삽입
+            ScoreManager.scoreCount -= 1;
+            //삽입 끝
         }
 
+        //이효주 삽입
         else if (collision.gameObject.CompareTag("LifeMinus"))
         {
             HealthManager.health--;
@@ -41,6 +48,7 @@ public class ItemManager : MonoBehaviour
                 gameObject.SetActive(false);
             }
         }
+        //삽입 끝
         Destroy(collision.gameObject);
     }
 }
