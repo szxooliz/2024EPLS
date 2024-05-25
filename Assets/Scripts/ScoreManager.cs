@@ -2,19 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
 public class ScoreManager : MonoBehaviour
 {
-    public Text socreText;
+    public Text scoreText;
     public static int scoreCount;
-    // Start is called before the first frame update
+    private float scoreTimer;
+    private const float scoreInterval = 1f; // 1초마다 점수 증가
+
     void Start()
     {
-        
+        scoreCount = 0;
+        scoreTimer = 0f;
+        UpdateScoreText();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        socreText.text = "Score: " + Mathf.Round(scoreCount);
+        scoreTimer += Time.deltaTime;
+
+        if (scoreTimer >= scoreInterval)
+        {
+            scoreCount++;
+            scoreTimer -= scoreInterval;
+            UpdateScoreText();
+        }
+    }
+
+    private void UpdateScoreText()
+    {
+        scoreText.text = "Score: " + scoreCount;
     }
 }

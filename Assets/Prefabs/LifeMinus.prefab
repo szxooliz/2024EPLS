@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2757422695139496014}
   m_Layer: 0
   m_Name: LifeMinus
-  m_TagString: LifePlus
+  m_TagString: LifeMinus
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
