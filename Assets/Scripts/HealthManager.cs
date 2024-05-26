@@ -11,6 +11,15 @@ public class HealthManager : MonoBehaviour
     public Sprite fullHeart;
     public Sprite emptyHeart;
 
+    private void Start()
+    {
+        health = 3;
+        for (int i = 0; i < hearts.Length; i++)
+        {
+            hearts[i].sprite = fullHeart;
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
