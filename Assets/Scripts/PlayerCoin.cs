@@ -21,7 +21,6 @@ public static class PlayerCoin
         }
         else
         {
-            // 코인 부족 알림 팝업 뜨도록
             return false;
         }
     }
