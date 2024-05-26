@@ -473,8 +473,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemPrefabs:
-  - {fileID: 6541396756124910618}
-  - {fileID: 3638188109333771872}
   - {fileID: 8098387325613844833}
 --- !u!61 &310680933
 BoxCollider2D:
@@ -2236,11 +2234,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 491174fce517df24bab6d6f419e6bcba, type: 3}
---- !u!1 &3638188109333771872 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3258260283822011072, guid: 491174fce517df24bab6d6f419e6bcba, type: 3}
-  m_PrefabInstance: {fileID: 3638188109333771871}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6541396756124910617
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2298,11 +2291,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3320af1a5b3354e21a4c2a5ea212b752, type: 3}
---- !u!1 &6541396756124910618 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1183398755861209095, guid: 3320af1a5b3354e21a4c2a5ea212b752, type: 3}
-  m_PrefabInstance: {fileID: 6541396756124910617}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8098387325613844832
 PrefabInstance:
   m_ObjectHideFlags: 0

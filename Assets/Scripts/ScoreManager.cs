@@ -8,7 +8,8 @@ public class ScoreManager : MonoBehaviour
     public Text scoreText;
     public static int scoreCount;
     private float scoreTimer;
-    private const float scoreInterval = 1f; // 1초마다 점수 증가
+    [SerializeField] private const float scoreInterval = 1f; // 1초마다 점수 증가
+    private float previousScoreCount;
 
     void Start()
     {
@@ -20,12 +21,16 @@ public class ScoreManager : MonoBehaviour
     void Update()
     {
         scoreTimer += Time.deltaTime;
-
         if (scoreTimer >= scoreInterval)
         {
             scoreCount++;
             scoreTimer -= scoreInterval;
+        }
+
+        if (scoreCount != previousScoreCount)
+        {
             UpdateScoreText();
+            previousScoreCount = scoreCount;
         }
     }
 
