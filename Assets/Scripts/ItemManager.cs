@@ -20,14 +20,14 @@ public class ItemManager : MonoBehaviour
         if (collision.gameObject.CompareTag("Coin"))
         {
             Debug.Log("内牢 +1");
-            //捞瓤林 火涝
-            ScoreManager.scoreCount += 1;
-            //火涝 场
         }
 
         else if (collision.gameObject.CompareTag("LifePlus"))
         {
             Debug.Log("格见 +1");
+            if(HealthManager.health < 3) { 
+                HealthManager.health++; 
+            }
         }
 
         else if (collision.gameObject.CompareTag("ScoreMinus"))
@@ -36,7 +36,7 @@ public class ItemManager : MonoBehaviour
             ScoreManager.scoreCount -= 1;
         }
 
-        else if (collision.gameObject.CompareTag("LifeMinus"))
+        else if (collision.gameObject.CompareTag("LifeMinus") || collision.gameObject.CompareTag("Pipe"))
         {
             HealthManager.health--;
             if(HealthManager.health <= 0 )
@@ -45,6 +45,10 @@ public class ItemManager : MonoBehaviour
                 gameObject.SetActive(false);
             }
         }
-        Destroy(collision.gameObject);
+        
+        if(!collision.gameObject.CompareTag("Pipe"))
+        {
+            Destroy(collision.gameObject);
+        }
     }
 }
