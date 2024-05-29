@@ -4,16 +4,29 @@ using UnityEngine;
 
 public class Move : MonoBehaviour
 {
-    [SerializeField]private float speed;
+    private float speed;
+    [SerializeField] private float acceleration = 10f;
+    private float timer;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        speed = BackGroundLoop.speed;
+        acceleration = BackGroundLoop.acceleration;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position += Vector3.left * (speed * Time.deltaTime); // (-1, 0, 0)
+        speed = BackGroundLoop.speed;
+        acceleration = BackGroundLoop.acceleration;
+        transform.position += Vector3.left * (speed * Time.deltaTime);
+
+        timer += Time.deltaTime;
+        if (timer > acceleration)
+        {
+            speed += 2f;
+            timer -= acceleration;
+        }
     }
 }

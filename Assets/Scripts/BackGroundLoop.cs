@@ -5,10 +5,12 @@ using UnityEngine;
 
 public class BackGroundLoop : MonoBehaviour
 {
-    [SerializeField] private float speed = 4f;
+    public static float speed = 4f;
 
     private float backgroundWidth;
     private Vector3 startPosition;
+    private float timer;
+    public static float acceleration = 10f;
     
     // Start is called before the first frame update
     void Start()
@@ -22,5 +24,12 @@ public class BackGroundLoop : MonoBehaviour
     {
         float newPosition = Mathf.Repeat(Time.time * speed, backgroundWidth);
         transform.position = startPosition + Vector3.left * newPosition;
+
+        timer += Time.deltaTime;
+        if (timer > acceleration)
+        {
+            speed += 0.5f;
+            timer -= acceleration;
+        }
     }
 }
