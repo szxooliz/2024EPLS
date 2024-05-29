@@ -19,4 +19,10 @@ public class ClickButton : MonoBehaviour
         SceneManager.LoadScene("StartScene");
     }
 
+    //ÀÌÈ¿ÁÖ »ğÀÔ
+    public void OnClickReplay()
+    {
+        SceneManager.LoadScene("PlayScene 1");
+    }
+    //»ğÀÔ ³¡
 }
