@@ -798,11 +798,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddd8b4a799f114542afc89f018543937, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpPower: 8
+  jumpPower: 13
   jumpCheckRadius: 0.1
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
+  gravityIncreaseRate: 0.2
 --- !u!114 &758682361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -925,7 +926,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27f0da2bcf4d84957b11a42a87b54653, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
 --- !u!1 &1098493138
 GameObject:
   m_ObjectHideFlags: 0
@@ -1220,7 +1220,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27f0da2bcf4d84957b11a42a87b54653, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
 --- !u!1 &1384584641
 GameObject:
   m_ObjectHideFlags: 0

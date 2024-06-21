@@ -1355,9 +1355,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOverScreen: {fileID: 743569711}
   scoreText1: {fileID: 424939974}
-  BestScoreText: {fileID: 0}
-  SecondScoreText: {fileID: 0}
-  ThirdScoreText: {fileID: 0}
 --- !u!1 &758682354
 GameObject:
   m_ObjectHideFlags: 0
@@ -1483,7 +1480,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 2
+  m_GravityScale: 3
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -1542,12 +1539,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddd8b4a799f114542afc89f018543937, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpPower: 8
+  jumpPower: 13
   jumpCheckRadius: 0.1
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
-  gravityIncreaseRate: 1
+  gravityIncreaseRate: 0.2
 --- !u!114 &758682361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1592,9 +1589,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOverScreen: {fileID: 743569711}
   scoreText1: {fileID: 424939974}
-  BestScoreText: {fileID: 0}
-  SecondScoreText: {fileID: 0}
-  ThirdScoreText: {fileID: 0}
 --- !u!4 &952905181
 Transform:
   m_ObjectHideFlags: 0
