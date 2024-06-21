@@ -2,15 +2,13 @@ using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SocialPlatforms.Impl;
+using System;
 
 public class PlayerManager : MonoBehaviour
 {
     public static bool isGameOver;
     public GameObject gameOverScreen;
     public Text scoreText1;
-    public Text BestScoreText;
-    public Text SecondScoreText;
-    public Text ThirdScoreText;
     private void Awake()
     {
         isGameOver = false;
@@ -28,35 +26,47 @@ public class PlayerManager : MonoBehaviour
         {
             gameOverScreen.SetActive(true);
             scoreText1.text = "점수 :           " + ScoreManager.scoreCount;
-            BestScoreText.text = "최고 점수 :           " + TopScores.Instance.BestScore;
-            SecondScoreText.text = "2번째 점수 :           " + TopScores.Instance.SecondScore;
-            ThirdScoreText.text = "3번째 점수 :           " + TopScores.Instance.ThirdScore;
+            Time.timeScale = 0f;
 
             if (ScoreManager.scoreCount < TopScores.Instance.BestScore)
             {
-                if(ScoreManager.scoreCount < TopScores.Instance.SecondScore)
+                if (ScoreManager.scoreCount < TopScores.Instance.SecondScore)
                 {
                     if (ScoreManager.scoreCount < TopScores.Instance.ThirdScore)
                         return;
                     TopScores.Instance.ThirdScore = ScoreManager.scoreCount;
                     TopScores.Instance.SaveDataByPlayerPrefs("ThirdScore", ScoreManager.scoreCount);
+                    TopScores.Instance.ThirdScoreTime = DateTime.Now.ToString();
+                    TopScores.Instance.SaveDataByPlayerPrefsString("ThirdScoreTime", TopScores.Instance.ThirdScoreTime);
                     return;
                 }
                 TopScores.Instance.ThirdScore = TopScores.Instance.SecondScore;
                 TopScores.Instance.SaveDataByPlayerPrefs("ThirdScore", TopScores.Instance.SecondScore);
+                TopScores.Instance.ThirdScoreTime = TopScores.Instance.SecondScoreTime;
+                TopScores.Instance.SaveDataByPlayerPrefsString("ThirdScoreTime", TopScores.Instance.SecondScoreTime);
+
                 TopScores.Instance.SecondScore = ScoreManager.scoreCount;
                 TopScores.Instance.SaveDataByPlayerPrefs("SecondScore", ScoreManager.scoreCount);
+                TopScores.Instance.SecondScoreTime = DateTime.Now.ToString();
+                TopScores.Instance.SaveDataByPlayerPrefsString("SecondScoreTime", TopScores.Instance.SecondScoreTime);
                 return;
             }
             if (ScoreManager.scoreCount == TopScores.Instance.BestScore) return;
+
             TopScores.Instance.ThirdScore = TopScores.Instance.SecondScore;
             TopScores.Instance.SaveDataByPlayerPrefs("ThirdScore", TopScores.Instance.SecondScore);
+            TopScores.Instance.ThirdScoreTime = TopScores.Instance.SecondScoreTime;
+            TopScores.Instance.SaveDataByPlayerPrefsString("ThirdScoreTime", TopScores.Instance.SecondScoreTime);
+
             TopScores.Instance.SecondScore = TopScores.Instance.BestScore;
             TopScores.Instance.SaveDataByPlayerPrefs("SecondScore", TopScores.Instance.BestScore);
+            TopScores.Instance.SecondScoreTime = TopScores.Instance.BestScoreTime;
+            TopScores.Instance.SaveDataByPlayerPrefsString("SecondScoreTime", TopScores.Instance.BestScoreTime);
+
             TopScores.Instance.BestScore = ScoreManager.scoreCount;
             TopScores.Instance.SaveDataByPlayerPrefs("BestScore", ScoreManager.scoreCount);
-
-            Time.timeScale = 0f;
+            TopScores.Instance.BestScoreTime = DateTime.Now.ToString();
+            TopScores.Instance.SaveDataByPlayerPrefsString("BestScoreTime", TopScores.Instance.BestScoreTime);
         } 
     }
 }
