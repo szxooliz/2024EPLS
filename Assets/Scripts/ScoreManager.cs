@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
@@ -21,6 +22,7 @@ public class ScoreManager : MonoBehaviour
     void Update()
     {
         scoreTimer += Time.deltaTime;
+        
         if (scoreTimer >= scoreInterval)
         {
             scoreCount++;
