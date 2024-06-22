@@ -18,8 +18,8 @@ public class ScoreBoard : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        BestScoreText.text = "1. " + TopScores.Instance.BestScore + "    " + TopScores.Instance.BestScoreTime;
-        SecondScoreText.text = "2. " + TopScores.Instance.SecondScore + "    " + TopScores.Instance.SecondScoreTime;
-        ThirdScoreText.text = "3. " + TopScores.Instance.ThirdScore + "    " + TopScores.Instance.ThirdScoreTime;
+        BestScoreText.text = "1. " + PlayerPrefs.GetInt("HiScore") + "  " + PlayerPrefs.GetString("BestScoreTime");
+        SecondScoreText.text = "1. " + PlayerPrefs.GetInt("SecondScore") + "  " + PlayerPrefs.GetString("SecondScoreTime");
+        ThirdScoreText.text = "1. " + PlayerPrefs.GetInt("ThirdScore") + "  " + PlayerPrefs.GetString("ThirdScoreTime");
     }
 }
