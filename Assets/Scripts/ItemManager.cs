@@ -20,6 +20,9 @@ public class ItemManager : MonoBehaviour
         if (collision.gameObject.CompareTag("Coin"))
         {
             Debug.Log("ÄÚÀÎ +1");
+            //hyoju
+            Coin.coin++;
+            PlayerPrefs.SetInt("Coin", Coin.coin);
         }
 
         else if (collision.gameObject.CompareTag("LifePlus"))

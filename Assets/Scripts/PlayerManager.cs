@@ -11,6 +11,8 @@ public class PlayerManager : MonoBehaviour
     public static bool isGameOver;
     public GameObject gameOverScreen;
     public Text scoreText1;
+    public Text coinText;
+
     public static int hiScoreCount = 0;
     public static int secondScoreCount = 0;
     public static int thirdScoreCount = 0;
@@ -18,6 +20,7 @@ public class PlayerManager : MonoBehaviour
     public static  string bestScoreTime = "00";
     public static string secondScoreTime = "00";
     public static string thirdScoreTime = "00";
+
     private void Awake()
     {
         isGameOver = false;
@@ -44,8 +47,9 @@ public class PlayerManager : MonoBehaviour
         {
             gameOverScreen.SetActive(true);
             scoreText1.text = "점수 :           " + ScoreManager.scoreCount;
+            coinText.text = "코인 :           " + PlayerPrefs.GetInt("Coin");
 
-            if(ScoreManager.scoreCount > PlayerPrefs.GetInt("HiScore"))
+            if (ScoreManager.scoreCount > PlayerPrefs.GetInt("HiScore"))
             {
                 thirdScoreCount = secondScoreCount;
                 PlayerPrefs.SetInt("ThirdScore", thirdScoreCount);

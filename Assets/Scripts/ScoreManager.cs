@@ -22,7 +22,7 @@ public class ScoreManager : MonoBehaviour
     void Update()
     {
         scoreTimer += Time.deltaTime;
-        
+        PlayerPrefs.SetInt("Coin", Coin.coin);
         if (scoreTimer >= scoreInterval)
         {
             scoreCount++;

@@ -1333,6 +1333,7 @@ RectTransform:
   - {fileID: 739872656}
   - {fileID: 2030141041}
   - {fileID: 424939973}
+  - {fileID: 1459827104}
   - {fileID: 277915199}
   m_Father: {fileID: 707521105}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1355,6 +1356,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOverScreen: {fileID: 743569711}
   scoreText1: {fileID: 424939974}
+  coinText: {fileID: 1459827105}
 --- !u!1 &758682354
 GameObject:
   m_ObjectHideFlags: 0
@@ -1568,6 +1570,7 @@ GameObject:
   - component: {fileID: 952905181}
   - component: {fileID: 952905180}
   - component: {fileID: 952905182}
+  - component: {fileID: 952905183}
   m_Layer: 0
   m_Name: PlayerManager
   m_TagString: Untagged
@@ -1589,6 +1592,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOverScreen: {fileID: 743569711}
   scoreText1: {fileID: 424939974}
+  coinText: {fileID: 1459827105}
 --- !u!4 &952905181
 Transform:
   m_ObjectHideFlags: 0
@@ -1622,6 +1626,18 @@ MonoBehaviour:
   - {fileID: 431929505}
   fullHeart: {fileID: 21300000, guid: 97e12b0fb781023428e907ff9057874f, type: 3}
   emptyHeart: {fileID: 21300000, guid: 8c22acbb7eed3e3458b866e283e1f3ab, type: 3}
+--- !u!114 &952905183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 952905179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a11d5932ee9211248bf5a3593257b36e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1012222135
 GameObject:
   m_ObjectHideFlags: 0
@@ -2324,6 +2340,85 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1440138662}
   m_CullTransparentMesh: 1
+--- !u!1 &1459827103
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1459827104}
+  - component: {fileID: 1459827106}
+  - component: {fileID: 1459827105}
+  m_Layer: 5
+  m_Name: coinText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1459827104
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1459827103}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 743569714}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -117, y: -126.47}
+  m_SizeDelta: {x: 198.53, y: 28.5842}
+  m_Pivot: {x: 1, y: 1}
+--- !u!114 &1459827105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1459827103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 20
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 0
+    m_MaxSize: 20
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: "\uCF54\uC778 :           "
+--- !u!222 &1459827106
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1459827103}
+  m_CullTransparentMesh: 1
 --- !u!1 &1621656688 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3258260283822011072, guid: 754cc0415bebbd848b5c61152cd59d31, type: 3}
@@ -2694,7 +2789,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -20.000061, y: -12}
+  m_AnchoredPosition: {x: -20, y: -12}
   m_SizeDelta: {x: 198.5289, y: 47.0576}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &2060422229
