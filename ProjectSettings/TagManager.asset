@@ -9,6 +9,7 @@ TagManager:
   - ScoreMinus
   - Pipe
   - LifeMinus
+  - LockedBtn
   layers:
   - Default
   - TransparentFX
