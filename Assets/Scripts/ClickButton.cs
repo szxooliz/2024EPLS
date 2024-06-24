@@ -22,6 +22,7 @@ public class ClickButton : MonoBehaviour
     //이효주 삽입
     public void OnClickReplay()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("PlayScene 1");
     }
     //삽입 끝
