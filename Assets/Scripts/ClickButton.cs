@@ -7,7 +7,7 @@ public class ClickButton : MonoBehaviour
 {
     public void OnClickGameStart()
     {
-        SceneManager.LoadScene("PlayScene 2");
+        SceneManager.LoadScene("PlayScene");
     }
 
     public void OnClickCostumeRoom()
@@ -19,11 +19,11 @@ public class ClickButton : MonoBehaviour
         SceneManager.LoadScene("StartScene");
     }
 
-    //ÀÌÈ¿ÁÖ »ðÀÔ
+    //ï¿½ï¿½È¿ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     public void OnClickReplay()
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("PlayScene 1");
     }
-    //»ðÀÔ ³¡
+    //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 }
