@@ -4,9 +4,6 @@ using UnityEngine;
 
 public static class PlayerCoin
 {
-    // 플레이어가 보유하고 있는 코인
-    public static int playerCoin;
-
     /// <summary>
     /// 상점에서 스킨 구매 시 코인 삭감
     /// </summary>
@@ -14,9 +11,10 @@ public static class PlayerCoin
     /// <returns></returns>
     public static bool TryRemoveCoin(int coinToRemove)
     {
-        if (playerCoin >= coinToRemove)
+        if (PlayerPrefs.GetInt("Coin") >= coinToRemove)
         {
-            playerCoin -= coinToRemove;
+            Coin.coin -= coinToRemove;
+            PlayerPrefs.SetInt("Coin", Coin.coin);
             return true;
         }
         else

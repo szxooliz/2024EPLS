@@ -13,7 +13,7 @@ public class SkinManager : MonoBehaviour
         // Singleton
         Inst = this;
 
-        string lastSkinUsed = PlayerPrefs.GetString("skinPref", SO_SkinInfo.SkinIDS.santa.ToString());
+        string lastSkinUsed = PlayerPrefs.GetString("skinPref", SO_SkinInfo.SkinIDS.defaultSkin.ToString());
         foreach (SO_SkinInfo skin in allSkins)
         {
             if (skin.skinID.ToString() == lastSkinUsed)
