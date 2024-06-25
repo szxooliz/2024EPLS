@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="de1be263-39f0-4958-9d3f-cb92618110d3" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.EPLS/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.EPLS/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/PlayScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/PlayScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BackGroundLoop.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BackGroundLoop.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,6 +100,7 @@
       <workItem from="1715671897375" duration="921000" />
       <workItem from="1716191049260" duration="3545000" />
       <workItem from="1716266820921" duration="1937000" />
+      <workItem from="1719288968536" duration="304000" />
     </task>
     <servers />
   </component>

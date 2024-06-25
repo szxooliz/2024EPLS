@@ -427,6 +427,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverScreen: {fileID: 0}
+  scoreText1: {fileID: 0}
+  coinText: {fileID: 0}
 --- !u!4 &243227847
 Transform:
   m_ObjectHideFlags: 0

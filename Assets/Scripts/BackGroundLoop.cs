@@ -15,6 +15,7 @@ public class BackGroundLoop : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        speed = 4f;
         startPosition = transform.position;
         backgroundWidth = GetComponent<SpriteRenderer>().bounds.size.x;
     }
