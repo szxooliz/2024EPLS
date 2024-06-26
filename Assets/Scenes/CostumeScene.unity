@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 23150668}
   - component: {fileID: 23150667}
   m_Layer: 5
-  m_Name: BTN_Costume
+  m_Name: BTN_Costume 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -270,7 +270,7 @@ GameObject:
   - component: {fileID: 26582858}
   - component: {fileID: 26582857}
   m_Layer: 5
-  m_Name: BTN_Costume
+  m_Name: BTN_Costume 0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4074,7 +4074,7 @@ GameObject:
   - component: {fileID: 951010685}
   - component: {fileID: 951010684}
   m_Layer: 5
-  m_Name: BTN_Costume
+  m_Name: BTN_Costume 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4445,6 +4445,12 @@ MonoBehaviour:
   - {fileID: 1726239189}
   - {fileID: 832482865}
   - {fileID: 1059371910}
+  btns_Unlocked:
+  - {fileID: 26582857}
+  - {fileID: 1046645027}
+  - {fileID: 23150667}
+  - {fileID: 951010684}
+  - {fileID: 1398592288}
   skinInShops:
   - {fileID: 179394166}
   - {fileID: 349160696}
@@ -4453,8 +4459,8 @@ MonoBehaviour:
   - {fileID: 69586590}
   btn_BuyYes: {fileID: 2088728774}
   btn_WearYes: {fileID: 961719848}
-  btn_Clicked: {fileID: 0}
-  selectedSkin: {fileID: 0}
+  buy_SelectedSkin: {fileID: 0}
+  wear_SelectedSkin: {fileID: 0}
 --- !u!1 &1000015855
 GameObject:
   m_ObjectHideFlags: 0
@@ -4677,7 +4683,7 @@ GameObject:
   - component: {fileID: 1046645028}
   - component: {fileID: 1046645027}
   m_Layer: 5
-  m_Name: BTN_Costume
+  m_Name: BTN_Costume 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5872,7 +5878,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 491e965b2d5328148a54f78566872093, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b1cfcc97bd150f548a9227bf189dc969, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5966,7 +5972,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 491e965b2d5328148a54f78566872093, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b1cfcc97bd150f548a9227bf189dc969, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6415,7 +6421,7 @@ GameObject:
   - component: {fileID: 1398592289}
   - component: {fileID: 1398592288}
   m_Layer: 5
-  m_Name: BTN_Costume
+  m_Name: BTN_Costume 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8268,7 +8274,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 491e965b2d5328148a54f78566872093, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b1cfcc97bd150f548a9227bf189dc969, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9276,7 +9282,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -581, y: -234}
+  m_AnchoredPosition: {x: -613, y: -344}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1976062535
@@ -9301,8 +9307,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: PREVIEW
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 9c6a00e708c1e8f4f8a03555ddbbdbdc, type: 2}
+  m_sharedMaterial: {fileID: 4468738215890294397, guid: 9c6a00e708c1e8f4f8a03555ddbbdbdc, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
