@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class CoinSpawnManager : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> itemPrefabs; // ¾ÆÀÌÅÛ ÇÁ¸®ÆÕÀ» ´ãÀ» ¸®½ºÆ®
-    private float timeDiff; // ¾ÆÀÌÅÛ ³ª¿À´Â ·£´ýÇÑ ½Ã°£
-    private float timer = 0; // ÇöÀç ½Ã°£
+    [SerializeField] private List<GameObject> itemPrefabs; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
+    private float timeDiff; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½
+    private float timer = 0; // ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½
     
     // Start is called before the first frame update
     void Start()
@@ -32,7 +32,7 @@ public class CoinSpawnManager : MonoBehaviour
         {
             int randomIdx = Random.Range(0, itemPrefabs.Count);
             GameObject randomItem = Instantiate(itemPrefabs[randomIdx]);
-            randomItem.transform.position = new Vector3(10, Random.Range(-3.3f, 0), 0);
+            randomItem.transform.position = new Vector3(10, Random.Range(-2f, 0), 0);
         }
     }
 }
