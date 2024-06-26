@@ -11,6 +11,9 @@ TagManager:
   - LifeMinus
   - LockedBtn
   - ScorePlus
+  - ScorePlus+15
+  - ScorePlus+25
+  - LifeMinus-2
   layers:
   - Default
   - TransparentFX
