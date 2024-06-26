@@ -19,7 +19,7 @@ public class ItemManager : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Coin"))
         {
-            Debug.Log("ÄÚÀÎ +1");
+            Debug.Log("ï¿½ï¿½ï¿½ï¿½ +1");
             //hyoju
             Coin.coin ++;
             PlayerPrefs.SetInt("Coin", Coin.coin);
@@ -27,7 +27,7 @@ public class ItemManager : MonoBehaviour
 
         else if (collision.gameObject.CompareTag("LifePlus"))
         {
-            Debug.Log("¸ñ¼û +1");
+            Debug.Log("ï¿½ï¿½ï¿½ +1");
             if(HealthManager.health < 3) { 
                 HealthManager.health++;
                 
@@ -36,8 +36,7 @@ public class ItemManager : MonoBehaviour
 
         else if (collision.gameObject.CompareTag("ScoreMinus"))
         {
-            Debug.Log("Á¡¼ö -1");
-            ScoreManager.scoreCount -= 1;
+            Debug.Log("ï¿½ï¿½ï¿½ï¿½ -1");
         }
 
         else if (collision.gameObject.CompareTag("LifeMinus") || collision.gameObject.CompareTag("Pipe"))

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BirdJump : MonoBehaviour
 {
-    public float jumpPower = 15f;
+    public float jumpPower = 13f;
     private int maxJumpCount = 2;
     public float jumpCheckRadius = 0.1f;
     public LayerMask groundLayer;
@@ -17,7 +17,7 @@ public class BirdJump : MonoBehaviour
     private float timer;
     private float acceleration;
 
-    private float initialGravity = 4f;
+    private float initialGravity = 3.5f;
     [SerializeField] private float gravityIncreaseRate = 1f;
     private float maxGravity = 20f;
     private float currentGravity;
