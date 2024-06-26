@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Skin_Santa
   m_EditorClassIdentifier: 
   skinID: 1
-  skinSprite: {fileID: 21300000, guid: c9ffced87b3bdea43954ccbb1f7f6d00, type: 3}
+  skinSprite: {fileID: 21300000, guid: 1eb82e0c691486b4daee56b58ad61894, type: 3}
   skinPrice: 20
+  skinName: "\uC0B0\uD0C0\uB0E5\uC774"

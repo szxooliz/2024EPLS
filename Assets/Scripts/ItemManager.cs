@@ -47,8 +47,16 @@ public class ItemManager : MonoBehaviour
                 gameObject.SetActive(false);
             }
         }
-        
-        if(!collision.gameObject.CompareTag("Pipe"))
+
+        //Insert
+        else if (collision.gameObject.CompareTag("ScorePlus"))
+        {
+            Debug.Log("Á¡¼ö +10");
+            ScoreManager.scoreCount += 10;
+        }
+        //end
+
+        if (!collision.gameObject.CompareTag("Pipe"))
         {
             Destroy(collision.gameObject);
         }
