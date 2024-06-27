@@ -138,7 +138,7 @@ public class SkinInShop : MonoBehaviour
     public void OnClickBuyYes()
     {
         // 구매 가능한 만큼 코인 보유 확인 및 차감
-        bool ableToBuy = PlayerCoin.TryRemoveCoin(skinInfo._skinPrice);
+        bool ableToBuy = Coin.TryRemoveCoin(skinInfo._skinPrice);
         ClosePopup();
 
         if(ableToBuy)
@@ -154,7 +154,7 @@ public class SkinInShop : MonoBehaviour
             // panel.SetActive(true);
             Invoke("OpenPopup", delayTime);
 
-            Debug.Log("SKININSHOP____" + skinInfo._skinName + "successful purchase!");
+            Debug.Log("SKININSHOP____" + skinInfo._skinName + " successful purchase!");
         }
         else
         {
@@ -181,7 +181,7 @@ public class SkinInShop : MonoBehaviour
             txt_State.text = "착용 중"; 
             ClosePopup();
 
-            Debug.Log("SKININSHOP____" + skinInfo._skinName + "successful wear!");
+            Debug.Log("SKININSHOP____" + skinInfo._skinName + " successful wear!");
         }
         else
         {

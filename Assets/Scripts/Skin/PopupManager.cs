@@ -77,7 +77,10 @@ public class PopupManager : MonoBehaviour
 
         foreach (SkinInShop skinInShop in skinInShops)
         {
-            if (skinInShop != wear_SelectedSkin)
+            bool isNotWorn = skinInShop != wear_SelectedSkin && skinInShop.skinInfo._skinSprite != SkinManager.equippedSkin;
+            bool _isNotWorn = skinInShop.skinInfo._skinSprite != SkinManager.equippedSkin;
+
+            if (isNotWorn && skinInShop.txt_State.isActiveAndEnabled)
             {
                 skinInShop.txt_State.text = "보유 중";
             }

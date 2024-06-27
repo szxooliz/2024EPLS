@@ -9,17 +9,17 @@ public static class PlayerCoin
     /// </summary>
     /// <param name="coinToRemove"></param>
     /// <returns></returns>
-    public static bool TryRemoveCoin(int coinToRemove)
-    {
-        if (PlayerPrefs.GetInt("Coin") >= coinToRemove)
-        {
-            Coin.coin -= coinToRemove;
-            PlayerPrefs.SetInt("Coin", Coin.coin);
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
+    // public static bool TryRemoveCoin(int coinToRemove)
+    // {
+    //     if (PlayerPrefs.GetInt("Coin") >= coinToRemove)
+    //     {
+    //         Coin.coin -= coinToRemove;
+    //         PlayerPrefs.SetInt("Coin", Coin.coin);
+    //         return true;
+    //     }
+    //     else
+    //     {
+    //         return false;
+    //     }
+    // }
 }
