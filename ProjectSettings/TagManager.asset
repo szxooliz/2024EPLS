@@ -11,6 +11,7 @@ TagManager:
   - LifeMinus
   - LockedBtn
   - ScorePlus
+  - Clover
   layers:
   - Default
   - TransparentFX

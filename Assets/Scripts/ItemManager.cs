@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class ItemManager : MonoBehaviour
 {
+    private BirdJump birdJump;
     // Start is called before the first frame update
     void Start()
     {
-        
+        birdJump = FindObjectOfType<BirdJump>();
     }
 
     // Update is called once per frame
@@ -19,7 +20,7 @@ public class ItemManager : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Coin"))
         {
-            Debug.Log("ï¿½ï¿½ï¿½ï¿½ +1");
+            Debug.Log("ÄÚÀÎ +1");
             //hyoju
             Coin.coin++;
             PlayerPrefs.SetInt("Coin", Coin.coin);
@@ -27,7 +28,7 @@ public class ItemManager : MonoBehaviour
 
         else if (collision.gameObject.CompareTag("LifePlus"))
         {
-            Debug.Log("ï¿½ï¿½ï¿½ +1");
+            Debug.Log("¸ñ¼û+1");
             if(HealthManager.health < 3) { 
                 HealthManager.health++; 
             }
@@ -35,7 +36,12 @@ public class ItemManager : MonoBehaviour
 
         else if (collision.gameObject.CompareTag("ScoreMinus"))
         {
-            Debug.Log("ï¿½ï¿½ï¿½ï¿½ -1");
+            Debug.Log("Á¡¼ö -1");
+        }
+
+        else if (collision.gameObject.CompareTag("Clover"))
+        {
+            StartCoroutine(birdJump.KnockBack());
         }
 
         else if (collision.gameObject.CompareTag("LifeMinus") || collision.gameObject.CompareTag("Pipe"))

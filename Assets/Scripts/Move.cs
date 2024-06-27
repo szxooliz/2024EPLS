@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class Move : MonoBehaviour
 {
+    public static Move instance;
     private float speed;
+
+    private bool isPaused = false;
+
     [SerializeField] private float acceleration = 10f;
     private float timer;
 
@@ -13,6 +17,8 @@ public class Move : MonoBehaviour
     {
         speed = BackGroundLoop.speed;
         acceleration = BackGroundLoop.acceleration;
+
+        instance = this;
     }
 
     // Update is called once per frame
@@ -28,5 +34,14 @@ public class Move : MonoBehaviour
             speed += 2f;
             timer -= acceleration;
         }
+    }
+    public void PauseMovement()
+    {
+        isPaused = true;
+    }
+
+    public void ResumeMovement()
+    {
+        isPaused = false;
     }
 }
