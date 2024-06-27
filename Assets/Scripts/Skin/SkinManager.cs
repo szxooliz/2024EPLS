@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,27 +6,35 @@ using UnityEngine;
 public class SkinManager : MonoBehaviour
 {    
     public static SkinManager Inst;
-    public static Sprite equippedSkin;
-    public SO_SkinInfo[] allSkins;
+    public static Sprite equippedSkin {get; private set;}
+    [SerializeField] private SO_SkinInfo[] allSkins;
+    private const string skinPref = "skinPref";
 
     private void Awake() 
     {
         // Singleton
         Inst = this;
 
-        string lastSkinUsed = PlayerPrefs.GetString("skinPref", SO_SkinInfo.SkinIDS.defaultSkin.ToString());
-        foreach (SO_SkinInfo skin in allSkins)
+        string lastSkinUsed = PlayerPrefs.GetString(skinPref, SO_SkinInfo.SkinIDS.defaultSkin.ToString());
+        SO_SkinInfo skinUsedLastTime = Array.Find(allSkins, dummyFind => dummyFind._skinID.ToString() == lastSkinUsed);
+        
+        if (skinUsedLastTime == null)
         {
-            if (skin.skinID.ToString() == lastSkinUsed)
-            {
-                EquipSkin(skin);
-            }
+            skinUsedLastTime = Array.Find(allSkins, dummyFind => dummyFind._skinID == SO_SkinInfo.SkinIDS.defaultSkin);
         }
+        
+        EquipSkin(skinUsedLastTime);
+
     }
 
     public void EquipSkin(SO_SkinInfo skinInfo)
     {
-        equippedSkin = skinInfo.skinSprite;
-        PlayerPrefs.SetString("skinPref", skinInfo.skinID.ToString());
+        if (skinInfo == null)
+        {
+            skinInfo = Array.Find(allSkins, dummyFind => dummyFind._skinID == SO_SkinInfo.SkinIDS.defaultSkin);
+        }
+
+        equippedSkin = skinInfo._skinSprite;
+        PlayerPrefs.SetString(skinPref, skinInfo._skinID.ToString());
     }
 }

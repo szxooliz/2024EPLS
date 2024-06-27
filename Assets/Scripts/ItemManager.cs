@@ -22,7 +22,7 @@ public class ItemManager : MonoBehaviour
         {
             Debug.Log("코인 +1");
             //hyoju
-            Coin.coin++;
+            Coin.coin ++;
             PlayerPrefs.SetInt("Coin", Coin.coin);
         }
 
@@ -30,7 +30,8 @@ public class ItemManager : MonoBehaviour
         {
             Debug.Log("목숨+1");
             if(HealthManager.health < 3) { 
-                HealthManager.health++; 
+                HealthManager.health++;
+                
             }
         }
 
@@ -47,7 +48,19 @@ public class ItemManager : MonoBehaviour
         else if (collision.gameObject.CompareTag("LifeMinus") || collision.gameObject.CompareTag("Pipe"))
         {
             HealthManager.health--;
-            if(HealthManager.health <= 0 )
+            
+            if (HealthManager.health <= 0 )
+            {
+                PlayerManager.isGameOver = true;
+                gameObject.SetActive(false);
+            }
+        }
+
+        else if (collision.gameObject.CompareTag("LifeMinus-2"))
+        {
+            HealthManager.health -= 2;
+            
+            if (HealthManager.health <= 0)
             {
                 PlayerManager.isGameOver = true;
                 gameObject.SetActive(false);
@@ -59,6 +72,18 @@ public class ItemManager : MonoBehaviour
         {
             Debug.Log("점수 +10");
             ScoreManager.scoreCount += 10;
+        }
+
+        else if (collision.gameObject.CompareTag("ScorePlus+15"))
+        {
+            Debug.Log("점수 +15");
+            ScoreManager.scoreCount += 15;
+        }
+
+        else if (collision.gameObject.CompareTag("ScorePlus+25"))
+        {
+            Debug.Log("점수 +25");
+            ScoreManager.scoreCount += 25;
         }
         //end
 

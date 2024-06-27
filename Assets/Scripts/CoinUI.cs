@@ -9,7 +9,7 @@ public class CoinUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerCoin.text = Coin.coin.ToString();
+        playerCoin.text = PlayerPrefs.GetInt("Coin").ToString();
     }
 
     // Update is called once per frame

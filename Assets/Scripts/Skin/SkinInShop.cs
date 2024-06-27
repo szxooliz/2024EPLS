@@ -28,17 +28,26 @@ public class SkinInShop : MonoBehaviour
 
     public bool isNowPreviewing; // 미리보기 적용 중 여부 
 
-    [SerializeField]
-    private bool isSkinUnlocked = false; // 해금 여부
+    [SerializeField] private bool isSkinUnlocked = false; // 해금 여부
+    [SerializeField] private float delayTime = 0.3f; // 팝업 지연 시간
     private GameObject popUp_Active; // 현재 활성화 해둔 팝업
 
 
     private void Awake() 
     {       
-        img_Skin.sprite = skinInfo.skinSprite;
+        img_Skin.sprite = skinInfo._skinSprite;
         img_Preview.sprite = SkinManager.equippedSkin;
-        txt_Price.text = skinInfo.skinPrice.ToString();
-        txt_SkinName.text = skinInfo.skinName.ToString();
+        txt_Price.text = skinInfo._skinPrice.ToString();
+        txt_SkinName.text = skinInfo._skinName.ToString();
+    }
+
+    /// <summary>
+    /// 팝업 열기
+    /// </summary>
+    public void OpenPopup()
+    {
+        popUp_Active.SetActive(true);
+        panel.SetActive(true);
     }
 
     /// <summary>
@@ -55,9 +64,7 @@ public class SkinInShop : MonoBehaviour
             txt_preview.SetActive(false);
             panel.SetActive(false);
             txt_previewName.gameObject.SetActive(false);
-
         }
-        
     }
     
     /// <summary>
@@ -65,7 +72,7 @@ public class SkinInShop : MonoBehaviour
     /// </summary>
     public bool IsSkinUnlocked()
     {
-        if (PlayerPrefs.GetInt(skinInfo.skinID.ToString()) == 1)
+        if (PlayerPrefs.GetInt(skinInfo._skinID.ToString()) == 1)
         {
             isSkinUnlocked = true;
             txt_State.text = "보유 중"; 
@@ -80,23 +87,26 @@ public class SkinInShop : MonoBehaviour
     public void OnClickLocked()
     {
         // 현재 미리보기 이미지와 선택한 스킨이 같은지 확인
-        isNowPreviewing = img_Preview.sprite == skinInfo.skinSprite;
+        isNowPreviewing = img_Preview.sprite == skinInfo._skinSprite;
 
         // 미리보기 이름 표시
         txt_previewName.gameObject.SetActive(true);
-        txt_previewName.text = skinInfo.skinName;
+        txt_previewName.text = skinInfo._skinName;
 
         // 2nd click -> 구매 팝업 활성화
         if (isNowPreviewing)
         {
             popUp_Active = popUp_Buy;
-            popUp_Buy.SetActive(true);
-            panel.SetActive(true);
-            txt_PopupPrice.text = skinInfo.skinPrice.ToString();
+            // popUp_Buy.SetActive(true);
+            // panel.SetActive(true);
+            OpenPopup();
+            // Invoke("OpenPopup", delayTime);
+
+            txt_PopupPrice.text = skinInfo._skinPrice.ToString();
         }
 
         // 1st click -> 미리보기 이미지 변경
-        img_Preview.sprite = skinInfo.skinSprite;
+        img_Preview.sprite = skinInfo._skinSprite;
         txt_preview.SetActive(true);
 
     }
@@ -108,10 +118,12 @@ public class SkinInShop : MonoBehaviour
     {
         if (IsSkinUnlocked())
         {
-            img_Preview.sprite = skinInfo.skinSprite;
+            img_Preview.sprite = skinInfo._skinSprite;
             popUp_Active = popUp_Wear;
-            popUp_Wear.SetActive(true);
-            panel.SetActive(true);
+            // popUp_Wear.SetActive(true);
+            // panel.SetActive(true);
+            OpenPopup();
+            // Invoke("OpenPopup", delayTime);
         }
         else
         {
@@ -126,7 +138,7 @@ public class SkinInShop : MonoBehaviour
     public void OnClickBuyYes()
     {
         // 구매 가능한 만큼 코인 보유 확인 및 차감
-        bool ableToBuy = PlayerCoin.TryRemoveCoin(skinInfo.skinPrice);
+        bool ableToBuy = Coin.TryRemoveCoin(skinInfo._skinPrice);
         ClosePopup();
 
         if(ableToBuy)
@@ -138,17 +150,19 @@ public class SkinInShop : MonoBehaviour
             Destroy(btn_Lock);
 
             popUp_Active = popUp_Purchase;
-            popUp_Purchase.SetActive(true);
-            panel.SetActive(true);
+            // popUp_Purchase.SetActive(true);
+            // panel.SetActive(true);
+            Invoke("OpenPopup", delayTime);
 
-            Debug.Log("SKININSHOP____successful purchase!");
+            Debug.Log("SKININSHOP____" + skinInfo._skinName + " successful purchase!");
         }
         else
         {
             // 코인 부족 팝업 활성화
             popUp_Active = popUp_Caution;
-            popUp_Caution.SetActive(true);
-            panel.SetActive(true);
+            // popUp_Caution.SetActive(true);
+            // panel.SetActive(true);
+            Invoke("OpenPopup", delayTime);
 
             Debug.Log("SKININSHOP____purchase fail...");
         }
@@ -167,7 +181,7 @@ public class SkinInShop : MonoBehaviour
             txt_State.text = "착용 중"; 
             ClosePopup();
 
-            Debug.Log("SKININSHOP____successful wear!");
+            Debug.Log("SKININSHOP____" + skinInfo._skinName + " successful wear!");
         }
         else
         {
