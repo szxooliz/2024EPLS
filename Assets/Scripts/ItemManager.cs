@@ -14,7 +14,7 @@ public class ItemManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -22,16 +22,17 @@ public class ItemManager : MonoBehaviour
         {
             Debug.Log("ÄÚÀÎ +1");
             //hyoju
-            Coin.coin ++;
+            Coin.coin++;
             PlayerPrefs.SetInt("Coin", Coin.coin);
         }
 
         else if (collision.gameObject.CompareTag("LifePlus"))
         {
             Debug.Log("¸ñ¼û+1");
-            if(HealthManager.health < 3) { 
+            if (HealthManager.health < 3)
+            {
                 HealthManager.health++;
-                
+
             }
         }
 
@@ -42,14 +43,14 @@ public class ItemManager : MonoBehaviour
 
         else if (collision.gameObject.CompareTag("Clover"))
         {
-            StartCoroutine(birdJump.KnockBack());
+            // StartCoroutine(birdJump.KnockBack());
         }
 
         else if (collision.gameObject.CompareTag("LifeMinus") || collision.gameObject.CompareTag("Pipe"))
         {
             HealthManager.health--;
-            
-            if (HealthManager.health <= 0 )
+
+            if (HealthManager.health <= 0)
             {
                 PlayerManager.isGameOver = true;
                 gameObject.SetActive(false);
@@ -59,7 +60,7 @@ public class ItemManager : MonoBehaviour
         else if (collision.gameObject.CompareTag("LifeMinus-2"))
         {
             HealthManager.health -= 2;
-            
+
             if (HealthManager.health <= 0)
             {
                 PlayerManager.isGameOver = true;

@@ -24,17 +24,21 @@ public class Move : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        speed = BackGroundLoop.speed;
-        acceleration = BackGroundLoop.acceleration;
-        transform.position += Vector3.left * (speed * Time.deltaTime);
-
-        timer += Time.deltaTime;
-        if (timer > acceleration)
+        if (!isPaused)
         {
-            speed += 2f;
-            timer -= acceleration;
+            speed = BackGroundLoop.speed;
+            acceleration = BackGroundLoop.acceleration;
+            transform.position += Vector3.left * (speed * Time.deltaTime);
+
+            timer += Time.deltaTime;
+            if (timer > acceleration)
+            {
+                speed += 2f;
+                timer -= acceleration;
+            }
         }
     }
+
     public void PauseMovement()
     {
         isPaused = true;

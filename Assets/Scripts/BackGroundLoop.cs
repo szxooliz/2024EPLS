@@ -8,7 +8,7 @@ public class BackGroundLoop : MonoBehaviour
     public static float speed;
     private static float startSpeed = 4f;
 
-    private float backgroundWidth;
+    public float backgroundWidth;
     private Vector3 startPosition;
     public static float timer;
     public static float acceleration = 10f;
@@ -23,7 +23,7 @@ public class BackGroundLoop : MonoBehaviour
     {
         speed = startSpeed;
         startPosition = transform.position;
-        backgroundWidth = (GetComponent<SpriteRenderer>().bounds.size.x)/3;
+        backgroundWidth = (GetComponent<SpriteRenderer>().bounds.size.x) / 3;
     }
 
     void Update()
