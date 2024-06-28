@@ -75,16 +75,7 @@ public class PopupManager : MonoBehaviour
             }
         }
 
-        foreach (SkinInShop skinInShop in skinInShops)
-        {
-            bool isNotWorn = skinInShop != wear_SelectedSkin && skinInShop.skinInfo._skinSprite != SkinManager.equippedSkin;
-            bool _isNotWorn = skinInShop.skinInfo._skinSprite != SkinManager.equippedSkin;
-
-            if (isNotWorn && skinInShop.txt_State.isActiveAndEnabled)
-            {
-                skinInShop.txt_State.text = "보유 중";
-            }
-        }
+        
     }
     
     /// <summary>
@@ -109,5 +100,21 @@ public class PopupManager : MonoBehaviour
         
         Debug.Log("POPUP_____" + wear_SelectedSkin.name + " is selected");
         wear_SelectedSkin.GetComponent<SkinInShop>().OnClickWearYes();
+
+        foreach (SkinInShop skinInShop in skinInShops)
+        {
+            bool isNotWorn = skinInShop != wear_SelectedSkin && skinInShop.skinInfo._skinSprite != SkinManager.equippedSkin;
+            bool _isNotWorn = skinInShop.skinInfo._skinSprite != SkinManager.equippedSkin;
+
+            if (isNotWorn && skinInShop.txt_State.isActiveAndEnabled)
+            {
+                skinInShop.txt_State.text = "보유 중";
+            }
+        }
+    }
+
+    public void OnClickWearNo()
+    {
+        
     }
 }
