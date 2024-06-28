@@ -25,7 +25,7 @@ public class ClickButton : MonoBehaviour
     public void OnClickReplay()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("PlayScene 1");
+        SceneManager.LoadScene("PlayScene");
     }
     //���� ��
 }
