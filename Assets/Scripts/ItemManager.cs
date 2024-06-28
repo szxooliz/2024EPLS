@@ -43,7 +43,8 @@ public class ItemManager : MonoBehaviour
 
         else if (collision.gameObject.CompareTag("Clover"))
         {
-            // StartCoroutine(birdJump.KnockBack());
+            StartCoroutine(KnockBack.instance.KnockBackCoroutine());
+            Debug.Log("Clover");
         }
 
         else if (collision.gameObject.CompareTag("LifeMinus") || collision.gameObject.CompareTag("Pipe"))

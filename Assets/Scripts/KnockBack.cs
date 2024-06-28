@@ -8,14 +8,17 @@ public class KnockBack : MonoBehaviour
     private Vector3 cameraInitialPosition;
 
     private bool isKnockedBack = false;
-    private float knockBackDistance = 2f;   // 뒤로 밀려나는 거리
-    private float knockBackDuration = 0.5f;   // 밀려나는 시간
+    private float knockBackDuration = 2f;   // 밀려나는 시간
+
+    public static KnockBack instance;
 
     void Start()
     {
         birdJump = GetComponent<BirdJump>();
         mainCamera = Camera.main;
         cameraInitialPosition = mainCamera.transform.position;
+        
+        instance = this;
     }
 
     public void TriggerKnockBack()
@@ -26,17 +29,18 @@ public class KnockBack : MonoBehaviour
         }
     }
 
-    private IEnumerator KnockBackCoroutine()
+    public IEnumerator KnockBackCoroutine()
     {
         isKnockedBack = true;
         BackGroundLoop.instance.PauseMovement();
+        Move.instance.PauseMovement();
 
         float elapsedTime = 0f;
         Vector3 originalPosition = transform.position;
         Vector3 targetPosition = transform.position - new Vector3(0, BackGroundLoop.instance.backgroundWidth / 3, 0);
 
-        // 새와 카메라를 위쪽으로 이동
-        while (elapsedTime < knockBackDuration)
+        // 새와 카메라를 왼쪽으로 이동
+        while (targetPosition.x < transform.position.x)
         {
             transform.position = Vector3.Lerp(originalPosition, targetPosition, elapsedTime / knockBackDuration);
             mainCamera.transform.position = cameraInitialPosition + (transform.position - originalPosition);
@@ -48,7 +52,7 @@ public class KnockBack : MonoBehaviour
 
         elapsedTime = 0f;
         // 새와 카메라를 원래 위치로 이동
-        while (elapsedTime < knockBackDuration)
+        while (transform.position.x < originalPosition.x)
         {
             transform.position = Vector3.Lerp(targetPosition, originalPosition, elapsedTime / knockBackDuration);
             mainCamera.transform.position = cameraInitialPosition + (transform.position - originalPosition);
@@ -58,5 +62,7 @@ public class KnockBack : MonoBehaviour
 
         isKnockedBack = false;
         BackGroundLoop.instance.ResumeMovement();
+        Move.instance.ResumeMovement();
+        yield return null;
     }
 }
