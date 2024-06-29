@@ -8,7 +8,7 @@ public class KnockBack : MonoBehaviour
     private Vector3 cameraInitialPosition;
 
     private bool isKnockedBack = false;
-    private float knockBackDuration = 2f;   // ¹Ð·Á³ª´Â ½Ã°£
+    private float knockBackDuration = 2f;   // ë°€ë ¤ë‚˜ëŠ” ì‹œê°„
 
     public static KnockBack instance;
 
@@ -37,10 +37,10 @@ public class KnockBack : MonoBehaviour
 
         float elapsedTime = 0f;
         Vector3 originalPosition = transform.position;
-        Vector3 targetPosition = transform.position - new Vector3(0, BackGroundLoop.instance.backgroundWidth / 3, 0);
+        Vector3 targetPosition = transform.position - new Vector3(BackGroundLoop.instance.backgroundWidth / 3, 0, 0);
 
-        // »õ¿Í Ä«¸Þ¶ó¸¦ ¿ÞÂÊÀ¸·Î ÀÌµ¿
-        while (targetPosition.x < transform.position.x)
+        // ìƒˆì™€ ì¹´ë©”ë¼ë¥¼ ì™¼ìª½ìœ¼ë¡œ ì´ë™
+        while (elapsedTime < knockBackDuration)
         {
             transform.position = Vector3.Lerp(originalPosition, targetPosition, elapsedTime / knockBackDuration);
             mainCamera.transform.position = cameraInitialPosition + (transform.position - originalPosition);
@@ -51,8 +51,8 @@ public class KnockBack : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         elapsedTime = 0f;
-        // »õ¿Í Ä«¸Þ¶ó¸¦ ¿ø·¡ À§Ä¡·Î ÀÌµ¿
-        while (transform.position.x < originalPosition.x)
+        // ìƒˆì™€ ì¹´ë©”ë¼ë¥¼ ì›ëž˜ ìœ„ì¹˜ë¡œ ì´ë™
+        while (elapsedTime < knockBackDuration)
         {
             transform.position = Vector3.Lerp(targetPosition, originalPosition, elapsedTime / knockBackDuration);
             mainCamera.transform.position = cameraInitialPosition + (transform.position - originalPosition);

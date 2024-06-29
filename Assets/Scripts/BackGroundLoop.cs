@@ -14,6 +14,8 @@ public class BackGroundLoop : MonoBehaviour
     public static float acceleration = 10f;
     private bool isPaused = false;
 
+    public Transform[] backgrounds; // 배열로 여러 배경을 담음
+
     void Awake()
     {
         instance = this;
@@ -23,15 +25,23 @@ public class BackGroundLoop : MonoBehaviour
     {
         speed = startSpeed;
         startPosition = transform.position;
-        backgroundWidth = (GetComponent<SpriteRenderer>().bounds.size.x) / 3;
+        backgroundWidth = backgrounds[0].GetComponent<SpriteRenderer>().bounds.size.x;
     }
 
     void Update()
     {
         if (!isPaused)
         {
-            float newPosition = Mathf.Repeat(Time.time * speed, backgroundWidth);
-            transform.position = startPosition + Vector3.left * newPosition;
+            for (int i = 0; i < backgrounds.Length; i++)
+            {
+                backgrounds[i].position += Vector3.left * speed * Time.deltaTime;
+
+                // 배경 이미지가 화면 밖으로 나가면 재배치
+                if (backgrounds[i].position.x < -backgroundWidth)
+                {
+                    backgrounds[i].position += new Vector3(backgroundWidth * backgrounds.Length, 0, 0);
+                }
+            }
 
             timer += Time.deltaTime;
             if (timer > acceleration)
@@ -45,10 +55,12 @@ public class BackGroundLoop : MonoBehaviour
     public void PauseMovement()
     {
         isPaused = true;
+        Debug.Log("Background paused");
     }
 
     public void ResumeMovement()
     {
         isPaused = false;
+        Debug.Log("Background resumed");
     }
 }
