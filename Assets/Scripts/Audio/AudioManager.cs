@@ -25,7 +25,7 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        PlayMusic("Theme");
+        
     }
     public void PlayMusic(string name)
     {
@@ -43,18 +43,20 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void PlaySFX(string name)
+    public bool PlaySFX(string name)
     {
         Sound s = Array.Find(sfxSounds, x => x.name == name);
 
         if (s == null)
         {
             Debug.Log("Sound Not Found");
+            return false;
         }
 
         else
         {
             sfxSource.PlayOneShot(s.clip);
+            return true;
         }
     }
 

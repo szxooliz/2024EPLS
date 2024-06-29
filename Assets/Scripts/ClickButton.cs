@@ -9,6 +9,7 @@ public class ClickButton : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("PlayScene");
+        AudioManager.Instance.PlaySFX("Button_UI");
     }
 
     public void OnClickCostumeRoom()
@@ -19,6 +20,7 @@ public class ClickButton : MonoBehaviour
     public void OnClickBack()
     {
         SceneManager.LoadScene("StartScene");
+        AudioManager.Instance.PlaySFX("Button_UI");
     }
 
     //��ȿ�� ����
@@ -26,6 +28,7 @@ public class ClickButton : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("PlayScene");
+        AudioManager.Instance.PlaySFX("Button_UI");
     }
     //���� ��
 }
