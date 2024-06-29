@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
+using System.Reflection;
 
 public class BirdJump : MonoBehaviour
 {
@@ -31,6 +32,7 @@ public class BirdJump : MonoBehaviour
         rb.gravityScale = currentGravity;
         acceleration = BackGroundLoop.acceleration;
     }
+    
 
     // Update is called once per frame
     private void FixedUpdate()
@@ -49,6 +51,8 @@ public class BirdJump : MonoBehaviour
         {
             Jump();
         }
+
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -68,6 +72,7 @@ public class BirdJump : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
             jumpCount++;
             isGrounded = false;
+            AudioManager.Instance.PlaySFX("Cat_Jump");
         }
     }
 }
