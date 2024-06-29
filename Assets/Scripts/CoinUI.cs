@@ -5,17 +5,17 @@ using TMPro;
 
 public class CoinUI : MonoBehaviour
 {
-    public TextMeshProUGUI playerCoin;
+    public TextMeshProUGUI playerCoinText;
     // Start is called before the first frame update
     void Start()
     {
-        playerCoin.text = PlayerPrefs.GetInt("Coin").ToString();
+        UpdateCoinUI();
     }
 
     // Update is called once per frame
-    void Update()
+    void UpdateCoinUI()
     {
         // 코인 차감 시에만 업데이트
-
+        playerCoinText.text = PlayerPrefs.GetInt("Coin").ToString();
     }
 }

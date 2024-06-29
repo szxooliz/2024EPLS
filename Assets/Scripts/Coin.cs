@@ -22,7 +22,7 @@ public class Coin : MonoBehaviour
     }
 
     /// <summary>
-    /// 상점에서 스킨 구매 시 코인 삭감
+    /// 상점에서 스킨 구매 시 코인 차감
     /// </summary>
     /// <param name="coinToRemove"></param>
     /// <returns></returns>
@@ -31,7 +31,7 @@ public class Coin : MonoBehaviour
         if (PlayerPrefs.GetInt("Coin") >= coinToRemove)
         {
             coin -= coinToRemove;
-            PlayerPrefs.SetInt("Coin", Coin.coin);
+            PlayerPrefs.SetInt("Coin", coin);
             return true;
         }
         else

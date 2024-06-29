@@ -6,18 +6,31 @@ using UnityEngine.UI;
 
 public class PopupManager : MonoBehaviour
 {
+    public static PopupManager Inst; // Singleton
     public Button[] btns_Locked;
     public Button[] btns_Unlocked;
     public SkinInShop[] skinInShops;
     public Button btn_BuyYes;
     public Button btn_WearYes;
+    public Button btn_WearNo;
+
+
 
     [SerializeField] private SkinInShop buy_SelectedSkin;
     [SerializeField] private SkinInShop wear_SelectedSkin;
-    private int clickedBtnIndex;
 
     void Awake()
     {
+        if(Inst == null) 
+        {
+            Inst = this;   
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    
+
         foreach (Button btn_Locked in btns_Locked)
         {
             btn_Locked.onClick.AddListener(() => OnClickLockedBtn(btn_Locked));
@@ -30,6 +43,7 @@ public class PopupManager : MonoBehaviour
 
         btn_BuyYes.onClick.AddListener(OnClickBuyYes);
         btn_WearYes.onClick.AddListener(OnClickWearYes);
+        btn_WearNo.onClick.AddListener(OnClickWearNo);
     }
 
     /// <summary>
@@ -38,16 +52,13 @@ public class PopupManager : MonoBehaviour
     /// <param name="clickedBtn"></param>
     public void OnClickLockedBtn(Button clickedBtn)
     {
-        Debug.Log("POPUP_____" + clickedBtn.name + " was clicked!");
+        //Debug.Log("POPUP_____" + clickedBtn.name + " was clicked!");
 
         // 클릭된 버튼의 인덱스 찾기
         for (int i = 0; i < btns_Locked.Length; i++)
         {
             if (btns_Locked[i] == clickedBtn)
             {
-                clickedBtnIndex = i;
-                Debug.Log("POPUP_____Clicked button index: " + clickedBtnIndex);
-
                 buy_SelectedSkin = skinInShops[i];
                 break;
             }
@@ -60,22 +71,17 @@ public class PopupManager : MonoBehaviour
     /// <param name="clickedBtn"></param>
     public void OnClickUnlockedBtn(Button clickedBtn)
     {
-        Debug.Log("POPUP_____" + clickedBtn.name + " was clicked!");
+        // Debug.Log("POPUP_____" + clickedBtn.name + " was clicked!");
 
         // 클릭된 버튼의 인덱스 찾기
         for (int i = 0; i < btns_Unlocked.Length; i++)
         {
             if (btns_Unlocked[i] == clickedBtn)
             {
-                clickedBtnIndex = i;
-                Debug.Log("POPUP_____Clicked button index: " + clickedBtnIndex);
-
                 wear_SelectedSkin = skinInShops[i];
                 break;
             }
-        }
-
-        
+        }        
     }
     
     /// <summary>
@@ -84,9 +90,6 @@ public class PopupManager : MonoBehaviour
     public void OnClickBuyYes()
     {
         Debug.Log("Click BuyYes");
-
-        // 구매하시겠습니까 -> YES
-        Debug.Log( "POPUP_____" + buy_SelectedSkin.name + " is selected");
         buy_SelectedSkin.GetComponent<SkinInShop>().OnClickBuyYes();
     
     }
@@ -98,23 +101,25 @@ public class PopupManager : MonoBehaviour
     {
         Debug.Log("Click WearYes");
         
-        Debug.Log("POPUP_____" + wear_SelectedSkin.name + " is selected");
         wear_SelectedSkin.GetComponent<SkinInShop>().OnClickWearYes();
 
         foreach (SkinInShop skinInShop in skinInShops)
         {
             bool isNotWorn = skinInShop != wear_SelectedSkin && skinInShop.skinInfo._skinSprite != SkinManager.equippedSkin;
-            bool _isNotWorn = skinInShop.skinInfo._skinSprite != SkinManager.equippedSkin;
-
-            if (isNotWorn && skinInShop.txt_State.isActiveAndEnabled)
+            bool isUnlocked = PlayerPrefs.GetInt(skinInShop.skinInfo._skinID.ToString()) == 1;
+            
+            if (isNotWorn && isUnlocked)
             {
+                skinInShop.isSkinWorn = false;
                 skinInShop.txt_State.text = "보유 중";
             }
         }
     }
-
+    /// <summary>
+    /// 착용하시겠습니까 팝업에서 no 버튼 클릭 시
+    /// </summary>
     public void OnClickWearNo()
     {
-        
+        SkinManager.Inst.img_Preview.sprite = SkinManager.equippedSkin;
     }
 }

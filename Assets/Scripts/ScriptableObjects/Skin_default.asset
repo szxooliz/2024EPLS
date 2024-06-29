@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Skin_Default
   m_EditorClassIdentifier: 
   skinID: 0
-  skinSprite: {fileID: 21300000, guid: b1cfcc97bd150f548a9227bf189dc969, type: 3}
+  skinSprite: {fileID: 21300000, guid: 8ea057922caf85647b589c3f802ae1a3, type: 3}
   skinPrice: 0
   skinName: "\uAE30\uBCF8"

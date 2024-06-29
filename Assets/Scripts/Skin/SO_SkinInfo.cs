@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable, CreateAssetMenu(fileName ="New Skin", menuName ="Create New Skin")]
 public class SO_SkinInfo : ScriptableObject
 {
-    public enum SkinIDS { defaultSkin, santa, uniform, lemon }
+    public enum SkinIDS { defaultSkin, baby, bell, santa, uniform, rainCoat }
     [SerializeField] private SkinIDS skinID;
     public SkinIDS _skinID { get { return skinID; } }
 

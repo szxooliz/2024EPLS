@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6763042e67e31874c8a15a2fea6c5902, type: 3}
-  m_Name: Skin_Uniform
+  m_Name: Skin_Raincoat
   m_EditorClassIdentifier: 
-  skinID: 4
-  skinSprite: {fileID: 21300000, guid: 6e838a41e5fd6e54fab876092bc2136a, type: 3}
-  skinPrice: 30
-  skinName: "\uAD50\uBCF5\uB0E5\uC774"
+  skinID: 5
+  skinSprite: {fileID: 21300000, guid: 658363658bc35314a9df4cd59d7b8b87, type: 3}
+  skinPrice: 0
+  skinName: "\uC6B0\uBE44\uB0E5\uC774"
