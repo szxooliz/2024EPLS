@@ -21,7 +21,6 @@ public class ClickButton : MonoBehaviour
     {
         SceneManager.LoadScene("StartScene");
         AudioManager.Instance.PlaySFX("Button_UI");
-        AudioManager.Instance.PlayMusic("Theme");
     }
 
     //��ȿ�� ����
