@@ -9,7 +9,7 @@ public class ScoreManager : MonoBehaviour
     public Text scoreText;
     public static int scoreCount;
     private float scoreTimer;
-    [SerializeField] private const float scoreInterval = 1f; // 1ÃÊ¸¶´Ù Á¡¼ö Áõ°¡
+    [SerializeField] private const float scoreInterval = 1f; // 1ï¿½Ê¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     private float previousScoreCount;
 
     void Start()
@@ -22,7 +22,7 @@ public class ScoreManager : MonoBehaviour
     void Update()
     {
         scoreTimer += Time.deltaTime;
-        PlayerPrefs.SetInt("Coin", Coin.coin);
+        PlayerPrefs.SetInt("Coin", CoinManager.coin);
         if (scoreTimer >= scoreInterval)
         {
             scoreCount++;

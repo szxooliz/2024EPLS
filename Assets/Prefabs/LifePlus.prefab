@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8996484248268434667}
   - component: {fileID: 7738905614957362953}
   - component: {fileID: 2757422695139496014}
+  - component: {fileID: 235848188020190777}
   m_Layer: 0
   m_Name: LifePlus
   m_TagString: LifePlus
@@ -134,3 +135,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   acceleration: 10
+--- !u!114 &235848188020190777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3258260283822011072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c17c0ed4d1d392479fa92d2f92a663a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

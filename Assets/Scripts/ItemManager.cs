@@ -20,16 +20,16 @@ public class ItemManager : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Coin"))
         {
-            Debug.Log("ÄÚÀÎ +1");
+            Debug.Log("ï¿½ï¿½ï¿½ï¿½ +1");
             //hyoju
-            Coin.coin++;
-            PlayerPrefs.SetInt("Coin", Coin.coin);
+            CoinManager.coin++;
+            PlayerPrefs.SetInt("Coin", CoinManager.coin);
             AudioManager.Instance.PlaySFX("Item_Heal");
         }
 
         else if (collision.gameObject.CompareTag("LifePlus"))
         {
-            Debug.Log("¸ñ¼û+1");
+            Debug.Log("ï¿½ï¿½ï¿½+1");
             if (HealthManager.health < 3)
             {
                 HealthManager.health++;
@@ -39,7 +39,7 @@ public class ItemManager : MonoBehaviour
 
         else if (collision.gameObject.CompareTag("ScoreMinus"))
         {
-            Debug.Log("Á¡¼ö -1");
+            Debug.Log("ï¿½ï¿½ï¿½ï¿½ -1");
             AudioManager.Instance.PlaySFX("Item_Kill");
         }
 
@@ -76,21 +76,21 @@ public class ItemManager : MonoBehaviour
         //Insert
         else if (collision.gameObject.CompareTag("ScorePlus"))
         {
-            Debug.Log("Á¡¼ö +10");
+            Debug.Log("ï¿½ï¿½ï¿½ï¿½ +10");
             ScoreManager.scoreCount += 10;
             AudioManager.Instance.PlaySFX("Item_Heal");
         }
 
         else if (collision.gameObject.CompareTag("ScorePlus+15"))
         {
-            Debug.Log("Á¡¼ö +15");
+            Debug.Log("ï¿½ï¿½ï¿½ï¿½ +15");
             ScoreManager.scoreCount += 15;
             AudioManager.Instance.PlaySFX("Item_Heal");
         }
 
         else if (collision.gameObject.CompareTag("ScorePlus+25"))
         {
-            Debug.Log("Á¡¼ö +25");
+            Debug.Log("ï¿½ï¿½ï¿½ï¿½ +25");
             ScoreManager.scoreCount += 25;
             AudioManager.Instance.PlaySFX("Item_Heal");
         }

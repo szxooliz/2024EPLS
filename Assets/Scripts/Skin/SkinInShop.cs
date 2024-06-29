@@ -140,7 +140,7 @@ public class SkinInShop : MonoBehaviour
     public void OnClickBuyYes()
     {
         // 구매 가능한 만큼 코인 보유 확인 및 차감
-        bool ableToBuy = Coin.TryRemoveCoin(skinInfo._skinPrice);
+        bool ableToBuy = CoinManager.TryRemoveCoin(skinInfo._skinPrice);
         ClosePopup();
 
         if(ableToBuy)

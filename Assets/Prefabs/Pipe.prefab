@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4323277723063124600}
   - component: {fileID: 2174639874806673028}
   - component: {fileID: 400633504581127815}
+  - component: {fileID: 7416151266944545162}
   - component: {fileID: 5551557440026737535}
   m_Layer: 0
   m_Name: Pipe
@@ -99,6 +100,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   acceleration: 10
+--- !u!114 &7416151266944545162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9179081050706324789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09f12796949e29946ab8fc69bc91e67b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &5551557440026737535
 BoxCollider2D:
   m_ObjectHideFlags: 0

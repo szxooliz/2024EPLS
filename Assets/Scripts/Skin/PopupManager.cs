@@ -21,6 +21,7 @@ public class PopupManager : MonoBehaviour
 
     void Awake()
     {
+        // Singleton
         if(Inst == null) 
         {
             Inst = this;   
@@ -52,8 +53,6 @@ public class PopupManager : MonoBehaviour
     /// <param name="clickedBtn"></param>
     public void OnClickLockedBtn(Button clickedBtn)
     {
-        //Debug.Log("POPUP_____" + clickedBtn.name + " was clicked!");
-
         // 클릭된 버튼의 인덱스 찾기
         for (int i = 0; i < btns_Locked.Length; i++)
         {
@@ -71,8 +70,6 @@ public class PopupManager : MonoBehaviour
     /// <param name="clickedBtn"></param>
     public void OnClickUnlockedBtn(Button clickedBtn)
     {
-        // Debug.Log("POPUP_____" + clickedBtn.name + " was clicked!");
-
         // 클릭된 버튼의 인덱스 찾기
         for (int i = 0; i < btns_Unlocked.Length; i++)
         {

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6314575666969893630}
   - component: {fileID: 7187199714902478939}
   - component: {fileID: 7565113163286072988}
+  - component: {fileID: 2588851112497266288}
   - component: {fileID: 928052763751271709}
   m_Layer: 0
   m_Name: ScorePlus+25
@@ -99,6 +100,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   acceleration: 10
+--- !u!114 &2588851112497266288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8916335871104816335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c17c0ed4d1d392479fa92d2f92a663a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!60 &928052763751271709
 PolygonCollider2D:
   m_ObjectHideFlags: 0
