@@ -12,6 +12,10 @@ TagManager:
   - LockedBtn
   - ScorePlus
   - Clover
+  - LifeMinus-2
+  - ScorePlus+15
+  - ScorePlus+25
+  - Ground
   layers:
   - Default
   - TransparentFX

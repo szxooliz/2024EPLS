@@ -57,7 +57,7 @@ public class BirdJump : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name == "Ground")
+        if (collision.gameObject.CompareTag("Ground"))
         {
             jumpCount = 0;
             isGrounded = true;
