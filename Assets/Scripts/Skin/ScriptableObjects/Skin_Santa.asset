@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6763042e67e31874c8a15a2fea6c5902, type: 3}
   m_Name: Skin_Santa
   m_EditorClassIdentifier: 
-  skinID: 3
+  skinID: 2
   skinSprite: {fileID: 21300000, guid: 18ac956850e80d949918419a300b6668, type: 3}
   skinPrice: 20
   skinName: "\uC0B0\uD0C0\uB0E5\uC774"

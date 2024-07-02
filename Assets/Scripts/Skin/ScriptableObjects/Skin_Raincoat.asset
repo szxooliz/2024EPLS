@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6763042e67e31874c8a15a2fea6c5902, type: 3}
   m_Name: Skin_Raincoat
   m_EditorClassIdentifier: 
-  skinID: 5
+  skinID: 4
   skinSprite: {fileID: 21300000, guid: 658363658bc35314a9df4cd59d7b8b87, type: 3}
   skinPrice: 0
   skinName: "\uC6B0\uBE44\uB0E5\uC774"

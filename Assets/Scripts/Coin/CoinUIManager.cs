@@ -10,7 +10,20 @@ public class CoinUIManager : MonoBehaviour
 {
     public static CoinUIManager Inst;
     public TextMeshProUGUI playerCoinText;
-    // Start is called before the first frame update
+    void Awake() 
+    {
+        // Singleton
+        if (Inst == null)
+        {
+            Inst = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+            return; 
+        }
+    }
     void Start()
     {
         UpdateCoinUI();

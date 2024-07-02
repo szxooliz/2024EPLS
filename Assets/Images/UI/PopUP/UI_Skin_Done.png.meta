@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: db186a26db675fb41acd07025ff2ca35
+guid: c80c1a23b124ac947aa087cf417df84a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -93,30 +93,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Enemy_0
+      name: UI_Skin_Done_0
       rect:
         serializedVersion: 2
-        x: 5
-        y: 1
-        width: 475
-        height: 511
+        x: 843
+        y: 0
+        width: 836
+        height: 732
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,8 +111,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 74ff384b10303a144b6ff2d0895d9dae
-      internalID: 501120310
+      spriteID: b23e4fe9d78e62c4b97bc186b2235b9f
+      internalID: -1207533866
       vertices: []
       indices: 
       edges: []
@@ -141,7 +128,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Enemy_0: 501120310
+      UI_Skin_Done_0: -1207533866
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

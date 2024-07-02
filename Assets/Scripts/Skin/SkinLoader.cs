@@ -13,7 +13,8 @@ public class SkinLoader : MonoBehaviour
     void Start()
     {
         // 애니메이션 지정..
-        playerSR.sprite = SkinManager.equippedSkin; // 이건 나중에 삭제
+        // playerSR.sprite = SkinManager.equippedSkin; // 이건 나중에 삭제
+        playerSR.sprite = SkinManager.lastUsedSkin.skinInfo._skinSprite;
     }
 
     // Update is called once per frame
