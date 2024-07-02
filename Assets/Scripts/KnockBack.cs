@@ -50,15 +50,12 @@ public class KnockBack : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
 
-        elapsedTime = 0f;
-        // 새와 카메라를 원래 위치로 이동
-        while (elapsedTime < knockBackDuration)
+        // 새와 카메라를 처음 속도대로 왼쪽으로 이동
+        while (originalPosition.x == targetPosition.x)
         {
-            transform.position = Vector3.Lerp(targetPosition, originalPosition, elapsedTime / knockBackDuration);
-            mainCamera.transform.position = cameraInitialPosition + (transform.position - originalPosition);
-            elapsedTime += Time.deltaTime;
-            yield return null;
+            PlayerMove.instance.ResumeMovement();
         }
+        PlayerMove.instance.PauseMovement();
 
         isKnockedBack = false;
         BackGroundLoop.instance.ResumeMovement();
