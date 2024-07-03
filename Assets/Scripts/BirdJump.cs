@@ -52,6 +52,10 @@ public class BirdJump : MonoBehaviour
             Jump();
         }
 
+        if(transform.position.y < -6)
+        {
+            HealthManager.health = 0;
+        }
         
     }
 

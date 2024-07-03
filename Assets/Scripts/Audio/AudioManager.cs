@@ -10,6 +10,8 @@ public class AudioManager : MonoBehaviour
     public Sound[] musicSounds, sfxSounds;
     public AudioSource musicSource, sfxSource;
 
+    private float pausedTime;
+
     private void Awake()
     {
         if (Instance == null)
@@ -22,10 +24,9 @@ public class AudioManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
     private void Start()
     {
-        
+
     }
     public void PlayMusic(string name)
     {
@@ -60,10 +61,39 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void ToggleMusic()
+    public void PauseMusic(string name)
     {
-        musicSource.mute = !musicSource.mute;
+        Sound s = Array.Find(musicSounds, x => x.name == name);
+
+        if (s == null)
+        {
+            Debug.Log("Sound Not Found");
+        }
+
+        else
+        {
+            musicSource.clip = s.clip;
+            musicSource.Pause();
+            pausedTime = musicSource.time;
+        }
     }
+    public void ResumeMusic(string name)
+    {
+        Sound s = Array.Find(musicSounds, x => x.name == name);
+
+        if (s == null)
+        {
+            Debug.Log("Sound Not Found");
+        }
+
+        else
+        {
+            musicSource.clip = s.clip;
+            musicSource.Play();
+            musicSource.time = pausedTime;
+        }
+    }
+
     public void ToggleSFX()
     {
         sfxSource.mute = !sfxSource.mute;
