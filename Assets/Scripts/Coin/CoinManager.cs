@@ -11,23 +11,32 @@ public class CoinManager : MonoBehaviour
     public static CoinManager Inst; //Singleton
     public static int coin = 0;
 
-    void Start()
+    void Awake() 
     {
         // Singleton
         if(Inst == null) 
         {
-            Inst = this;   
+            Inst = this; 
+            DontDestroyOnLoad(gameObject);  
         }
         else
         {
             Destroy(gameObject);
+            return;
         }
+    }
 
-        if(PlayerPrefs.HasKey("Coin"))
+    void Start()
+    {
+        if (PlayerPrefs.HasKey("Coin"))
         {
             coin = PlayerPrefs.GetInt("Coin");
         }
-
+        else
+        {
+            PlayerPrefs.SetInt("Coin", coin);
+        }
+        
         CoinUIManager.Inst.UpdateCoinUI(); // 초기 UI 업데이트
     }
 
@@ -60,7 +69,7 @@ public class CoinManager : MonoBehaviour
             PlayerPrefs.SetInt("Coin", coin);
 
             // 코인 차감 시 UI 업데이트
-                    CoinUIManager.Inst.UpdateCoinUI();
+            CoinUIManager.Inst.UpdateCoinUI();
             return true;
         }
         else
