@@ -5,13 +5,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SocialPlatforms.Impl;
 using System;
+using TMPro;
 
 public class PlayerManager : MonoBehaviour
 {
     public static bool isGameOver;
     public GameObject gameOverScreen;
-    public Text scoreText1;
-    public Text coinText;
+    public TextMeshProUGUI scoreText1;
+    public TextMeshProUGUI coinText;
 
     public static int hiScoreCount = 0;
     public static int secondScoreCount = 0;
@@ -46,8 +47,8 @@ public class PlayerManager : MonoBehaviour
         if (isGameOver)
         {
             gameOverScreen.SetActive(true);
-            scoreText1.text = "Á¡¼ö :           " + ScoreManager.scoreCount;
-            coinText.text = "ÄÚÀÎ :           " + PlayerPrefs.GetInt("Coin");
+            scoreText1.text = "ì ìˆ˜ : " + ScoreManager.scoreCount;
+            coinText.text = "ì½”ì¸ : " + PlayerPrefs.GetInt("Coin");
 
             if (ScoreManager.scoreCount > PlayerPrefs.GetInt("HiScore"))
             {

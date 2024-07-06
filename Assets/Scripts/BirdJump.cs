@@ -76,7 +76,7 @@ public class BirdJump : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
             jumpCount++;
             isGrounded = false;
-            AudioManager.Instance.PlaySFX("Cat_Jump");
+            //AudioManager.Instance.PlaySFX("Cat_Jump");
         }
     }
 }

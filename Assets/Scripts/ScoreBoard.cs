@@ -7,8 +7,11 @@ using TMPro;
 public class ScoreBoard : MonoBehaviour
 {
     public TextMeshProUGUI bestScoreText;
+    public TextMeshProUGUI bestScoreTextName;
     public TextMeshProUGUI secondScoreText;
+    public TextMeshProUGUI secondScoreTextName;
     public TextMeshProUGUI thirdScoreText;
+    public TextMeshProUGUI thirdScoreTextName;
     // public TextMeshProUGUI CoinText;
 
     // Start is called before the first frame update
@@ -20,9 +23,12 @@ public class ScoreBoard : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bestScoreText.text = "1. " + PlayerPrefs.GetInt("HiScore") + "  " + PlayerPrefs.GetString("BestScoreTime");
-        secondScoreText.text = "2. " + PlayerPrefs.GetInt("SecondScore") + "  " + PlayerPrefs.GetString("SecondScoreTime");
-        thirdScoreText.text = "3. " + PlayerPrefs.GetInt("ThirdScore") + "  " + PlayerPrefs.GetString("ThirdScoreTime");
+        bestScoreText.text = PlayerPrefs.GetInt("HiScore") + "";
+        bestScoreTextName.text = PlayerPrefs.GetString("BestScoreTime");
+        secondScoreText.text = PlayerPrefs.GetInt("SecondScore") + "";
+        secondScoreTextName.text = PlayerPrefs.GetString("SecondScoreTime");
+        thirdScoreText.text = PlayerPrefs.GetInt("ThirdScore") + "";
+        thirdScoreTextName.text = PlayerPrefs.GetString("ThirdScoreTime");
         //CoinText.text = "coin: " + PlayerPrefs.GetInt("Coin");
     }
 }
