@@ -26,20 +26,24 @@ public class InitializeSkin : MonoBehaviour
         
         if (SkinManager.Inst.isNowDefault)
         {
-            Debug.Log("이미 초기화 되어 있습니다 ~");
+            // Debug.Log("이미 초기화 되어 있습니다 ~");
             return;
         }
         else
         {
+            PopupManager.Inst.wear_SelectedNumber = (int)SO_SkinInfo.SkinIDS.defaultSkin;
             SkinManager.Inst.EquipSkin(skinInfo_Default);
-            Debug.Log("초기화!");
+            // Debug.Log("초기화!");
         }
 
         // 미리보기 상태였던 경우 -> 미리보기 상태 알림 비활성화
         SkinManager.Inst.ClosePreviewText(SkinManager.Inst.isNowPreviewing);
 
         // 최근 착용한 스킨 착용 해제 상태 만들기 
-        SkinManager.lastUsedSkin.isSkinWorn = false;
+        // SkinManager.lastUsedSkin.isSkinWorn = false;
         SkinManager.lastUsedSkin.ChangeStateText(SkinManager.lastUsedSkin.isSkinWorn);
+
+        // Debug.Log("lastUsedSkin 착용 해제");
+        PopupManager.Inst.TakeOffSkin();
     }
 }

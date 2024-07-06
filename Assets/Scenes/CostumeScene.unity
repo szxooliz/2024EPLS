@@ -1086,7 +1086,7 @@ GameObject:
   - component: {fileID: 179394166}
   - component: {fileID: 179394167}
   m_Layer: 5
-  m_Name: BTN_InitSkin
+  m_Name: SkinInShop_Default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4483,8 +4483,8 @@ MonoBehaviour:
   btn_BuyYes: {fileID: 2088728774}
   btn_WearYes: {fileID: 961719848}
   btn_WearNo: {fileID: 1269324262}
-  buy_SelectedSkin: {fileID: 0}
-  wear_SelectedSkin: {fileID: 0}
+  buy_SelectedNumber: 0
+  wear_SelectedNumber: 0
   delayTime: 0.3
 --- !u!1 &1000015855
 GameObject:
@@ -7403,7 +7403,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1161ed3e97ce70340a532eb56cb18e51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skinInShops: []
+  skinInShops:
+  - {fileID: 349160696}
+  - {fileID: 1162867585}
+  - {fileID: 230866296}
+  - {fileID: 69586590}
+  - {fileID: 621806944}
+  - {fileID: 1910262366}
+  - {fileID: 179394167}
   img_Preview: {fileID: 1292373588}
   txt_previewName: {fileID: 259092070}
   txt_preview: {fileID: 1976062533}
