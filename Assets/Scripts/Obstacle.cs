@@ -38,6 +38,7 @@ public class Obstacle : MonoBehaviour
     /// </summary>
     private void HandleCloverCollision()
     {
+        Destroy(gameObject);
         StartCoroutine(KnockBack.instance.KnockBackCoroutine());
         Debug.Log("Clover");
     }
