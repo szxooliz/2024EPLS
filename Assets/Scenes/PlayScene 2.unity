@@ -1512,8 +1512,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverScreen: {fileID: 743569711}
-  scoreText1: {fileID: 424939974}
-  coinText: {fileID: 1459827105}
+  scoreText1: {fileID: 0}
+  coinText: {fileID: 0}
 --- !u!1 &758682354
 GameObject:
   m_ObjectHideFlags: 0
@@ -1894,8 +1894,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverScreen: {fileID: 743569711}
-  scoreText1: {fileID: 424939974}
-  coinText: {fileID: 1459827105}
+  scoreText1: {fileID: 0}
+  coinText: {fileID: 0}
 --- !u!4 &952905181
 Transform:
   m_ObjectHideFlags: 0
