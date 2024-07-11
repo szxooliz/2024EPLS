@@ -21,6 +21,7 @@ public class SkinManager : MonoBehaviour
 
     [SerializeField] private SO_SkinInfo[] allSkins;
     private const string skinPref = "skinPref";
+    private int lastUsedID;
 
     private void Awake() 
     {
@@ -38,24 +39,33 @@ public class SkinManager : MonoBehaviour
         #endif
 
         // isNowDefault = img_Preview.sprite == allSkins[(int)SO_SkinInfo.SkinIDS.defaultSkin];
-
-        // if (isNowDefault)
+  
+        /* -----------------------------------------
+        // string lastSkinUsed = PlayerPrefs.GetString(skinPref, SO_SkinInfo.SkinIDS.defaultSkin.ToString());
+        // SO_SkinInfo skinUsedLastTime = Array.Find(allSkins, dummyFind => dummyFind._skinID.ToString() == lastSkinUsed);
+        
+        // if (skinUsedLastTime == null)
         // {
-        //     lastUsedSkin.skinInfo = 
+        //     skinUsedLastTime = Array.Find(allSkins, dummyFind => dummyFind._skinID == SO_SkinInfo.SkinIDS.defaultSkin);
         // }
-        // lastUsedSkin = 
 
+        // if (lastUsedSkin == null)
+        // {
+        //     lastUsedSkin = skinInShops[(int)SO_SkinInfo.SkinIDS.defaultSkin];
+        //     isNowDefault = true;
+        // }
+        ----------------------------------------- */
         
-        string lastSkinUsed = PlayerPrefs.GetString(skinPref, SO_SkinInfo.SkinIDS.defaultSkin.ToString());
-        SO_SkinInfo skinUsedLastTime = Array.Find(allSkins, dummyFind => dummyFind._skinID.ToString() == lastSkinUsed);
-        
-        if (skinUsedLastTime == null)
+        lastUsedID = PlayerPrefs.GetInt(skinPref, (int)SO_SkinInfo.SkinIDS.defaultSkin);
+        lastUsedSkin = Array.Find(skinInShops, dummyFind => (int)dummyFind.skinInfo._skinID == lastUsedID);
+
+        if (lastUsedSkin == null)
         {
-            skinUsedLastTime = Array.Find(allSkins, dummyFind => dummyFind._skinID == SO_SkinInfo.SkinIDS.defaultSkin);
+            lastUsedSkin = skinInShops[(int)SO_SkinInfo.SkinIDS.defaultSkin];
+            isNowDefault = true;
         }
         
-        EquipSkin(skinUsedLastTime);
-        
+        EquipSkin(lastUsedSkin.skinInfo);
     }
 
     /// <summary>
@@ -126,7 +136,7 @@ public class SkinManager : MonoBehaviour
 
         lastUsedSkin.skinInfo = _skinInfo;
 
-        CheckInit(_skinInfo);
+        CheckInit();
         /*
         if(skinInfo._skinID == SO_SkinInfo.SkinIDS.defaultSkin)
         {
@@ -143,7 +153,7 @@ public class SkinManager : MonoBehaviour
     /// 현재 초기화 상태인지 ID 비교 체크 및 isNowDefault 값 변경 
     /// </summary>
     /// <param name="skinInfo"></param>
-    public void CheckInit(SO_SkinInfo skinInfo)
+    public void CheckInit()
     {
         if(lastUsedSkin.skinInfo._skinID == SO_SkinInfo.SkinIDS.defaultSkin)
         {

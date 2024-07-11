@@ -37,7 +37,7 @@ public class CoinManager : MonoBehaviour
             PlayerPrefs.SetInt("Coin", coin);
         }
         
-        CoinUIManager.Inst.UpdateCoinUI(); // 초기 UI 업데이트
+        // CoinUIManager.Inst.UpdateCoinUI(); // 초기 UI 업데이트
     }
 
     void Update()
