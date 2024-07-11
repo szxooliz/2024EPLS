@@ -65,6 +65,7 @@ public class BirdJump : MonoBehaviour
         {
             jumpCount = 0;
             isGrounded = true;
+            GetComponent<Animator>().SetTrigger("Run");
         }
     }
 
@@ -77,6 +78,7 @@ public class BirdJump : MonoBehaviour
             jumpCount++;
             isGrounded = false;
             //AudioManager.Instance.PlaySFX("Cat_Jump");
+            GetComponent<Animator>().SetTrigger("Jump");
         }
     }
 }
