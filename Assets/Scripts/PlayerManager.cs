@@ -9,6 +9,8 @@ using TMPro;
 
 public class PlayerManager : MonoBehaviour
 {
+    //public PatternSpawnPoint patternSpawnPoint;
+
     public static bool isGameOver;
     public GameObject gameOverScreen;
     public TextMeshProUGUI scoreText1;
@@ -25,6 +27,7 @@ public class PlayerManager : MonoBehaviour
     private void Awake()
     {
         isGameOver = false;
+        //SpawnPattern();
     }
     // Start is called before the first frame update
     void Start()
@@ -89,4 +92,12 @@ public class PlayerManager : MonoBehaviour
             Time.timeScale = 0f;
         }
     }
+
+    /* public void SpawnPattern()
+    {
+        if (patternSpawnPoint != null)
+        {
+            GameObject pattern = patternSpawnPoint.SpawnObject();
+        }
+    } */
 }

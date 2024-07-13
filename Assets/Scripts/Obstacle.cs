@@ -27,8 +27,8 @@ public class Obstacle : MonoBehaviour
     private void HandlePipeCollision(GameObject player)
     {
         HealthManager.health--;
-        AudioManager.Instance.PlaySFX("Cat_Attack");
-        AudioManager.Instance.PlaySFX("Item_Kill");
+        //AudioManager.Instance.PlaySFX("Cat_Attack");
+        //AudioManager.Instance.PlaySFX("Item_Kill");
 
         GameManager.Inst.CheckGameOver(player);
     }
