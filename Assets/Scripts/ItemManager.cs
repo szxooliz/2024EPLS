@@ -56,7 +56,7 @@ public class ItemManager : MonoBehaviour
             //AudioManager.Instance.PlaySFX("Item_Kill");
             if (HealthManager.health <= 0)
             {
-                PlayerManager.isGameOver = true;
+                // PlayerManager.isGameOver = true;
                 gameObject.SetActive(false);
             }
         }
@@ -68,7 +68,7 @@ public class ItemManager : MonoBehaviour
             //AudioManager.Instance.PlaySFX("Item_Kill");
             if (HealthManager.health <= 0)
             {
-                PlayerManager.isGameOver = true;
+                // PlayerManager.isGameOver = true;
                 gameObject.SetActive(false);
             }
         }

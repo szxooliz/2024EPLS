@@ -11,6 +11,7 @@ public class PlayerManager : MonoBehaviour
 {
     //public PatternSpawnPoint patternSpawnPoint;
 
+    /*
     public static bool isGameOver;
     public GameObject gameOverScreen;
     public TextMeshProUGUI scoreText1;
@@ -23,30 +24,32 @@ public class PlayerManager : MonoBehaviour
     public static  string bestScoreTime = "00";
     public static string secondScoreTime = "00";
     public static string thirdScoreTime = "00";
+    */
 
     private void Awake()
     {
-        isGameOver = false;
+        // isGameOver = false;
         //SpawnPattern();
     }
     // Start is called before the first frame update
     void Start()
     {
-        if (PlayerPrefs.HasKey("HighScore"))
-        {
-            hiScoreCount = PlayerPrefs.GetInt("HiScore");
-            secondScoreCount = PlayerPrefs.GetInt("SecondScore");
-            thirdScoreCount = PlayerPrefs.GetInt("ThirdScore");
+        // if (PlayerPrefs.HasKey("HighScore"))
+        // {
+        //     hiScoreCount = PlayerPrefs.GetInt("HiScore");
+        //     secondScoreCount = PlayerPrefs.GetInt("SecondScore");
+        //     thirdScoreCount = PlayerPrefs.GetInt("ThirdScore");
 
-            bestScoreTime = PlayerPrefs.GetString("BestScoreTime");
-            secondScoreTime = PlayerPrefs.GetString("SecondScoreTime");
-            thirdScoreTime = PlayerPrefs.GetString("ThirdScoreTime");
-        }
+        //     bestScoreTime = PlayerPrefs.GetString("BestScoreTime");
+        //     secondScoreTime = PlayerPrefs.GetString("SecondScoreTime");
+        //     thirdScoreTime = PlayerPrefs.GetString("ThirdScoreTime");
+        // }
     }
 
     // Update is called once per frame
     void Update()
     {
+        /*
         if (isGameOver)
         {
             gameOverScreen.SetActive(true);
@@ -91,6 +94,7 @@ public class PlayerManager : MonoBehaviour
             }
             Time.timeScale = 0f;
         }
+        */
     }
 
     /* public void SpawnPattern()

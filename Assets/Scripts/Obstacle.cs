@@ -27,10 +27,11 @@ public class Obstacle : MonoBehaviour
     private void HandlePipeCollision(GameObject player)
     {
         HealthManager.health--;
+        HealthManager.Inst.UpdateHeartsUI();
         //AudioManager.Instance.PlaySFX("Cat_Attack");
         //AudioManager.Instance.PlaySFX("Item_Kill");
-
-        GameManager.Inst.CheckGameOver(player);
+        Debug.Log("Obstacle - HandlePipeCollision ___ " + HealthManager.health);
+        GameManager.Inst.CheckGameOver();
     }
 
     /// <summary>

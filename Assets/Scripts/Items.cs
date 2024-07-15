@@ -33,11 +33,11 @@ public class Items : MonoBehaviour
             }
             else if (gameObject.CompareTag(ITEM_ROTTEN_FISH))
             {
-                HandleRottenItemCollision(collision.gameObject, 1);
+                HandleRottenItemCollision(1);
             }
             else if (gameObject.CompareTag(ITEM_ROTTEN_TUNA))
             {
-                HandleRottenItemCollision(collision.gameObject, 2);
+                HandleRottenItemCollision(2);
             }
             else if (gameObject.CompareTag(ITEM_FEATHER))
             {
@@ -65,22 +65,25 @@ public class Items : MonoBehaviour
         if (HealthManager.health < 3)
         {
             HealthManager.health++;
+            HealthManager.Inst.UpdateHeartsUI();
             //AudioManager.Instance.PlaySFX("Item_Heal");
+            Debug.Log("Items - HandleTunaCollision ___ " + HealthManager.health);
         }
     }
 
     /// <summary>
     /// 썩은 생선, 참치캔: 목숨 감소
     /// </summary>
-    /// <param name="life"></param>
-    private void HandleRottenItemCollision(GameObject player, int life)
+    /// <param name="sub"> 감소량 </param>
+    private void HandleRottenItemCollision(int sub)
     {
-        Debug.Log("목숨 - " + life);
-        HealthManager.health -= life;
+        Debug.Log("목숨 - " + sub);
+        HealthManager.health -= sub;
+        HealthManager.Inst.UpdateHeartsUI();
         //AudioManager.Instance.PlaySFX("Cat_Attack");
         //AudioManager.Instance.PlaySFX("Item_Kill");
-
-        GameManager.Inst.CheckGameOver(player);
+        Debug.Log("Items - HandleRottenItemCollision ___ health : " + HealthManager.health);
+        GameManager.Inst.CheckGameOver();
     }
 
     /// <summary>

@@ -24,17 +24,35 @@ public class BirdJump : MonoBehaviour
     private float maxGravity = 20f;
     private float currentGravity;
 
-    // Start is called before the first frame update
+    public Animator animator;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         currentGravity = initialGravity;
         rb.gravityScale = currentGravity;
         acceleration = BackGroundLoop.acceleration;
+        animator = GetComponent<Animator>();
     }
-    
+    /// <summary>
+    /// Update()에서 사용자 입력 처리
+    /// </summary>
+    private void Update() 
+    {
+        if (Input.GetButtonDown("Jump") && isGrounded)
+        {
+            Jump();
+        }
 
-    // Update is called once per frame
+        if(transform.position.y < -6)
+        {
+            Debug.Log("BirdJump ___ 목숨 : " + HealthManager.health);
+            HealthManager.health = 0;
+        }
+    }
+    /// <summary>
+    /// FixedUpdate()에서 물리 계산 처리
+    /// </summary>
     private void FixedUpdate()
     {
         timer += Time.deltaTime;
@@ -46,17 +64,6 @@ public class BirdJump : MonoBehaviour
             timer -= acceleration;
             jumpPower += 0.5f;
         }
-
-        if (Input.GetButtonDown("Jump") && isGrounded)
-        {
-            Jump();
-        }
-
-        if(transform.position.y < -6)
-        {
-            HealthManager.health = 0;
-        }
-        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -65,7 +72,7 @@ public class BirdJump : MonoBehaviour
         {
             jumpCount = 0;
             isGrounded = true;
-            //GetComponent<Animator>().SetTrigger("Run");
+            animator.SetTrigger("Run");
         }
     }
 
@@ -73,12 +80,12 @@ public class BirdJump : MonoBehaviour
     {
         if (jumpCount < maxJumpCount)
         {
+            animator.SetTrigger("Jump");
             rb.velocity = Vector2.zero;
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
             jumpCount++;
             isGrounded = false;
             //AudioManager.Instance.PlaySFX("Cat_Jump");
-            //GetComponent<Animator>().SetTrigger("Jump");
         }
     }
 }

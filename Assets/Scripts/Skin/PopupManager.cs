@@ -23,10 +23,9 @@ public class PopupManager : MonoBehaviour
     public Button btn_WearYes;
     public Button btn_WearNo;
     [SerializeField] private int buy_SelectedNumber;
-    // [SerializeField] private SkinInShop buy_SelectedSkin;
+
 
     public int wear_SelectedNumber;
-    // [SerializeField] private SkinInShop wear_SelectedSkin;
     [SerializeField] private float delayTime = 0.3f; // 팝업 지연 시간
     private GameObject popUp_Active; // 현재 활성화 해둔 팝업
     private IEnumerator openPopup; // 팝업 등장 코루틴용
@@ -77,7 +76,6 @@ public class PopupManager : MonoBehaviour
     public void ClosePopup()
     {
         // 미리보기 원상 복귀
-        // SkinManager.Inst.img_Preview.sprite = SkinManager.equippedSkin;
         SkinManager.Inst.img_Preview.sprite = SkinManager.lastUsedSkin.skinInfo._skinSprite;
 
         if (popUp_Active != null)
@@ -99,7 +97,6 @@ public class PopupManager : MonoBehaviour
         {
             if (btns_Locked[i] == clickedBtn)
             {
-                // buy_SelectedSkin = SkinManager.Inst.skinInShops[i];
                 buy_SelectedNumber = i;
                 break;
             }
@@ -117,7 +114,6 @@ public class PopupManager : MonoBehaviour
         {
             if (btns_Unlocked[i] == clickedBtn)
             {
-                // wear_SelectedSkin = SkinManager.Inst.skinInShops[i];
                 wear_SelectedNumber = i;
                 break;
             }
@@ -129,9 +125,7 @@ public class PopupManager : MonoBehaviour
     /// </summary>
     public void OnClickBuyYes(int selectedNumber)
     {
-        // Debug.Log("Click BuyYes");
 
-        // buy_SelectedSkin.GetComponent<SkinInShop>().OnClickBuyYes();
         // 구매 가능한 만큼 코인 보유 확인 및 차감
         bool ableToBuy = CoinManager.TryRemoveCoin(SkinManager.Inst.skinInShops[selectedNumber].skinInfo._skinPrice);
         ClosePopup();
@@ -149,7 +143,6 @@ public class PopupManager : MonoBehaviour
             // 구매 완료 팝업 활성화
             openPopup = OpenPopup(popUp_Purchase, delayTime);
             StartCoroutine(openPopup);
-            // Invoke("OpenPopup", delayTime); 
 
             // txt_State.text = "보유 중";
             SkinManager.Inst.skinInShops[selectedNumber].ChangeStateText(SkinManager.Inst.skinInShops[selectedNumber].isSkinWorn);
@@ -159,7 +152,6 @@ public class PopupManager : MonoBehaviour
             // 코인 부족 팝업 활성화
             openPopup = OpenPopup(popUp_Caution, delayTime);
             StartCoroutine(openPopup);
-            // Invoke("OpenPopup", delayTime); 
         }
     }
 
@@ -168,19 +160,13 @@ public class PopupManager : MonoBehaviour
     /// </summary>
     public void OnClickWearYes(int selectedNumber)
     {
-        // Debug.Log("Click WearYes");
-        
-        // wear_SelectedSkin.GetComponent<SkinInShop>().OnClickWearYes();
         if(SkinManager.Inst.skinInShops[selectedNumber].IsSkinUnlocked())
         {
             // 선택된 스킨 적용
             SkinManager.Inst.EquipSkin(SkinManager.Inst.skinInShops[selectedNumber].skinInfo);
             SkinManager.Inst.skinInShops[selectedNumber].isSkinWorn = true;
             Debug.Log("OnClickWearYes --- isSkinWorn 값 확인 : " + SkinManager.Inst.skinInShops[selectedNumber].skinInfo._skinName + " = " + SkinManager.Inst.skinInShops[selectedNumber].isSkinWorn);
-
-            // Debug.Log("SKININSHOP --- " + SkinManager.Inst.skinInShops[selectedNumber].skinInfo._skinName + " 착용 중 텍스트!");
             
-            // txt_State.text = "착용 중"; 
             SkinManager.Inst.skinInShops[selectedNumber].ChangeStateText(SkinManager.Inst.skinInShops[selectedNumber].isSkinWorn);
             ClosePopup();
         }
@@ -191,24 +177,7 @@ public class PopupManager : MonoBehaviour
         }
 
         SkinManager.Inst.isNowDefault = false;
-
         TakeOffSkin();
-        /*
-        // // 다른 코스튬 버튼에서 착용 해제 효과
-        // foreach (SkinInShop skinInShop in SkinManager.Inst.skinInShops)
-        // {
-        //     // bool isNotWorn = skinInShop != wear_SelectedSkin && skinInShop.skinInfo._skinSprite != SkinManager.equippedSkin;
-        //     bool isNotWorn = skinInShop != wear_SelectedSkin && skinInShop.skinInfo != SkinManager.lastUsedSkin.skinInfo;
-        //     bool isUnlocked = PlayerPrefs.GetInt(skinInShop.skinInfo._skinID.ToString()) == 1;
-            
-        //     if (isNotWorn && isUnlocked)
-        //     {
-        //         skinInShop.isSkinWorn = false;
-        //         // skinInShop.txt_State.text = "보유 중";
-        //         skinInShop.ChangeStateText(skinInShop.isSkinWorn);
-        //     }
-        // }
-        */
     }
     /// <summary>
     /// 착용하시겠습니까 팝업에서 no 버튼 클릭 시
@@ -216,12 +185,10 @@ public class PopupManager : MonoBehaviour
     public void OnClickWearNo(int selectedNumber)
     {
         // 미리보기 원상 복귀
-        // SkinManager.Inst.img_Preview.sprite = SkinManager.equippedSkin;
         SkinManager.Inst.img_Preview.sprite = SkinManager.lastUsedSkin.skinInfo._skinSprite;
         SkinManager.Inst.skinInShops[selectedNumber].isSkinWorn = false;
         Debug.Log("isSkinWorn - OnClickWearNo : " + SkinManager.Inst.skinInShops[selectedNumber].skinInfo._skinName + " = " + SkinManager.Inst.skinInShops[selectedNumber].isSkinWorn);
 
-        // wear_SelectedSkin.txt_State.text = "보유 중";
         SkinManager.Inst.skinInShops[selectedNumber].ChangeStateText(SkinManager.Inst.skinInShops[selectedNumber].isSkinWorn);
     }
 
@@ -230,31 +197,23 @@ public class PopupManager : MonoBehaviour
     /// </summary>
     public void TakeOffSkin()
     {
-        Debug.Log("---------------foreach 시작---------------");
+        // Debug.Log("---------------foreach 시작---------------");
         foreach (SkinInShop skinInShop in SkinManager.Inst.skinInShops)
         {
             bool isNotWorn = skinInShop != SkinManager.Inst.skinInShops[wear_SelectedNumber] && skinInShop.skinInfo != SkinManager.lastUsedSkin.skinInfo;
 
-            // bool isNotWorn = skinInShop != wear_SelectedSkin && skinInShop.skinInfo._skinSprite != SkinManager.equippedSkin;
-
-            // bool isNotWorn = skinInShop != wear_SelectedSkin && skinInShop.skinInfo != SkinManager.lastUsedSkin.skinInfo;
-            // bool isUnlocked = PlayerPrefs.GetInt(skinInShop.skinInfo._skinID.ToString()) == 1;
-            // if (isNotWorn && isUnlocked)
-
-            Debug.Log("TakeOffSkin --- " + skinInShop.skinInfo._skinName + " 착용 여부 : " +  skinInShop.isSkinWorn);
-            Debug.Log("TakeOffSkin --- isNotWorn : " + isNotWorn);
+            // Debug.Log("TakeOffSkin --- " + skinInShop.skinInfo._skinName + " 착용 여부 : " +  skinInShop.isSkinWorn);
+            // Debug.Log("TakeOffSkin --- isNotWorn : " + isNotWorn);
 
             if (skinInShop.IsSkinUnlocked() && isNotWorn)
             {
-                Debug.Log("TakeOffSkin --- if문 실행 : " + (skinInShop.IsSkinUnlocked() && isNotWorn));
-                //Debug.Log(skinInShop.skinInfo._skinName + " 스킨 착용 여부 : " + skinInShop.isSkinWorn);
-                // skinInShop.txt_State.text = "보유 중";
+                // Debug.Log("TakeOffSkin --- if문 실행 : " + (skinInShop.IsSkinUnlocked() && isNotWorn));
             
                 skinInShop.isSkinWorn = false;
                 skinInShop.ChangeStateText(skinInShop.isSkinWorn);
-                Debug.Log("isSkinWorn - TakeOffSkin : " + skinInShop.skinInfo._skinName + " = " + skinInShop.isSkinWorn);
+                // Debug.Log("isSkinWorn - TakeOffSkin : " + skinInShop.skinInfo._skinName + " = " + skinInShop.isSkinWorn);
             }
         }
-        Debug.Log("---------------foreach 끝---------------");
+        // Debug.Log("---------------foreach 끝---------------");
     }
 }

@@ -8,7 +8,6 @@ using TMPro;
 public class SkinManager : MonoBehaviour
 {    
     public static SkinManager Inst;
-    // public static Sprite equippedSkin {get; private set;} // 장착한 코스튬 스프라이트
     public static SkinInShop lastUsedSkin; // 가장 마지막에 착용한 코스튬 
     public SkinInShop[] skinInShops;
 
@@ -37,24 +36,6 @@ public class SkinManager : MonoBehaviour
         #if UNITY_EDITOR
         PlayerPrefs.DeleteAll();
         #endif
-
-        // isNowDefault = img_Preview.sprite == allSkins[(int)SO_SkinInfo.SkinIDS.defaultSkin];
-  
-        /* -----------------------------------------
-        // string lastSkinUsed = PlayerPrefs.GetString(skinPref, SO_SkinInfo.SkinIDS.defaultSkin.ToString());
-        // SO_SkinInfo skinUsedLastTime = Array.Find(allSkins, dummyFind => dummyFind._skinID.ToString() == lastSkinUsed);
-        
-        // if (skinUsedLastTime == null)
-        // {
-        //     skinUsedLastTime = Array.Find(allSkins, dummyFind => dummyFind._skinID == SO_SkinInfo.SkinIDS.defaultSkin);
-        // }
-
-        // if (lastUsedSkin == null)
-        // {
-        //     lastUsedSkin = skinInShops[(int)SO_SkinInfo.SkinIDS.defaultSkin];
-        //     isNowDefault = true;
-        // }
-        ----------------------------------------- */
         
         lastUsedID = PlayerPrefs.GetInt(skinPref, (int)SO_SkinInfo.SkinIDS.defaultSkin);
         lastUsedSkin = Array.Find(skinInShops, dummyFind => (int)dummyFind.skinInfo._skinID == lastUsedID);
@@ -82,42 +63,6 @@ public class SkinManager : MonoBehaviour
             }
     }
 
-    /// <summary>
-    /// 선택한 코스튬 적용
-    /// </summary>
-    /// <param name="skinInfo"></param>
-    // public void EquipSkin(SkinInShop _skinInShop)
-    // {
-    //     if (_skinInShop == null)
-    //     {
-    //         // 기본 스킨으로 초기화
-    //         _skinInShop.skinInfo = Array.Find(allSkins, dummyFind => dummyFind._skinID == SO_SkinInfo.SkinIDS.defaultSkin);
-    //         isNowDefault = true;
-    //     }
-
-    //     lastUsedSkin = _skinInShop;
-    //     img_Preview.sprite = lastUsedSkin.skinInfo._skinSprite;
-
-    //     // equippedSkin = _skinInShop.skinInfo._skinSprite;
-    //     // img_Preview.sprite = equippedSkin;
-
-    //     PlayerPrefs.SetString(skinPref, _skinInShop.skinInfo._skinID.ToString());
-
-    //     CheckInit(_skinInShop.skinInfo);
-    //     _skinInShop.ClosePreviewText(_skinInShop.isNowPreviewing);
-    //     _skinInShop.ChangeStateText(isNowDefault);
-    //     /*
-    //     if(skinInfo._skinID == SO_SkinInfo.SkinIDS.defaultSkin)
-    //     {
-    //         isNowDefault = true;
-    //     }
-    //     else
-    //     {
-    //         isNowDefault = false;
-    //     }
-    //     */
-    // }
-
     public void EquipSkin(SO_SkinInfo _skinInfo)
     {
         if (_skinInfo == null)
@@ -128,8 +73,6 @@ public class SkinManager : MonoBehaviour
         }
 
         // 미리보기 이미지 적용
-        // equippedSkin = _skinInfo._skinSprite;
-        // img_Preview.sprite = equippedSkin;
         lastUsedSkin.skinInfo = _skinInfo;
         img_Preview.sprite = lastUsedSkin.skinInfo._skinSprite;
         PlayerPrefs.SetString(skinPref, _skinInfo._skinID.ToString());
@@ -137,16 +80,6 @@ public class SkinManager : MonoBehaviour
         lastUsedSkin.skinInfo = _skinInfo;
 
         CheckInit();
-        /*
-        if(skinInfo._skinID == SO_SkinInfo.SkinIDS.defaultSkin)
-        {
-            isNowDefault = true;
-        }
-        else
-        {
-            isNowDefault = false;
-        }
-        */
     }
 
     /// <summary>
