@@ -10,27 +10,14 @@ public class SkinInShop : MonoBehaviour
     public SO_SkinInfo skinInfo;
 
     public TextMeshProUGUI txt_State; // 버튼 위 장착 or 보유 상태 표시 텍스트
-    // public TextMeshProUGUI txt_PopupPrice; // 팝업 위 코스튬 가격 텍스트
     public TextMeshProUGUI txt_Price; // 버튼 위 코스튬 가격 텍스트
     public TextMeshProUGUI txt_SkinName; // 버튼 위 코스튬 이름 텍스트
     public Image img_Skin; // 버튼 위 보여지는 코스튬
-
     public GameObject btn_Lock; // 해금 전 회색 반투명 레이어
-
-    /*
-    // 이 아래 전부 PopupManager로 옮기기 
-    // public GameObject popUp_Buy; // 구매 재질문 팝업
-    // public GameObject popUp_Caution; // 코인 부족 시 경고 팝업
-    // public GameObject popUp_Wear; // 적용 질문 팝업
-    // public GameObject popUp_Purchase; // 구매 완료 팝업
-    // public GameObject panel; // 뒷 패널
-    */
     public bool isSkinWorn = false; // 착용 여부
-    // public bool isNowPreviewing = false; // 미리보기 여부
+
 
     [SerializeField] private bool isSkinUnlocked = false; // 해금 여부
-    // [SerializeField] private float delayTime = 0.3f; // 팝업 지연 시간
-    // private GameObject popUp_Active; // 현재 활성화 해둔 팝업 <- SkinManager.cs
     private IEnumerator openPopup; // 팝업 등장 코루틴용
 
 
@@ -48,50 +35,6 @@ public class SkinInShop : MonoBehaviour
         txt_Price.text = skinInfo._skinPrice.ToString();
         txt_SkinName.text = skinInfo._skinName.ToString();
     }
-
-    /*
-    // ---------PopupManager.cs로 이동---------
-    // /// <summary>
-    // /// 팝업 열기
-    // /// </summary>
-    // public void OpenPopup()
-    // {
-    //     popUp_Active.SetActive(true);
-    //     panel.SetActive(true);
-    // }
-
-    // /// <summary>
-    // /// 팝업 닫기
-    // /// </summary>
-    // public void ClosePopup()
-    // {
-    //     // 미리보기 원상 복귀
-    //     SkinManager.Inst.img_Preview.sprite = SkinManager.equippedSkin;
-
-    //     if (popUp_Active != null)
-    //     {
-    //         popUp_Active.SetActive(false);
-    //         panel.SetActive(false);
-    //         ClosePreviewText(isNowPreviewing);
-    //     }
-    // }
-    // ---------------------------
-
-    // ---------SkinManager.cs로 이동---------
-    // /// <summary>
-    // /// 미리보기 텍스트 비활성화
-    // /// </summary>
-    // /// <param name="_isNowPreviewing"></param>
-    // public void ClosePreviewText(bool _isNowPreviewing)
-    // {
-    //     // 미리보기 중이면 스킨 이름, 미리보기 상태 텍스트 비활성화
-    //     if (_isNowPreviewing)
-    //         {
-    //             SkinManager.Inst.txt_preview.SetActive(false);
-    //             SkinManager.Inst.txt_previewName.gameObject.SetActive(false);
-    //         }
-    // }
-    */
     
     /// <summary>
     /// 해금 상태 확인
@@ -133,11 +76,6 @@ public class SkinInShop : MonoBehaviour
             SkinManager.Inst.img_Preview.sprite = skinInfo._skinSprite;
             SkinManager.Inst.txt_preview.SetActive(true);
         }
-
-        // // 1st click -> 미리보기 이미지 변경
-        // Debug.Log("첫 번째 클릭");
-        // SkinManager.Inst.img_Preview.sprite = skinInfo._skinSprite;
-        // SkinManager.Inst.txt_preview.SetActive(true);
     }
 
     /// <summary>
@@ -163,68 +101,6 @@ public class SkinInShop : MonoBehaviour
             return;
         }
     }
-
-    /*
-    // ---------PopupManager.cs로 옮기기---------
-    /// <summary>
-    /// 구매하시겠습니까 -> YES
-    /// </summary>
-    // public void OnClickBuyYes()
-    // {
-    //     // 구매 가능한 만큼 코인 보유 확인 및 차감
-    //     bool ableToBuy = CoinManager.TryRemoveCoin(skinInfo._skinPrice);
-    //     PopupManager.Inst.ClosePopup();
-
-    //     if(ableToBuy)
-    //     {
-    //         // lock 버튼 삭제
-    //         IsSkinUnlocked();
-    //         Destroy(btn_Lock);
-
-    //         // PlayerPrefs에 스킨 해금 정보 저장
-    //         PlayerPrefs.SetInt(skinInfo._skinID.ToString(), 1);
-    //         PlayerPrefs.Save();
-
-    //         // 구매 완료 팝업 활성화
-    //         popUp_Active = popUp_Purchase;
-    //         Invoke("OpenPopup", delayTime);
-
-    //         // txt_State.text = "보유 중";
-    //         ChangeStateText(isSkinWorn);
-    //     }
-    //     else
-    //     {
-    //         // 코인 부족 팝업 활성화
-    //         popUp_Active = popUp_Caution;
-    //         Invoke("OpenPopup", delayTime);
-    //     }
-    // }
-    
-    /// <summary>
-    /// 적용하시겠습니까 -> YES
-    /// </summary>
-    // public void OnClickWearYes()
-    // {
-    //     if(IsSkinUnlocked())
-    //     {
-    //         // 선택된 스킨 적용
-    //         SkinManager.Inst.EquipSkin(skinInfo);
-    //         isSkinWorn = true;
-
-    //         Debug.Log("SKININSHOP____" + skinInfo._skinName + " 착용 중 텍스트!");
-            
-    //         // txt_State.text = "착용 중"; 
-    //         ChangeStateText(isSkinWorn);
-    //         ClosePopup();
-    //     }
-    //     else
-    //     {
-    //         ClosePopup();
-    //         return;
-    //     }
-    // }
-    // --------------------------------------------
-    */
 
     /// <summary>
     /// 코스튬 착용 상태 텍스트 변경

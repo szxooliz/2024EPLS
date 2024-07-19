@@ -15,10 +15,8 @@ public class BirdJump : MonoBehaviour
     private Rigidbody2D rb;
     private int jumpCount = 0;
     private bool isGrounded = true;
-
     private float timer;
     private float acceleration;
-
     private float initialGravity = 3.5f;
     [SerializeField] private float gravityIncreaseRate = 1f;
     private float maxGravity = 20f;
@@ -34,9 +32,8 @@ public class BirdJump : MonoBehaviour
         acceleration = BackGroundLoop.acceleration;
         animator = GetComponent<Animator>();
     }
-    /// <summary>
-    /// Update()에서 사용자 입력 처리
-    /// </summary>
+
+    // Update()에서 사용자 입력 처리
     private void Update() 
     {
         if (Input.GetButtonDown("Jump") && isGrounded)
@@ -50,9 +47,8 @@ public class BirdJump : MonoBehaviour
             HealthManager.health = 0;
         }
     }
-    /// <summary>
-    /// FixedUpdate()에서 물리 계산 처리
-    /// </summary>
+
+    // FixedUpdate()에서 물리 계산 처리
     private void FixedUpdate()
     {
         timer += Time.deltaTime;
@@ -70,9 +66,10 @@ public class BirdJump : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
+            animator.SetTrigger("Run");
+
             jumpCount = 0;
             isGrounded = true;
-            animator.SetTrigger("Run");
         }
     }
 
@@ -81,6 +78,7 @@ public class BirdJump : MonoBehaviour
         if (jumpCount < maxJumpCount)
         {
             animator.SetTrigger("Jump");
+
             rb.velocity = Vector2.zero;
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
             jumpCount++;
