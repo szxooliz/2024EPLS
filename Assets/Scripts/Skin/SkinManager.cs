@@ -103,8 +103,6 @@ public class SkinManager : MonoBehaviour
         // 현재 미리보기 이미지와 선택한 스킨이 같은지 확인
         isNowPreviewing = img_Preview.sprite == skinInfo._skinSprite;
 
-        Debug.Log("SkinManager --- isNowPreviewing : " + isNowPreviewing);
-
         // 미리보기 이름 표시
         txt_previewName.gameObject.SetActive(true);
         txt_previewName.text = skinInfo._skinName;

@@ -715,6 +715,7 @@ RectTransform:
   - {fileID: 1941935614}
   - {fileID: 1671941265}
   - {fileID: 285355367}
+  - {fileID: 710802212}
   - {fileID: 99735840}
   - {fileID: 1289183301}
   - {fileID: 2089689829}
@@ -2941,6 +2942,59 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 706585317}
   m_CullTransparentMesh: 1
+--- !u!1 &710802211
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 710802212}
+  - component: {fileID: 710802213}
+  m_Layer: 0
+  m_Name: LoadScore
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &710802212
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 710802211}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -478.7388, y: -251.48972, z: 819.94727}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 149272668}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &710802213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 710802211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a02297ff0cf1cb42a9badd711c88c22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btn_BestScore: {fileID: 340629907}
+  text_highScores:
+  - {fileID: 653483629}
+  - {fileID: 478632494}
+  - {fileID: 1327885664}
+  text_highScoreTimes:
+  - {fileID: 631485457}
+  - {fileID: 1058937366}
+  - {fileID: 320927120}
 --- !u!1 &799329812
 GameObject:
   m_ObjectHideFlags: 0
@@ -4636,10 +4690,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ClickButton, Assembly-CSharp
-        m_MethodName: OnClickBack
-        m_Mode: 1
+      - m_Target: {fileID: 2089689828}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5252,7 +5306,6 @@ GameObject:
   - component: {fileID: 2089689829}
   - component: {fileID: 2089689831}
   - component: {fileID: 2089689830}
-  - component: {fileID: 2089689832}
   m_Layer: 5
   m_Name: POPUP_BestScore
   m_TagString: Untagged
@@ -5319,26 +5372,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2089689828}
   m_CullTransparentMesh: 1
---- !u!114 &2089689832
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2089689828}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a02297ff0cf1cb42a9badd711c88c22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  text_highScores:
-  - {fileID: 653483629}
-  - {fileID: 478632494}
-  - {fileID: 1327885664}
-  text_highScoreTimes:
-  - {fileID: 631485457}
-  - {fileID: 1058937366}
-  - {fileID: 320927120}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

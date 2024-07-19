@@ -7,23 +7,13 @@ using Unity.VisualScripting;
 
 public class ScoreBoard : MonoBehaviour
 {
+    public Button btn_BestScore;
     public TextMeshProUGUI[] text_highScores;
     public TextMeshProUGUI[] text_highScoreTimes;
-    // public TextMeshProUGUI bestScoreText;
-    // public TextMeshProUGUI bestScoreTextName;
-    // public TextMeshProUGUI secondScoreText;
-    // public TextMeshProUGUI secondScoreTextName;
-    // public TextMeshProUGUI thirdScoreText;
-    // public TextMeshProUGUI thirdScoreTextName;
 
-    void Update()
+    private void Awake() 
     {
-        // bestScoreText.text = PlayerPrefs.GetInt("HiScore") + "";
-        // bestScoreTextName.text = PlayerPrefs.GetString("BestScoreTime");
-        // secondScoreText.text = PlayerPrefs.GetInt("SecondScore") + "";
-        // secondScoreTextName.text = PlayerPrefs.GetString("SecondScoreTime");
-        // thirdScoreText.text = PlayerPrefs.GetInt("ThirdScore") + "";
-        // thirdScoreTextName.text = PlayerPrefs.GetString("ThirdScoreTime");
+        btn_BestScore.onClick.AddListener(() => DisplayHighScore());
     }
 
     /// <summary>

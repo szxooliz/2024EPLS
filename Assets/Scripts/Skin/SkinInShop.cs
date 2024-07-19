@@ -61,9 +61,6 @@ public class SkinInShop : MonoBehaviour
         // 2nd click -> 구매 팝업 활성화
         if (SkinManager.Inst.isNowPreviewing)
         {
-            // Debug.Log("두 번째 클릭");
-            // PopupManager.Inst.popUp_Active = popUp_Buy;
-
             openPopup = PopupManager.Inst.OpenPopup(PopupManager.Inst.popUp_Buy, 0f);
 
             StartCoroutine(openPopup);
@@ -72,7 +69,6 @@ public class SkinInShop : MonoBehaviour
         else
         {
             // 1st click -> 미리보기 이미지 변경
-            // Debug.Log("첫 번째 클릭");
             SkinManager.Inst.img_Preview.sprite = skinInfo._skinSprite;
             SkinManager.Inst.txt_preview.SetActive(true);
         }
@@ -83,7 +79,6 @@ public class SkinInShop : MonoBehaviour
     /// </summary>
     public void OnClickUnlocked()
     {
-        // Debug.Log("isNowDefault /  지금 기본스킨 착용? : " + SkinManager.Inst.isNowDefault);
         Debug.Log("isSkinWorn /  지금 이 스킨 " + skinInfo._skinName + " 착용? : " + isSkinWorn);
         Debug.Log("SkinInShop --- OnClickUnlocked if문 실행 : " + (IsSkinUnlocked() && !isSkinWorn));
 
@@ -91,6 +86,7 @@ public class SkinInShop : MonoBehaviour
         {
             // 미리보기 스킨 변경
             SkinManager.Inst.img_Preview.sprite = skinInfo._skinSprite;
+
             // 착용하시겠습니까 팝업 열기
             openPopup = PopupManager.Inst.OpenPopup(PopupManager.Inst.popUp_Wear, 0f);
             StartCoroutine(openPopup);
@@ -111,12 +107,10 @@ public class SkinInShop : MonoBehaviour
         if(_isSkinWorn)
         {
             txt_State.text = "착용 중";
-            Debug.Log("ChangeStateText --- 착용 중");
         }
         else
         {
             txt_State.text = "보유 중";
-            Debug.Log("ChangeStateText --- 보유 중");
         }
     }
 }

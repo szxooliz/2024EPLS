@@ -22,18 +22,14 @@ public class InitializeSkin : MonoBehaviour
     /// </summary>
     public void InitSkin()
     {
-        // bool isNowInit = SkinManager.Inst.img_Preview.sprite == skinInfo_Default._skinSprite;
-        
         if (SkinManager.Inst.isNowDefault)
         {
-            // Debug.Log("이미 초기화 되어 있습니다 ~");
             return;
         }
         else
         {
             PopupManager.Inst.wear_SelectedNumber = (int)SO_SkinInfo.SkinIDS.defaultSkin;
             SkinManager.Inst.EquipSkin(skinInfo_Default);
-            // Debug.Log("초기화!");
         }
 
         // 미리보기 상태였던 경우 -> 미리보기 상태 알림 비활성화

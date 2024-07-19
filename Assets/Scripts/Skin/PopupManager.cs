@@ -197,23 +197,15 @@ public class PopupManager : MonoBehaviour
     /// </summary>
     public void TakeOffSkin()
     {
-        // Debug.Log("---------------foreach 시작---------------");
         foreach (SkinInShop skinInShop in SkinManager.Inst.skinInShops)
         {
             bool isNotWorn = skinInShop != SkinManager.Inst.skinInShops[wear_SelectedNumber] && skinInShop.skinInfo != SkinManager.lastUsedSkin.skinInfo;
 
-            // Debug.Log("TakeOffSkin --- " + skinInShop.skinInfo._skinName + " 착용 여부 : " +  skinInShop.isSkinWorn);
-            // Debug.Log("TakeOffSkin --- isNotWorn : " + isNotWorn);
-
             if (skinInShop.IsSkinUnlocked() && isNotWorn)
             {
-                // Debug.Log("TakeOffSkin --- if문 실행 : " + (skinInShop.IsSkinUnlocked() && isNotWorn));
-            
                 skinInShop.isSkinWorn = false;
                 skinInShop.ChangeStateText(skinInShop.isSkinWorn);
-                // Debug.Log("isSkinWorn - TakeOffSkin : " + skinInShop.skinInfo._skinName + " = " + skinInShop.isSkinWorn);
             }
         }
-        // Debug.Log("---------------foreach 끝---------------");
     }
 }
