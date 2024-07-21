@@ -9,7 +9,7 @@ public class SkinManager : MonoBehaviour
 {    
     public static SkinManager Inst;
     // public static SkinInShop lastUsedSkin; // 가장 마지막에 착용한 코스튬 << SkinLoader로 옮김
-    public SkinInShop[] skinInShops;
+    // public SkinInShop[] skinInShops;
 
     public Image img_Preview; // 미리보기 코스튬 파츠
     public TextMeshProUGUI txt_previewName; // 미리보기 코스튬 이름 안내 메시지
@@ -40,29 +40,32 @@ public class SkinManager : MonoBehaviour
         
         // lastUsedID = PlayerPrefs.GetInt(skinPref, (int)SO_SkinInfo.SkinIDS.defaultSkin);
         // Skin.lastUsedSkin = Array.Find(skinInShops, dummyFind => (int)dummyFind.skinInfo._skinID == lastUsedID);
-        foreach (SkinInShop skinInShop in skinInShops)
+        foreach (SkinInShop skinInShop in Skin.Inst.skinInShops)
         {
             if (skinInShop.isSkinWorn)
             {
                 Skin.lastUsedSkin = skinInShop;
+                Debug.Log("SkinManager ___ isSkinWorn = True인 lastUsedSkin : " + skinInShop.skinInfo._skinName);
             }
         }
 
-        if (Skin.lastUsedSkin == skinInShops[(int)SO_SkinInfo.SkinIDS.defaultSkin])
+        if (Skin.lastUsedSkin == Skin.Inst.skinInShops[(int)SO_SkinInfo.SkinIDS.defaultSkin])
         {
             isNowDefault = true;
         }
 
         if (Skin.lastUsedSkin == null)
         {
-            Skin.lastUsedSkin = skinInShops[(int)SO_SkinInfo.SkinIDS.defaultSkin];
+            Skin.lastUsedSkin = Skin.Inst.skinInShops[(int)SO_SkinInfo.SkinIDS.defaultSkin];
             isNowDefault = true;
         }
     }
 
     private void Start() 
     {
+        Debug.Log("SkinManager ___ Start ___ lastUsedSkin은? : " + Skin.lastUsedSkin.skinInfo._skinName);
         EquipSkin(Skin.lastUsedSkin.skinInfo);
+        Debug.Log("SkinManager ___ Start ___ EquipSkin 실행");
     }
 
     /// <summary>
@@ -89,12 +92,13 @@ public class SkinManager : MonoBehaviour
         }
 
         // 미리보기 이미지 적용
+        Debug.Log("SkinManager ___ 이미지 변경 " + Skin.lastUsedSkin.skinInfo._skinName + "로 합시다 제발");
         Skin.lastUsedSkin.skinInfo = _skinInfo;
         img_Preview.sprite = Skin.lastUsedSkin.skinInfo._skinSprite;
         PlayerPrefs.SetString(skinPref, _skinInfo._skinID.ToString());
 
         // Skin.lastUsedSkin.skinInfo = _skinInfo;
-        Debug.Log("lastUsedSkin 그래서 뭔데.. EquipSkin 했잖아: " + Skin.lastUsedSkin.skinInfo._skinName);
+        Debug.Log("SkinManager ___ lastUsedSkin 그래서 뭔데.. EquipSkin 했잖아: " + Skin.lastUsedSkin.skinInfo._skinName);
 
         CheckInit();
     }

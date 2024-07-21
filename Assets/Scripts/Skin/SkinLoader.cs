@@ -23,25 +23,32 @@ public class SkinLoader : MonoBehaviour
         //     Inst = this;
         // }
         // DontDestroyOnLoad(Inst);
+
         animator = GetComponent<Animator>();
     }
    void Start()
     {
         // _CostumeScene 들어가지 않고 게임 시작하면 오류 뜸
+
+        Debug.Log("SkinLoader ___ lastUsedSkin 비어있나요? : " + Skin.lastUsedSkin == null);
         if (Skin.lastUsedSkin == null)
         {
-            Skin.lastUsedSkin = SkinManager.Inst.skinInShops[(int)SO_SkinInfo.SkinIDS.defaultSkin];
+            Skin.lastUsedSkin = Skin.Inst.skinInShops[(int)SO_SkinInfo.SkinIDS.defaultSkin];
             SkinManager.Inst.isNowDefault = true;
+        }
+        else
+        {
+            Debug.Log("SkinLoader ___ lastUsedSkin은? : " + Skin.lastUsedSkin.skinInfo._skinName);
         }
 
         if (Skin.lastUsedSkin.skinInfo == null)
         {
-            Debug.LogError("SkinInfo is null for the last used skin!");
+            Debug.LogError("SkinLoader ___ SkinInfo is null for the last used skin!");
             return;
         }
 
 
-        Debug.Log("lastUsedSkin 대체 뭔데 : " + Skin.lastUsedSkin.skinInfo._skinName);
+        Debug.Log("SkinLoader ___ lastUsedSkin 대체 뭔데 : " + Skin.lastUsedSkin.skinInfo._skinName);
 
         controllerID = (int)Skin.lastUsedSkin.skinInfo._skinID;
         animator.runtimeAnimatorController = skinAnimators[controllerID];

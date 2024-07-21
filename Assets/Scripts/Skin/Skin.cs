@@ -6,6 +6,7 @@ public class Skin : MonoBehaviour
 {
     public static Skin Inst;
     public static SkinInShop lastUsedSkin; // 가장 마지막에 착용한 코스튬
+    public SkinInShop[] skinInShops;
     void Start()
     {
         if (Inst == null)
