@@ -124,17 +124,17 @@ public class PopupManager : MonoBehaviour
     {
 
         // 구매 가능한 만큼 코인 보유 확인 및 차감
-        bool ableToBuy = CoinManager.TryRemoveCoin(Skin.Inst.skinInShops[selectedNumber].skinInfo._skinPrice);
+        bool ableToBuy = CoinManager.TryRemoveCoin(SkinManager.Inst.skinInShops[selectedNumber].skinInfo._skinPrice);
         ClosePopup();
 
         if(ableToBuy)
         {
             // lock 버튼 삭제
-            Skin.Inst.skinInShops[selectedNumber].IsSkinUnlocked();
-            Destroy(Skin.Inst.skinInShops[selectedNumber].btn_Lock);
+            SkinManager.Inst.skinInShops[selectedNumber].IsSkinUnlocked();
+            Destroy(SkinManager.Inst.skinInShops[selectedNumber].btn_Lock);
 
             // PlayerPrefs에 스킨 해금 정보 저장
-            PlayerPrefs.SetInt(Skin.Inst.skinInShops[selectedNumber].skinInfo._skinID.ToString(), 1);
+            PlayerPrefs.SetInt(SkinManager.Inst.skinInShops[selectedNumber].skinInfo._skinID.ToString(), 1);
             PlayerPrefs.Save();
 
             // 구매 완료 팝업 활성화
@@ -142,7 +142,7 @@ public class PopupManager : MonoBehaviour
             StartCoroutine(openPopup);
 
             // txt_State.text = "보유 중";
-            Skin.Inst.skinInShops[selectedNumber].ChangeStateText(Skin.Inst.skinInShops[selectedNumber].isSkinWorn);
+            SkinManager.Inst.skinInShops[selectedNumber].ChangeStateText(SkinManager.Inst.skinInShops[selectedNumber].isSkinWorn);
         }
         else
         {
@@ -157,14 +157,14 @@ public class PopupManager : MonoBehaviour
     /// </summary>
     public void OnClickWearYes(int selectedNumber)
     {
-        if(Skin.Inst.skinInShops[selectedNumber].IsSkinUnlocked())
+        if(SkinManager.Inst.skinInShops[selectedNumber].IsSkinUnlocked())
         {
             // 선택된 스킨 적용
-            SkinManager.Inst.EquipSkin(Skin.Inst.skinInShops[selectedNumber].skinInfo);
-            Skin.Inst.skinInShops[selectedNumber].isSkinWorn = true;
-            Debug.Log("OnClickWearYes --- isSkinWorn 값 확인 : " + Skin.Inst.skinInShops[selectedNumber].skinInfo._skinName + " = " + Skin.Inst.skinInShops[selectedNumber].isSkinWorn);
+            SkinManager.Inst.EquipSkin(SkinManager.Inst.skinInShops[selectedNumber].skinInfo);
+            SkinManager.Inst.skinInShops[selectedNumber].isSkinWorn = true;
+            Debug.Log("OnClickWearYes --- isSkinWorn 값 확인 : " + SkinManager.Inst.skinInShops[selectedNumber].skinInfo._skinName + " = " + SkinManager.Inst.skinInShops[selectedNumber].isSkinWorn);
             
-            Skin.Inst.skinInShops[selectedNumber].ChangeStateText(Skin.Inst.skinInShops[selectedNumber].isSkinWorn);
+            SkinManager.Inst.skinInShops[selectedNumber].ChangeStateText(SkinManager.Inst.skinInShops[selectedNumber].isSkinWorn);
             ClosePopup();
         }
         else
@@ -183,10 +183,10 @@ public class PopupManager : MonoBehaviour
     {
         // 미리보기 원상 복귀
         SkinManager.Inst.img_Preview.sprite = Skin.lastUsedSkin.skinInfo._skinSprite;
-        Skin.Inst.skinInShops[selectedNumber].isSkinWorn = false;
-        Debug.Log("isSkinWorn - OnClickWearNo : " + Skin.Inst.skinInShops[selectedNumber].skinInfo._skinName + " = " + Skin.Inst.skinInShops[selectedNumber].isSkinWorn);
+        SkinManager.Inst.skinInShops[selectedNumber].isSkinWorn = false;
+        Debug.Log("isSkinWorn - OnClickWearNo : " + SkinManager.Inst.skinInShops[selectedNumber].skinInfo._skinName + " = " + SkinManager.Inst.skinInShops[selectedNumber].isSkinWorn);
 
-        Skin.Inst.skinInShops[selectedNumber].ChangeStateText(Skin.Inst.skinInShops[selectedNumber].isSkinWorn);
+        SkinManager.Inst.skinInShops[selectedNumber].ChangeStateText(SkinManager.Inst.skinInShops[selectedNumber].isSkinWorn);
     }
 
     /// <summary>
@@ -194,9 +194,9 @@ public class PopupManager : MonoBehaviour
     /// </summary>
     public void TakeOffSkin()
     {
-        foreach (SkinInShop skinInShop in Skin.Inst.skinInShops)
+        foreach (SkinInShop skinInShop in SkinManager.Inst.skinInShops)
         {
-            bool isNotWorn = skinInShop != Skin.Inst.skinInShops[wear_SelectedNumber] && skinInShop.skinInfo != Skin.lastUsedSkin.skinInfo;
+            bool isNotWorn = skinInShop != SkinManager.Inst.skinInShops[wear_SelectedNumber] && skinInShop.skinInfo != Skin.lastUsedSkin.skinInfo;
 
             if (skinInShop.IsSkinUnlocked() && isNotWorn)
             {
