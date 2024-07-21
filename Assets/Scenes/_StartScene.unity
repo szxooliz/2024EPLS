@@ -1810,7 +1810,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 99735837}
+      - m_Target: {fileID: 2089689828}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -1822,7 +1822,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 2089689828}
+      - m_Target: {fileID: 99735837}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -5306,14 +5306,13 @@ GameObject:
   - component: {fileID: 2089689829}
   - component: {fileID: 2089689831}
   - component: {fileID: 2089689830}
-  - component: {fileID: 2089689832}
   m_Layer: 5
   m_Name: POPUP_BestScore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2089689829
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5373,19 +5372,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2089689828}
   m_CullTransparentMesh: 1
---- !u!114 &2089689832
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2089689828}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcf9094499d4c8f43ac73712e25754fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Popup_BestScore: {fileID: 2089689828}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

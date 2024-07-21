@@ -80,7 +80,6 @@ public class Items : MonoBehaviour
         Debug.Log("목숨 - " + sub);
         HealthManager.health -= sub;
         HealthManager.Inst.UpdateHeartsUI();
-        PlayerGetHurt.Inst.GetHurt();
         //AudioManager.Instance.PlaySFX("Cat_Attack");
         //AudioManager.Instance.PlaySFX("Item_Kill");
         Debug.Log("Items - HandleRottenItemCollision ___ health : " + HealthManager.health);

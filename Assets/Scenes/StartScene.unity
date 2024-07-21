@@ -1637,7 +1637,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 99735837}
+      - m_Target: {fileID: 2089689828}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -1649,10 +1649,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 2089689833}
-        m_TargetAssemblyTypeName: ScoreLoading, Assembly-CSharp
-        m_MethodName: OnClickRecord
-        m_Mode: 1
+      - m_Target: {fileID: 99735837}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4503,7 +4503,6 @@ GameObject:
   - component: {fileID: 2089689831}
   - component: {fileID: 2089689830}
   - component: {fileID: 2089689832}
-  - component: {fileID: 2089689833}
   m_Layer: 5
   m_Name: BestScorePanel
   m_TagString: Untagged
@@ -4583,22 +4582,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a02297ff0cf1cb42a9badd711c88c22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  btn_BestScore: {fileID: 0}
-  text_highScores: []
-  text_highScoreTimes: []
---- !u!114 &2089689833
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2089689828}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcf9094499d4c8f43ac73712e25754fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Popup_BestScore: {fileID: 2089689828}
+  bestScoreText: {fileID: 1825116881}
+  secondScoreText: {fileID: 1736115726}
+  thirdScoreText: {fileID: 619721555}
 --- !u!1 &2147226863
 GameObject:
   m_ObjectHideFlags: 0

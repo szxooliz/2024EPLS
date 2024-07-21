@@ -10,6 +10,7 @@ public class ScoreBoard : MonoBehaviour
     public Button btn_BestScore;
     public TextMeshProUGUI[] text_highScores;
     public TextMeshProUGUI[] text_highScoreTimes;
+
     private void Awake() 
     {
         btn_BestScore.onClick.AddListener(() => DisplayHighScore());
