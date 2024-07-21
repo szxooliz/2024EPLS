@@ -33,9 +33,9 @@ public class SkinManager : MonoBehaviour
         Inst = this;
 
         // 유니티 에디터에서 테스트 용이하도록 추가한 코드
-        #if UNITY_EDITOR
-        PlayerPrefs.DeleteAll();
-        #endif
+        // #if UNITY_EDITOR
+        // PlayerPrefs.DeleteAll();
+        // #endif
         
         lastUsedID = PlayerPrefs.GetInt(skinPref, (int)SO_SkinInfo.SkinIDS.defaultSkin);
         lastUsedSkin = Array.Find(skinInShops, dummyFind => (int)dummyFind.skinInfo._skinID == lastUsedID);

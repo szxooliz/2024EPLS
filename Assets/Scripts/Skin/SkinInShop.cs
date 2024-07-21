@@ -14,15 +14,17 @@ public class SkinInShop : MonoBehaviour
     public TextMeshProUGUI txt_SkinName; // 버튼 위 코스튬 이름 텍스트
     public Image img_Skin; // 버튼 위 보여지는 코스튬
     public GameObject btn_Lock; // 해금 전 회색 반투명 레이어
-    public bool isSkinWorn = false; // 착용 여부
+    public bool isSkinWorn; // 착용 여부
 
 
-    [SerializeField] private bool isSkinUnlocked = false; // 해금 여부
+    [SerializeField] private bool isSkinUnlocked; // 해금 여부
     private IEnumerator openPopup; // 팝업 등장 코루틴용
 
 
-    private void Awake() 
-    {       
+    private void Start() 
+    {
+        isSkinWorn = SkinManager.lastUsedSkin.skinInfo._skinID == skinInfo._skinID;
+        isSkinUnlocked = PlayerPrefs.GetInt(skinInfo._skinID.ToString()) == 1;
         InitializeBtn();
     }
 
@@ -34,6 +36,7 @@ public class SkinInShop : MonoBehaviour
         img_Skin.sprite = skinInfo._skinSprite;
         txt_Price.text = skinInfo._skinPrice.ToString();
         txt_SkinName.text = skinInfo._skinName.ToString();
+        IsSkinUnlocked();
     }
     
     /// <summary>
@@ -45,8 +48,10 @@ public class SkinInShop : MonoBehaviour
         {
             isSkinUnlocked = true;
             // Debug.Log("SKININSHOP____" + skinInfo._skinName + " 보유 중 텍스트!");
+            Destroy(btn_Lock);
+            ChangeStateText(isSkinWorn);
+            Debug.Log("IsSkinUnlocked --- 해금 상태 변경 -> " + skinInfo._skinName + " " + skinInfo._skinID + " : " + PlayerPrefs.GetInt(skinInfo._skinID.ToString()));
         }
-        Debug.Log("IsSkinUnlocked --- 해금 상태 변경 -> " + skinInfo._skinName + " " + skinInfo._skinID + " : " + PlayerPrefs.GetInt(skinInfo._skinID.ToString()));
         return isSkinUnlocked;
     }
 

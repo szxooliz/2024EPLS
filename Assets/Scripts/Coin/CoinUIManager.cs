@@ -17,6 +17,7 @@ public class CoinUIManager : MonoBehaviour
         {
             Inst = this;
             DontDestroyOnLoad(gameObject);
+            InitializeUIReferences();
         }
         else
         {
@@ -24,14 +25,31 @@ public class CoinUIManager : MonoBehaviour
             return; 
         }
     }
+
     void Start()
     {
         UpdateCoinUI();
     }
 
-    // 코인 업데이트
+    /// <summary>
+    /// UI 참조 초기화
+    /// </summary>
+    void InitializeUIReferences()
+    {
+        if (playerCoinText == null)
+        {
+            playerCoinText = GameObject.Find("TXT_Coin").GetComponent<TextMeshProUGUI>();
+        }
+    }
+
+    /// <summary>
+    /// 코인 업데이트
+    /// </summary>
     public void UpdateCoinUI()
     {
-        playerCoinText.text = PlayerPrefs.GetInt("Coin").ToString();
+        if (playerCoinText != null)
+        {
+            playerCoinText.text = PlayerPrefs.GetInt("Coin").ToString();
+        }
     }
 }
