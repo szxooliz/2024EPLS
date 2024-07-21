@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class SpawnPoint : MonoBehaviour
 {
-    public GameObject prefabToSpawn;
+    public GameObject[] prefabToSpawn;
     public float repeatInterval;
 
     private GameObject newPattern;
@@ -21,9 +22,10 @@ public class SpawnPoint : MonoBehaviour
     }
     public GameObject SpawnObject()
     {
-        if (prefabToSpawn != null)
+        if (prefabToSpawn != null && prefabToSpawn.Length > 0)
         {
-            newPattern = Instantiate(prefabToSpawn, transform.position, Quaternion.identity);
+            int index = Random.Range(0, prefabToSpawn.Length);
+            newPattern = Instantiate(prefabToSpawn[index], transform.position, Quaternion.identity);
             return newPattern;
         }
         return null;
