@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("_PlayScene");
         //AudioManager.Instance.PlaySFX("Button_UI");
     }
+
     // -------------------------------------------
 
     /// <summary>
