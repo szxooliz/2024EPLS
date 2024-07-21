@@ -62,12 +62,12 @@ public class Items : MonoBehaviour
     private void HandleTunaCollision()
     {
         Debug.Log("목숨+1");
-        if (HealthManager.health < 3)
+        if (Player.health < 3)
         {
-            HealthManager.health++;
-            HealthManager.Inst.UpdateHeartsUI();
+            Player.health++;
+            HealthUI.Inst.UpdateHeartsUI();
             //AudioManager.Instance.PlaySFX("Item_Heal");
-            Debug.Log("Items - HandleTunaCollision ___ " + HealthManager.health);
+            Debug.Log("Items - HandleTunaCollision ___ " + Player.health);
         }
     }
 
@@ -78,11 +78,11 @@ public class Items : MonoBehaviour
     private void HandleRottenItemCollision(int sub)
     {
         Debug.Log("목숨 - " + sub);
-        HealthManager.health -= sub;
-        HealthManager.Inst.UpdateHeartsUI();
+        Player.health -= sub;
+        HealthUI.Inst.UpdateHeartsUI();
         //AudioManager.Instance.PlaySFX("Cat_Attack");
         //AudioManager.Instance.PlaySFX("Item_Kill");
-        Debug.Log("Items - HandleRottenItemCollision ___ health : " + HealthManager.health);
+        Debug.Log("Items - HandleRottenItemCollision ___ health : " + Player.health);
         GameManager.Inst.CheckGameOver();
     }
 

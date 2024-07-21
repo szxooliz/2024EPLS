@@ -22,7 +22,7 @@ public class BirdJump : MonoBehaviour
     private float maxGravity = 20f;
     private float currentGravity;
 
-    public Animator animator;
+    // public Animator animator; << Player class로 옮김
 
     void Start()
     {
@@ -30,7 +30,7 @@ public class BirdJump : MonoBehaviour
         currentGravity = initialGravity;
         rb.gravityScale = currentGravity;
         acceleration = BackGroundLoop.acceleration;
-        animator = GetComponent<Animator>();
+        // Player.Inst.animator = GetComponent<Animator>();
     }
 
     // Update()에서 사용자 입력 처리
@@ -43,8 +43,8 @@ public class BirdJump : MonoBehaviour
 
         if(transform.position.y < -6)
         {
-            Debug.Log("BirdJump ___ 목숨 : " + HealthManager.health);
-            HealthManager.health = 0;
+            Debug.Log("BirdJump ___ 목숨 : " + Player.health);
+            Player.health = 0;
         }
     }
 
@@ -66,7 +66,7 @@ public class BirdJump : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            animator.SetTrigger("Run");
+            Player.Inst.animator.SetTrigger("Run");
 
             jumpCount = 0;
             isGrounded = true;
@@ -77,7 +77,7 @@ public class BirdJump : MonoBehaviour
     {
         if (jumpCount < maxJumpCount)
         {
-            animator.SetTrigger("Jump");
+            Player.Inst.animator.SetTrigger("Jump");
 
             rb.velocity = Vector2.zero;
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);

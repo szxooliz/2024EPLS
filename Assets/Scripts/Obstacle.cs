@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
+    public Animator animator;
+
+    private void Awake() 
+    {
+        animator = GetComponent<Animator>();    
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // 해당 장애물이 플레이어와 충돌 시
@@ -11,7 +17,7 @@ public class Obstacle : MonoBehaviour
         {
             if (gameObject.CompareTag("Pipe"))
             {
-                HandlePipeCollision(collision.gameObject);
+                HandlePipeCollision();
             }
             else if (gameObject.CompareTag("Clover"))
             {
@@ -24,13 +30,20 @@ public class Obstacle : MonoBehaviour
     /// 스크립트가 부착된 장애물이 파이프, 덩굴인 경우
     /// </summary>
     /// <param name="player"></param>
-    private void HandlePipeCollision(GameObject player)
+    private void HandlePipeCollision()
     {
-        HealthManager.health--;
-        HealthManager.Inst.UpdateHeartsUI();
+        Player.health--;
+        
+        if (animator != null)
+        {
+            // 피격 애니메이션 발동
+            animator.SetTrigger("Active");
+        }
+
+        HealthUI.Inst.UpdateHeartsUI();
         //AudioManager.Instance.PlaySFX("Cat_Attack");
         //AudioManager.Instance.PlaySFX("Item_Kill");
-        Debug.Log("Obstacle - HandlePipeCollision ___ " + HealthManager.health);
+        Debug.Log("Obstacle - HandlePipeCollision ___ " + Player.health);
         GameManager.Inst.CheckGameOver();
     }
 
@@ -39,7 +52,14 @@ public class Obstacle : MonoBehaviour
     /// </summary>
     private void HandleCloverCollision()
     {
-        Destroy(gameObject);
+        // Destroy(gameObject); << 클로버 사라지지 않으므로 주석처리함
+
+        if (animator != null)
+        {
+            // 피격 애니메이션 발동
+            animator.SetTrigger("Active");
+        }
+
         StartCoroutine(KnockBack.instance.KnockBackCoroutine());
         Debug.Log("Clover");
     }

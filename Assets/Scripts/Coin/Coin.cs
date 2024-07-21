@@ -7,6 +7,7 @@ using UnityEngine;
 /// </summary>
 public class Coin : MonoBehaviour
 {
+    [SerializeField] private int amount;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // 코인이 플레이어와 충돌 시 획득
@@ -15,7 +16,7 @@ public class Coin : MonoBehaviour
             Debug.Log("코인 +1");
             
             CoinManager.Inst.playCoin++;
-            CoinManager.Inst.AddCoin(1);
+            CoinManager.Inst.AddCoin(amount);
             // AudioManager.Instance.PlaySFX("Item_Heal");
 
             Destroy(gameObject);

@@ -10,7 +10,6 @@ public class PopupManager : MonoBehaviour
     public static PopupManager Inst; // Singleton
     public Button[] btns_Locked;
     public Button[] btns_Unlocked;
-    //public SkinInShop[] skinInShops;
 
     public GameObject popUp_Buy; // 구매 재질문 팝업
     public GameObject popUp_Caution; // 코인 부족 시 경고 팝업
@@ -23,8 +22,6 @@ public class PopupManager : MonoBehaviour
     public Button btn_WearYes;
     public Button btn_WearNo;
     [SerializeField] private int buy_SelectedNumber;
-
-
     public int wear_SelectedNumber;
     [SerializeField] private float delayTime = 0.3f; // 팝업 지연 시간
     private GameObject popUp_Active; // 현재 활성화 해둔 팝업
@@ -76,7 +73,7 @@ public class PopupManager : MonoBehaviour
     public void ClosePopup()
     {
         // 미리보기 원상 복귀
-        SkinManager.Inst.img_Preview.sprite = SkinManager.lastUsedSkin.skinInfo._skinSprite;
+        SkinManager.Inst.img_Preview.sprite = Skin.lastUsedSkin.skinInfo._skinSprite;
 
         if (popUp_Active != null)
         {
@@ -185,7 +182,7 @@ public class PopupManager : MonoBehaviour
     public void OnClickWearNo(int selectedNumber)
     {
         // 미리보기 원상 복귀
-        SkinManager.Inst.img_Preview.sprite = SkinManager.lastUsedSkin.skinInfo._skinSprite;
+        SkinManager.Inst.img_Preview.sprite = Skin.lastUsedSkin.skinInfo._skinSprite;
         SkinManager.Inst.skinInShops[selectedNumber].isSkinWorn = false;
         Debug.Log("isSkinWorn - OnClickWearNo : " + SkinManager.Inst.skinInShops[selectedNumber].skinInfo._skinName + " = " + SkinManager.Inst.skinInShops[selectedNumber].isSkinWorn);
 
@@ -199,7 +196,7 @@ public class PopupManager : MonoBehaviour
     {
         foreach (SkinInShop skinInShop in SkinManager.Inst.skinInShops)
         {
-            bool isNotWorn = skinInShop != SkinManager.Inst.skinInShops[wear_SelectedNumber] && skinInShop.skinInfo != SkinManager.lastUsedSkin.skinInfo;
+            bool isNotWorn = skinInShop != SkinManager.Inst.skinInShops[wear_SelectedNumber] && skinInShop.skinInfo != Skin.lastUsedSkin.skinInfo;
 
             if (skinInShop.IsSkinUnlocked() && isNotWorn)
             {

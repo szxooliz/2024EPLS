@@ -1114,6 +1114,7 @@ GameObject:
   - component: {fileID: 758682356}
   - component: {fileID: 758682355}
   - component: {fileID: 758682358}
+  - component: {fileID: 758682363}
   - component: {fileID: 758682360}
   - component: {fileID: 758682361}
   - component: {fileID: 758682362}
@@ -1257,7 +1258,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   gravityIncreaseRate: 0.2
-  animator: {fileID: 0}
 --- !u!70 &758682361
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1315,6 +1315,19 @@ MonoBehaviour:
   - {fileID: 9100000, guid: 29c798afde03ae6429a36070d4982adf, type: 2}
   animator: {fileID: 0}
   controllerID: 0
+--- !u!114 &758682363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 758682354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fcbe7590e0ec284ab536121234a3482, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
 --- !u!1 &780575655
 GameObject:
   m_ObjectHideFlags: 0

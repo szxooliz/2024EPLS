@@ -51,13 +51,15 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// 목숨 0이면 게임 오버
     /// </summary>
-    /// <param name="player"></param>
     public void CheckGameOver()
     {
-        Debug.Log("GameManager CheckGameOver ___ 남은 목숨 : " + HealthManager.health);
+        Debug.Log("GameManager CheckGameOver ___ 남은 목숨 : " + Player.health);
         // 체력 0 이하 되어 게임 오버 되었을 때
-        if (HealthManager.health <= 0)
+        if (Player.health <= 0)
         {
+            // Die 애니메이션 발동
+            Player.Inst.animator.SetTrigger("Dead");
+
             // PlayerManager.isGameOver = true;
             // player.SetActive(false);
             ScoreManager.Inst.DisplayPopupGameOver();

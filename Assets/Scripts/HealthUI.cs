@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthManager : MonoBehaviour
+public class HealthUI : MonoBehaviour
 {
-    public static HealthManager Inst;
-    public static int health = 3;
+    public static HealthUI Inst;
+    // public static int health = 3; << Player class로 옮김
 
     public Image[] hearts;
     public Sprite fullHeart;
@@ -15,11 +15,11 @@ public class HealthManager : MonoBehaviour
     private void Awake()
     {
         Inst = this;
-        health = 3;
+        Player.health = 3;
     }
     private void Start()
     {
-        health = 3;
+        Player.health = 3;
 
         for (int i = 0; i < hearts.Length; i++)
         {
@@ -32,7 +32,7 @@ public class HealthManager : MonoBehaviour
     /// </summary>
     public void UpdateHeartsUI()
     {
-        Debug.Log("HealthManager UpdateHeartsUI ___ 남은 목숨 : " + health);
+        Debug.Log("HealthManager UpdateHeartsUI ___ 남은 목숨 : " + Player.health);
 
         Debug.Log("----------- HealthManager UpdateHeartsUI foreach 시작 -----------");
         foreach (Image img in hearts)
@@ -43,7 +43,7 @@ public class HealthManager : MonoBehaviour
         Debug.Log("------------------------------------------------------------------");
         
         Debug.Log("------------- HealthManager UpdateHeartsUI for 시작 -------------");
-        for (int i = 0; i < health; i++)
+        for (int i = 0; i < Player.health; i++)
         {
             hearts[i].sprite = fullHeart;
             Debug.Log("하트 채우기 i : " + i );

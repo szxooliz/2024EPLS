@@ -23,7 +23,7 @@ public class SkinInShop : MonoBehaviour
 
     private void Start() 
     {
-        isSkinWorn = SkinManager.lastUsedSkin.skinInfo._skinID == skinInfo._skinID;
+        isSkinWorn = Skin.lastUsedSkin.skinInfo._skinID == skinInfo._skinID;
         isSkinUnlocked = PlayerPrefs.GetInt(skinInfo._skinID.ToString()) == 1;
         InitializeBtn();
     }
