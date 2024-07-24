@@ -85,7 +85,7 @@ public class Items : MonoBehaviour
             HealthUI.Inst.UpdateHeartsUI();
             //AudioManager.Instance.PlaySFX("Cat_Attack");
             //AudioManager.Instance.PlaySFX("Item_Kill");
-            StartCoroutine(Player.FlickerCharacter());
+            //StartCoroutine(Player.FlickerCharacter());
             Debug.Log("Items - HandleRottenItemCollision ___ health : " + Player.health);
             GameManager.Inst.CheckGameOver();
             break;
