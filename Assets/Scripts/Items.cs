@@ -18,6 +18,7 @@ public class Items : MonoBehaviour
     private void Start()
     {
         //AudioManager.Instance.PlayMusic("Cat_Walk");
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -77,13 +78,18 @@ public class Items : MonoBehaviour
     /// <param name="sub"> 감소량 </param>
     private void HandleRottenItemCollision(int sub)
     {
-        Debug.Log("목숨 - " + sub);
-        Player.health -= sub;
-        HealthUI.Inst.UpdateHeartsUI();
-        //AudioManager.Instance.PlaySFX("Cat_Attack");
-        //AudioManager.Instance.PlaySFX("Item_Kill");
-        Debug.Log("Items - HandleRottenItemCollision ___ health : " + Player.health);
-        GameManager.Inst.CheckGameOver();
+        while (true)
+        {
+            Debug.Log("목숨 - " + sub);
+            Player.health -= sub;
+            HealthUI.Inst.UpdateHeartsUI();
+            //AudioManager.Instance.PlaySFX("Cat_Attack");
+            //AudioManager.Instance.PlaySFX("Item_Kill");
+            StartCoroutine(Player.FlickerCharacter());
+            Debug.Log("Items - HandleRottenItemCollision ___ health : " + Player.health);
+            GameManager.Inst.CheckGameOver();
+            break;
+        }
     }
 
     /// <summary>
