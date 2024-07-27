@@ -21,6 +21,7 @@ public class ScoreManager : MonoBehaviour
     public GameObject panel;
     public TextMeshProUGUI text_Score;
     public TextMeshProUGUI text_Coin;
+    private GameObject GameOverList;
 
     /* 최고 기록 데이터 관리 용도 << 사용 안 할 예정
     // public static int hiScoreCount = 0;
@@ -46,17 +47,7 @@ public class ScoreManager : MonoBehaviour
         UpdateScoreText();
 
         LoadHighScores();
-        /*
-        if (PlayerPrefs.HasKey("HighScore"))
-        {
-            hiScoreCount = PlayerPrefs.GetInt("HiScore");
-            secondScoreCount = PlayerPrefs.GetInt("SecondScore");
-            thirdScoreCount = PlayerPrefs.GetInt("ThirdScore");
-
-            bestScoreTime = PlayerPrefs.GetString("BestScoreTime");
-            secondScoreTime = PlayerPrefs.GetString("SecondScoreTime");
-            thirdScoreTime = PlayerPrefs.GetString("ThirdScoreTime");
-        } */
+        GameOverList = popup_GameOver.transform.Find("PopUpList").gameObject;
     }
 
     void Update()
@@ -91,8 +82,35 @@ public class ScoreManager : MonoBehaviour
 
         text_Score.text = "점수 : " + scoreCount;
         text_Coin.text = "코인 : " + CoinManager.Inst.playCoin;
+
+        //PartOfGameOver();
     }
 
+    /// <summary>
+    /// 게임 종료 시 0.5초 뒤 팝업창의 일부분 등장
+    /// </summary>
+    /* public void PartOfGameOver()
+    {  
+        // 먼저 TXT_RecordList를 비활성화
+        GameOverList.SetActive(false);
+
+        // 1초 후에 ActivateRecordList 메서드 호출
+        Invoke("ActivateRecordList", 0.5f);
+    }
+
+    private void ActivateRecordList()
+    {
+        // 특정 게임 오브젝트를 활성화
+        SetActiveRecursively(GameOverList, true);
+    }
+    private void SetActiveRecursively(GameObject obj, bool state)
+    {
+        obj.SetActive(state);
+        foreach (Transform child in obj.transform)
+        {
+            SetActiveRecursively(child.gameObject, state);
+        }
+    } */
     /// <summary>
     /// 새로운 점수를 추가하고 정렬
     /// </summary>

@@ -62,15 +62,19 @@ public class GameManager : MonoBehaviour
 
             // PlayerManager.isGameOver = true;
             // player.SetActive(false);
-            ScoreManager.Inst.DisplayPopupGameOver();
             ScoreManager.Inst.AddNewScore(ScoreManager.scoreCount, DateTime.Now.ToString());
             ScoreManager.Inst.SaveHighScores();
-
+            Invoke("InvokeDisplayPopupGameOver", 1.0f);
             // Time.timeScale = 0f;
         }
         else
         {
             return;
         }
+    }
+    private void InvokeDisplayPopupGameOver()
+    {
+        ScoreManager.Inst.DisplayPopupGameOver();
+        ScoreManager.Inst.PartOfGameOver();
     }
 }
