@@ -65,16 +65,19 @@ public class GameManager : MonoBehaviour
             ScoreManager.Inst.AddNewScore(ScoreManager.scoreCount, DateTime.Now.ToString());
             ScoreManager.Inst.SaveHighScores();
             Invoke("InvokeDisplayPopupGameOver", 1.0f);
-            // Time.timeScale = 0f;
+            Invoke("InvokeGameStop", 1.0f);
         }
         else
         {
             return;
         }
     }
+    private void InvokeGameStop()
+    {
+        Time.timeScale = 0f;
+    }
     private void InvokeDisplayPopupGameOver()
     {
         ScoreManager.Inst.DisplayPopupGameOver();
-        ScoreManager.Inst.PartOfGameOver();
     }
 }

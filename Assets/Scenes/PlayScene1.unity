@@ -1118,7 +1118,6 @@ GameObject:
   - component: {fileID: 758682360}
   - component: {fileID: 758682361}
   - component: {fileID: 758682362}
-  - component: {fileID: 758682364}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -1329,18 +1328,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
---- !u!114 &758682364
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 758682354}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c27eb6337544d324b9f6422d6ace7c28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &780575655
 GameObject:
   m_ObjectHideFlags: 0
@@ -3855,13 +3842,14 @@ GameObject:
   - component: {fileID: 1812296237}
   - component: {fileID: 1812296236}
   - component: {fileID: 1812296239}
+  - component: {fileID: 1812296240}
   m_Layer: 5
   m_Name: POPUP_GameOver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1812296236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3930,7 +3918,7 @@ Animator:
   m_GameObject: {fileID: 1812296234}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b1d8884289c49c8418386055af320269, type: 2}
+  m_Controller: {fileID: 9100000, guid: b006999f54a3a504990a46b8d7acdd81, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -3941,6 +3929,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1812296240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1812296234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48ea84b521f9e3746bfa14ffab5d2cce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
 --- !u!1 &1891030096
 GameObject:
   m_ObjectHideFlags: 0

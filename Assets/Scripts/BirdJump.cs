@@ -30,7 +30,6 @@ public class BirdJump : MonoBehaviour
         currentGravity = initialGravity;
         rb.gravityScale = currentGravity;
         acceleration = BackGroundLoop.acceleration;
-        // Player.Inst.animator = GetComponent<Animator>();
     }
 
     // Update()에서 사용자 입력 처리
@@ -83,7 +82,7 @@ public class BirdJump : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
             jumpCount++;
             isGrounded = false;
-            //AudioManager.Instance.PlaySFX("Cat_Jump");
+            AudioManager.Instance.PlaySFX("Cat_Jump");
         }
     }
 }

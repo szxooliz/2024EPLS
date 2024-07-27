@@ -23,16 +23,6 @@ public class ScoreManager : MonoBehaviour
     public TextMeshProUGUI text_Coin;
     private GameObject GameOverList;
 
-    /* 최고 기록 데이터 관리 용도 << 사용 안 할 예정
-    // public static int hiScoreCount = 0;
-    // public static int secondScoreCount = 0;
-    // public static int thirdScoreCount = 0;
-
-    // public static string bestScoreTime = "00";
-    // public static string secondScoreTime = "00";
-    // public static string thirdScoreTime = "00";
-    */
-
     // 기록 저장, 정렬용 리스트 
     private List<Record> highScores = new List<Record>(); 
 
@@ -47,7 +37,7 @@ public class ScoreManager : MonoBehaviour
         UpdateScoreText();
 
         LoadHighScores();
-        GameOverList = popup_GameOver.transform.Find("PopUpList").gameObject;
+        //GameOverList = popup_GameOver.transform.Find("PopUpList").gameObject;
     }
 
     void Update()
@@ -82,6 +72,7 @@ public class ScoreManager : MonoBehaviour
 
         text_Score.text = "점수 : " + scoreCount;
         text_Coin.text = "코인 : " + CoinManager.Inst.playCoin;
+        GameOver.Inst.animator.SetTrigger("isGameOver");
 
         //PartOfGameOver();
     }

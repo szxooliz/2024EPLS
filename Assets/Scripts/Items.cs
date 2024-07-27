@@ -17,14 +17,11 @@ public class Items : MonoBehaviour
 
     private void Start()
     {
-        //AudioManager.Instance.PlayMusic("Cat_Walk");
         
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //StartCoroutine(PauseMusicCoroutine());
-
         // 해당 아이템이 플레이어와 충돌 시
         if (collision.gameObject.CompareTag("Player"))
         {
@@ -67,7 +64,7 @@ public class Items : MonoBehaviour
         {
             Player.health++;
             HealthUI.Inst.UpdateHeartsUI();
-            //AudioManager.Instance.PlaySFX("Item_Heal");
+            AudioManager.Instance.PlaySFX("Item_Heal");
             Debug.Log("Items - HandleTunaCollision ___ " + Player.health);
         }
     }
@@ -83,9 +80,8 @@ public class Items : MonoBehaviour
             Debug.Log("목숨 - " + sub);
             Player.health -= sub;
             HealthUI.Inst.UpdateHeartsUI();
-            //AudioManager.Instance.PlaySFX("Cat_Attack");
-            //AudioManager.Instance.PlaySFX("Item_Kill");
-            //StartCoroutine(Player.FlickerCharacter());
+            AudioManager.Instance.PlaySFX("Cat_Attack");
+            AudioManager.Instance.PlaySFX("Item_Kill");
             Debug.Log("Items - HandleRottenItemCollision ___ health : " + Player.health);
             GameManager.Inst.CheckGameOver();
             break;
@@ -100,13 +96,6 @@ public class Items : MonoBehaviour
     {
         Debug.Log("점수 + " + score);
         ScoreManager.scoreCount += score;
-        //AudioManager.Instance.PlaySFX("Item_Heal");
+        AudioManager.Instance.PlaySFX("Item_Heal");
     }
-    
-    //private IEnumerator PauseMusicCoroutine()
-    //{
-    //    AudioManager.Instance.PauseMusic("Cat_Walk");
-    //    yield return new WaitForSeconds(0.5f); // 예시로 0.5초 동안 일시 정지 상태 유지
-    //    AudioManager.Instance.ResumeMusic("Cat_Walk"); // 일시 정지 해제
-    //}
 }
