@@ -23,6 +23,7 @@ public class SkinInShop : MonoBehaviour
 
     private void Start() 
     {
+        // 이건 뭐지
         isSkinWorn = Skin.lastUsedSkin.skinInfo._skinID == skinInfo._skinID;
         isSkinUnlocked = PlayerPrefs.GetInt(skinInfo._skinID.ToString()) == 1;
         InitializeBtn();
@@ -47,10 +48,9 @@ public class SkinInShop : MonoBehaviour
         if (PlayerPrefs.GetInt(skinInfo._skinID.ToString()) == 1)
         {
             isSkinUnlocked = true;
-            // Debug.Log("SKININSHOP____" + skinInfo._skinName + " 보유 중 텍스트!");
             Destroy(btn_Lock);
             ChangeStateText(isSkinWorn);
-            Debug.Log("IsSkinUnlocked --- 해금 상태 변경 -> " + skinInfo._skinName + " " + skinInfo._skinID + " : " + PlayerPrefs.GetInt(skinInfo._skinID.ToString()));
+            // Debug.Log("IsSkinUnlocked --- 해금 상태 변경 -> " + skinInfo._skinName + " " + skinInfo._skinID + " : " + PlayerPrefs.GetInt(skinInfo._skinID.ToString()));
         }
         return isSkinUnlocked;
     }
@@ -61,7 +61,6 @@ public class SkinInShop : MonoBehaviour
     public void OnClickLocked()
     {
         SkinManager.Inst.CheckPreview(skinInfo);
-        Debug.Log("SkinInshop --- 선택한 스킨 : " + skinInfo._skinName.ToString());
 
         // 2nd click -> 구매 팝업 활성화
         if (SkinManager.Inst.isNowPreviewing)
@@ -84,9 +83,6 @@ public class SkinInShop : MonoBehaviour
     /// </summary>
     public void OnClickUnlocked()
     {
-        Debug.Log("isSkinWorn /  지금 이 스킨 " + skinInfo._skinName + " 착용? : " + isSkinWorn);
-        Debug.Log("SkinInShop --- OnClickUnlocked if문 실행 : " + (IsSkinUnlocked() && !isSkinWorn));
-
         if (IsSkinUnlocked() && !isSkinWorn)
         {
             // 미리보기 스킨 변경
@@ -111,6 +107,7 @@ public class SkinInShop : MonoBehaviour
     {
         if(_isSkinWorn)
         {
+            Debug.Log(skinInfo._skinName + " 착용 중 텍스트");
             txt_State.text = "착용 중";
         }
         else

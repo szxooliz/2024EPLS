@@ -157,6 +157,9 @@ public class PopupManager : MonoBehaviour
     /// </summary>
     public void OnClickWearYes(int selectedNumber)
     {
+        SkinManager.Inst.isNowDefault = false;
+        TakeOffSkin();
+        
         if(SkinManager.Inst.skinInShops[selectedNumber].IsSkinUnlocked())
         {
             // 선택된 스킨 적용
@@ -173,8 +176,8 @@ public class PopupManager : MonoBehaviour
             return;
         }
 
-        SkinManager.Inst.isNowDefault = false;
-        TakeOffSkin();
+        // SkinManager.Inst.isNowDefault = false;
+        // TakeOffSkin();
     }
     /// <summary>
     /// 착용하시겠습니까 팝업에서 no 버튼 클릭 시
@@ -196,10 +199,12 @@ public class PopupManager : MonoBehaviour
     {
         foreach (SkinInShop skinInShop in SkinManager.Inst.skinInShops)
         {
-            bool isNotWorn = skinInShop != SkinManager.Inst.skinInShops[wear_SelectedNumber] && skinInShop.skinInfo != Skin.lastUsedSkin.skinInfo;
+            bool isNotWorn = skinInShop != SkinManager.Inst.skinInShops[wear_SelectedNumber];
+            // && skinInShop.skinInfo != Skin.lastUsedSkin.skinInfo;
 
             if (skinInShop.IsSkinUnlocked() && isNotWorn)
             {
+                Debug.Log("착용 해제 시킬 스킨 : " + skinInShop.skinInfo._skinName);
                 skinInShop.isSkinWorn = false;
                 skinInShop.ChangeStateText(skinInShop.isSkinWorn);
             }

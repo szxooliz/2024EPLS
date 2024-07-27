@@ -12,14 +12,14 @@ public class SkinManager : MonoBehaviour
     public SkinInShop[] skinInShops;
 
     public Image img_Preview; // 미리보기 코스튬 파츠
-    public TextMeshProUGUI txt_previewName; // 미리보기 코스튬 이름 안내 메시지
+    public TextMeshProUGUI txt_previewName; // 미리보기 코스튬 이름 텍스트
     public GameObject txt_preview; // 미리보기 안내 메시지
     
     public bool isNowDefault; // 코스튬 초기화 상태 여부 
     public bool isNowPreviewing = false; // 미리보기 여부
 
     [SerializeField] private SO_SkinInfo[] allSkins;
-    private const string skinPref = "skinPref";
+    private const string lastSkin = "lastSkin";
     private int lastUsedID;
 
     private void Awake() 
@@ -38,26 +38,28 @@ public class SkinManager : MonoBehaviour
         // PlayerPrefs.DeleteAll();
         // #endif
         
-        // lastUsedID = PlayerPrefs.GetInt(skinPref, (int)SO_SkinInfo.SkinIDS.defaultSkin);
-        // Skin.lastUsedSkin = Array.Find(skinInShops, dummyFind => (int)dummyFind.skinInfo._skinID == lastUsedID);
-        foreach (SkinInShop skinInShop in skinInShops)
-        {
-            if (skinInShop.isSkinWorn)
-            {
-                Skin.lastUsedSkin = skinInShop;
-            }
-        }
+        lastUsedID = PlayerPrefs.GetInt(lastSkin, (int)SO_SkinInfo.SkinIDS.defaultSkin);
+        Skin.lastUsedSkin = Array.Find(skinInShops, dummyFind => (int)dummyFind.skinInfo._skinID == lastUsedID);
+        
+        /*
+        // foreach (SkinInShop skinInShop in skinInShops)
+        // {
+        //     if (skinInShop.isSkinWorn)
+        //     {
+        //         Skin.lastUsedSkin = skinInShop;
+        //     }
+        // }
 
-        if (Skin.lastUsedSkin == skinInShops[(int)SO_SkinInfo.SkinIDS.defaultSkin])
-        {
-            isNowDefault = true;
-        }
+        // if (Skin.lastUsedSkin == skinInShops[(int)SO_SkinInfo.SkinIDS.defaultSkin])
+        // {
+        //     isNowDefault = true;
+        // }
 
-        if (Skin.lastUsedSkin == null)
-        {
-            Skin.lastUsedSkin = skinInShops[(int)SO_SkinInfo.SkinIDS.defaultSkin];
-            isNowDefault = true;
-        }
+        // if (Skin.lastUsedSkin == null)
+        // {
+        //     Skin.lastUsedSkin = skinInShops[(int)SO_SkinInfo.SkinIDS.defaultSkin];
+        //     isNowDefault = true;
+        // } */
     }
 
     private void Start() 
@@ -91,10 +93,11 @@ public class SkinManager : MonoBehaviour
         // 미리보기 이미지 적용
         Skin.lastUsedSkin.skinInfo = _skinInfo;
         img_Preview.sprite = Skin.lastUsedSkin.skinInfo._skinSprite;
-        PlayerPrefs.SetString(skinPref, _skinInfo._skinID.ToString());
 
-        // Skin.lastUsedSkin.skinInfo = _skinInfo;
-        Debug.Log("lastUsedSkin 그래서 뭔데.. EquipSkin 했잖아: " + Skin.lastUsedSkin.skinInfo._skinName);
+        // PlayerPrefs에 착용한 스킨 아이디 저장
+        PlayerPrefs.SetInt(lastSkin, (int)_skinInfo._skinID);
+
+        //Debug.Log("lastUsedSkin 그래서 뭔데.. EquipSkin 했잖아: " + Skin.lastUsedSkin.skinInfo._skinName);
 
         CheckInit();
     }
