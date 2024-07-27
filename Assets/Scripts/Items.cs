@@ -64,8 +64,8 @@ public class Items : MonoBehaviour
         {
             Player.health++;
             HealthUI.Inst.UpdateHeartsUI();
-            AudioManager.Instance.PlaySFX("Item_Heal");
-            Debug.Log("Items - HandleTunaCollision ___ " + Player.health);
+            // AudioManager.Instance.PlaySFX("Item_Heal");
+            // Debug.Log("Items - HandleTunaCollision ___ " + Player.health);
         }
     }
 
@@ -80,9 +80,9 @@ public class Items : MonoBehaviour
             Debug.Log("목숨 - " + sub);
             Player.health -= sub;
             HealthUI.Inst.UpdateHeartsUI();
-            AudioManager.Instance.PlaySFX("Cat_Attack");
-            AudioManager.Instance.PlaySFX("Item_Kill");
-            Debug.Log("Items - HandleRottenItemCollision ___ health : " + Player.health);
+            // AudioManager.Instance.PlaySFX("Cat_Attack");
+            // AudioManager.Instance.PlaySFX("Item_Kill");
+            // Debug.Log("Items - HandleRottenItemCollision ___ health : " + Player.health);
             GameManager.Inst.CheckGameOver();
             break;
         }
@@ -96,6 +96,6 @@ public class Items : MonoBehaviour
     {
         Debug.Log("점수 + " + score);
         ScoreManager.scoreCount += score;
-        AudioManager.Instance.PlaySFX("Item_Heal");
+        // AudioManager.Instance.PlaySFX("Item_Heal");
     }
 }

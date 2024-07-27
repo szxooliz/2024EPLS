@@ -49,7 +49,7 @@ public class ScoreManager : MonoBehaviour
         {
             scoreCount++;
             scoreTimer -= scoreInterval;
-            UpdateScoreText(); // << 이 조건문 안에 넣어버리면 previousScoreCount 필요 없을 듯
+            UpdateScoreText();
         }
     }
 
@@ -72,7 +72,9 @@ public class ScoreManager : MonoBehaviour
 
         text_Score.text = "점수 : " + scoreCount;
         text_Coin.text = "코인 : " + CoinManager.Inst.playCoin;
-        GameOver.Inst.animator.SetTrigger("isGameOver");
+
+        // 게임오버팝업 애니메이터 만들고 주석 해제 하세요
+        // GameOver.Inst.animator.SetTrigger("isGameOver");
 
         //PartOfGameOver();
     }

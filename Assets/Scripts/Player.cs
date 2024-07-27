@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     public static Player Inst;
     public static int health = 3; // 플레이어 체력
     public Animator animator; // 플레이어 애니메이터
-    public static SpriteRenderer renderer;
+    public static SpriteRenderer playerRenderer;
     void Awake()
     {
         if (Inst == null)
@@ -24,14 +24,14 @@ public class Player : MonoBehaviour
     private void Start()
     {
         animator = GetComponent<Animator>();
-        renderer = GetComponent<SpriteRenderer>();
+        playerRenderer = GetComponent<SpriteRenderer>();
     }
 
     public IEnumerator FlickerCharacter()
     {
-        renderer.color = Color.red;
+        playerRenderer.color = new Color(1, 0, 0, 0.7f);
         yield return new WaitForSeconds(0.1f);
-        renderer.color = Color.white;
+        playerRenderer.color = Color.white;
     }
 
     /// <summary>

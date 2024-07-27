@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5551557440026737535}
   - component: {fileID: 8184196754664183415}
   m_Layer: 0
-  m_Name: Pipe
+  m_Name: Sticky
   m_TagString: Pipe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 9.4, y: -4.54, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -113,6 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09f12796949e29946ab8fc69bc91e67b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
 --- !u!61 &5551557440026737535
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -53,7 +53,6 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void CheckGameOver()
     {
-        Debug.Log("GameManager CheckGameOver ___ 남은 목숨 : " + Player.health);
         // 체력 0 이하 되어 게임 오버 되었을 때
         if (Player.health <= 0)
         {

@@ -17,7 +17,7 @@ public class Coin : MonoBehaviour
             
             CoinManager.Inst.playCoin++;
             CoinManager.Inst.AddCoin(amount);
-            AudioManager.Instance.PlaySFX("Item_Heal");
+            // AudioManager.Instance.PlaySFX("Item_Heal");
 
             Destroy(gameObject);
         }
