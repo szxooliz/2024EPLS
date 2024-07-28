@@ -1,25 +1,47 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 public class SpawnPoint : MonoBehaviour
 {
     public GameObject[] prefabToSpawn;
     public float repeatInterval;
-
     private GameObject newPattern;
+    private float speed;
+    [SerializeField] private float acceleration = 10f;
+    private float timer;
+    private float spawnTimer;
+
     public void Start()
     {
-        if(repeatInterval > 0)
-        {
-            InvokeRepeating("SpawnObject", 0.0f, repeatInterval);
-        }
+        speed = BackGroundLoop.speed;
+        acceleration = BackGroundLoop.acceleration;
+        repeatInterval = 48 / speed;
     }
+
     private void Update()
     {
+        speed = BackGroundLoop.speed;
+        acceleration = BackGroundLoop.acceleration;
         DestroyPattern();
+
+        timer += Time.deltaTime;
+        spawnTimer += Time.deltaTime;
+
+        if (spawnTimer >= repeatInterval)
+        {
+            SpawnObject();
+            spawnTimer = 0f;  // Reset the spawn timer
+        }
+
+        if (timer > acceleration)
+        {
+            speed += 2f;
+            repeatInterval = 48 / speed;
+            timer -= acceleration;
+        }
     }
+
     public GameObject SpawnObject()
     {
         if (prefabToSpawn != null && prefabToSpawn.Length > 0)
