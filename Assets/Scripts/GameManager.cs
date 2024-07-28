@@ -7,10 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Inst;
-    // public static ScoreManager _score;
-    // public static HealthManager _health;
-    // public static SkinManager _skin;
-    // public static PopupManager _popup;
+
     void Awake()
     {
         // Singleton
@@ -59,12 +56,15 @@ public class GameManager : MonoBehaviour
             // Die 애니메이션 발동
             Player.Inst.animator.SetTrigger("Dead");
 
-            // PlayerManager.isGameOver = true;
-            // player.SetActive(false);
+            // 새로운 점수 저장하고 최고 기록 정렬
             ScoreManager.Inst.AddNewScore(ScoreManager.scoreCount, DateTime.Now.ToString());
             ScoreManager.Inst.SaveHighScores();
-            Invoke("InvokeDisplayPopupGameOver", 1.0f);
-            Invoke("InvokeGameStop", 1.0f);
+
+            // Die 애니메이션 안나와서 invoke로 노선 틀음
+            // ScoreManager.Inst.DisplayPopupGameOver();
+
+            Invoke("InvokeDisplayPopupGameOver", 0.5f);
+            // Invoke("InvokeGameStop", 1.0f);
         }
         else
         {
