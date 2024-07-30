@@ -60,7 +60,7 @@ public class Obstacle : MonoBehaviour
             animator.SetTrigger("Active");
         }
 
-        StartCoroutine(KnockBack.instance.KnockBackCoroutine());
+        KnockBack.instance.TriggerKnockBack();
         Debug.Log("Clover");
     }
 }

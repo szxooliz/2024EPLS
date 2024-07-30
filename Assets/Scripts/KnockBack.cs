@@ -17,7 +17,10 @@ public class KnockBack : MonoBehaviour
         birdJump = GetComponent<BirdJump>();
         mainCamera = Camera.main;
         cameraInitialPosition = mainCamera.transform.position;
-        
+    }
+
+    private void Awake()
+    {
         instance = this;
     }
 
@@ -25,6 +28,7 @@ public class KnockBack : MonoBehaviour
     {
         if (!isKnockedBack)
         {
+            Debug.Log("시작");
             StartCoroutine(KnockBackCoroutine());
         }
     }
@@ -39,7 +43,7 @@ public class KnockBack : MonoBehaviour
         Vector3 originalPosition = transform.position;
         Vector3 targetPosition = transform.position - new Vector3(BackGroundLoop.instance.backgroundWidth / 3, 0, 0);
 
-        // 새와 카메라를 왼쪽으로 이동
+        // 캐릭터와 카메라를 왼쪽으로 이동
         while (elapsedTime < knockBackDuration)
         {
             transform.position = Vector3.Lerp(originalPosition, targetPosition, elapsedTime / knockBackDuration);
