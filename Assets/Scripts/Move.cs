@@ -24,6 +24,7 @@ public class Move : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Debug.Log(isPaused);
         if (!isPaused)
         {
             speed = BackGroundLoop.speed;
@@ -42,10 +43,12 @@ public class Move : MonoBehaviour
     public void PauseMovement()
     {
         isPaused = true;
+        Debug.Log("Move Paused");
     }
 
     public void ResumeMovement()
     {
         isPaused = false;
+        Debug.Log("Move Resumed");
     }
 }

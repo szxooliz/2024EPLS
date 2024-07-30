@@ -3,18 +3,16 @@ using UnityEngine;
 
 public class KnockBack : MonoBehaviour
 {
-    private BirdJump birdJump;
     private Camera mainCamera;
     private Vector3 cameraInitialPosition;
 
     private bool isKnockedBack = false;
-    private float knockBackDuration = 2f;   // 밀려나는 시간
+    private float knockBackDuration = 1.5f;   // 밀려나는 시간
 
     public static KnockBack instance;
 
     void Start()
     {
-        birdJump = GetComponent<BirdJump>();
         mainCamera = Camera.main;
         cameraInitialPosition = mainCamera.transform.position;
     }
@@ -28,13 +26,13 @@ public class KnockBack : MonoBehaviour
     {
         if (!isKnockedBack)
         {
-            Debug.Log("시작");
             StartCoroutine(KnockBackCoroutine());
         }
     }
 
-    public IEnumerator KnockBackCoroutine()
+    public IEnumerator KnockBackCoroutine(GameObject clover = null)
     {
+        if (clover != null) { clover.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0); }
         isKnockedBack = true;
         BackGroundLoop.instance.PauseMovement();
         Move.instance.PauseMovement();
@@ -52,18 +50,22 @@ public class KnockBack : MonoBehaviour
             yield return null;
         }
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
 
         // 새와 카메라를 처음 속도대로 왼쪽으로 이동
-        while (originalPosition.x == targetPosition.x)
+        while (originalPosition.x < targetPosition.x)
         {
             PlayerMove.instance.ResumeMovement();
         }
+
         PlayerMove.instance.PauseMovement();
 
         isKnockedBack = false;
         BackGroundLoop.instance.ResumeMovement();
         Move.instance.ResumeMovement();
+
+        if (clover != null) { // Destroy(clover);
+                              }
         yield return null;
     }
 }

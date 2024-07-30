@@ -6,7 +6,7 @@ public class BackGroundLoop : MonoBehaviour
 {
     public static BackGroundLoop instance;
     public static float speed;
-    private static float startSpeed = 4f;
+    public static float startSpeed;
 
     public float backgroundWidth;
     private Vector3 startPosition;
@@ -23,6 +23,7 @@ public class BackGroundLoop : MonoBehaviour
 
     void Start()
     {
+        startSpeed = 4f;
         speed = startSpeed;
         startPosition = transform.position;
         backgroundWidth = backgrounds[0].GetComponent<SpriteRenderer>().bounds.size.x;
