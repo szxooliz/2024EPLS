@@ -10,6 +10,7 @@ using Unity.VisualScripting;
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager Inst;
+    
     // 플레이 중 점수 표시 용도
     public TextMeshProUGUI text_DisplayScore;
     public static int scoreCount;
@@ -21,7 +22,11 @@ public class ScoreManager : MonoBehaviour
     public GameObject panel;
     public TextMeshProUGUI text_Score;
     public TextMeshProUGUI text_Coin;
-    private GameObject GameOverList;
+
+    // 게임 오버 팝업 나타냄 효과 용도
+    public GameObject[] panelObjects;
+    [SerializeField] private float startDelay = 0.8f;
+    [SerializeField] private float delay = 0.3f;
 
     // 기록 저장, 정렬용 리스트 
     private List<Record> highScores = new List<Record>(); 
@@ -66,17 +71,49 @@ public class ScoreManager : MonoBehaviour
     /// </summary>
     public void DisplayPopupGameOver()
     {
-        Time.timeScale = 0f;
         popup_GameOver.SetActive(true);
         panel.SetActive(true);
 
         text_Score.text = "점수 : " + scoreCount;
         text_Coin.text = "코인 : " + CoinManager.Inst.playCoin;
 
-        // 게임오버팝업 애니메이터 만들고 주석 해제 하세요
-        // GameOver.Inst.animator.SetTrigger("isGameOver");
+        foreach (GameObject panelObject in panelObjects)
+        {
+            panelObject.SetActive(false);
+            Debug.Log(gameObject.ToString() + " 비활성화");
+        }
 
-        //PartOfGameOver();
+        StartCoroutine(StartWithDelay(startDelay));
+
+    }
+
+    /// <summary>
+    /// GameOverSequentialActive() 시작 지연 코루틴
+    /// </summary>
+    /// <param name="startDelay"></param>
+    /// <returns></returns>
+    IEnumerator StartWithDelay(float startDelay)
+    {
+        // 지연 시간만큼 대기
+        yield return new WaitForSecondsRealtime(startDelay);
+        Debug.Log("시작 지연 : " + startDelay + " 만큼 대기");
+
+        StartCoroutine(GameOverSequentialActive());
+    }
+
+    /// <summary>
+    /// 게임 오버 팝업 위 오브젝트 순차적 활성화 코루틴
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator GameOverSequentialActive()
+    {
+        foreach(GameObject panelObject in panelObjects)
+        {
+            panelObject.SetActive(true);
+            yield return new WaitForSecondsRealtime(delay);
+            Debug.Log(gameObject.ToString() + " : " + delay + " 지연 시간만큼 대기");
+
+        }
     }
 
     /// <summary>
@@ -104,6 +141,7 @@ public class ScoreManager : MonoBehaviour
             SetActiveRecursively(child.gameObject, state);
         }
     } */
+
     /// <summary>
     /// 새로운 점수를 추가하고 정렬
     /// </summary>

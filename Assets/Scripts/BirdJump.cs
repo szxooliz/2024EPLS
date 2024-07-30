@@ -22,7 +22,7 @@ public class BirdJump : MonoBehaviour
     private float maxGravity = 20f;
     private float currentGravity;
 
-    // public Animator animator; << Player class로 옮김
+    private bool didInvokedGameOver = false;
 
     void Start()
     {
@@ -31,8 +31,6 @@ public class BirdJump : MonoBehaviour
         rb.gravityScale = currentGravity;
         acceleration = BackGroundLoop.acceleration;
     }
-
-    // Update()에서 사용자 입력 처리
     private void Update() 
     {
         if (Input.GetButtonDown("Jump") && isGrounded)
@@ -40,14 +38,18 @@ public class BirdJump : MonoBehaviour
             Jump();
         }
 
-        if(transform.position.y < -6)
+        if(transform.position.y < -6 && !didInvokedGameOver)
         {
             Debug.Log("BirdJump ___ 목숨 : " + Player.health);
             Player.health = 0;
+
+            GameManager.Inst.CheckGameOver();
+            HealthUI.Inst.UpdateHeartsUI();
+
+            didInvokedGameOver = true;
         }
     }
 
-    // FixedUpdate()에서 물리 계산 처리
     private void FixedUpdate()
     {
         timer += Time.deltaTime;
