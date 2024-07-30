@@ -23,6 +23,7 @@ public class BackGroundLoop : MonoBehaviour
 
     void Start()
     {
+        timer = 0;
         startSpeed = 4f;
         speed = startSpeed;
         startPosition = transform.position;
@@ -47,7 +48,7 @@ public class BackGroundLoop : MonoBehaviour
             timer += Time.deltaTime;
             if (timer > acceleration)
             {
-                speed += 0.5f;
+                speed += 2f;
                 timer -= acceleration;
             }
         }

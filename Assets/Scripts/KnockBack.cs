@@ -14,7 +14,6 @@ public class KnockBack : MonoBehaviour
     void Start()
     {
         mainCamera = Camera.main;
-        cameraInitialPosition = mainCamera.transform.position;
     }
 
     private void Awake()
@@ -38,8 +37,11 @@ public class KnockBack : MonoBehaviour
         Move.instance.PauseMovement();
 
         float elapsedTime = 0f;
-        Vector3 originalPosition = transform.position;
-        Vector3 targetPosition = transform.position - new Vector3(BackGroundLoop.instance.backgroundWidth / 3, 0, 0);
+        Vector3 originalPosition = transform.position; // 원래 캐릭터의 위치
+        Debug.Log(originalPosition);
+        Vector3 targetPosition = transform.position - new Vector3(BackGroundLoop.instance.backgroundWidth / 3, 0, 0);  // 왼쪽으로 밀려난 후 캐릭터의 위치
+        Debug.Log(targetPosition);
+        cameraInitialPosition = mainCamera.transform.position;
 
         // 캐릭터와 카메라를 왼쪽으로 이동
         while (elapsedTime < knockBackDuration)
@@ -53,19 +55,24 @@ public class KnockBack : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         // 새와 카메라를 처음 속도대로 왼쪽으로 이동
-        while (originalPosition.x < targetPosition.x)
+
+        PlayerMove.instance.ResumeMovement();
+        CameraMove.instance.ResumeMovement();
+
+        // 캐릭터가 원래 위치로 돌아올 때까지 이동
+        while (transform.position.x < originalPosition.x)
         {
-            PlayerMove.instance.ResumeMovement();
+            yield return null; // 다음 프레임까지 대기
         }
 
         PlayerMove.instance.PauseMovement();
+        CameraMove.instance.PauseMovement();
 
         isKnockedBack = false;
         BackGroundLoop.instance.ResumeMovement();
         Move.instance.ResumeMovement();
 
-        if (clover != null) { // Destroy(clover);
-                              }
+        // if (clover != null) { Destroy(clover);}
         yield return null;
     }
 }

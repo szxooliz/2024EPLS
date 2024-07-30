@@ -28,15 +28,7 @@ public class Move : MonoBehaviour
         if (!isPaused)
         {
             speed = BackGroundLoop.speed;
-            acceleration = BackGroundLoop.acceleration;
             transform.position += Vector3.left * (speed * Time.deltaTime);
-
-            timer += Time.deltaTime;
-            if (timer > acceleration)
-            {
-                speed += 2f;
-                timer -= acceleration;
-            }
         }
     }
 
