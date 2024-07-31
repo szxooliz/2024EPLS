@@ -42,7 +42,6 @@ public class ScoreManager : MonoBehaviour
         UpdateScoreText();
 
         LoadHighScores();
-        //GameOverList = popup_GameOver.transform.Find("PopUpList").gameObject;
     }
 
     void Update()
@@ -80,11 +79,9 @@ public class ScoreManager : MonoBehaviour
         foreach (GameObject panelObject in panelObjects)
         {
             panelObject.SetActive(false);
-            Debug.Log(gameObject.ToString() + " 비활성화");
         }
 
         StartCoroutine(StartWithDelay(startDelay));
-
     }
 
     /// <summary>
@@ -96,7 +93,6 @@ public class ScoreManager : MonoBehaviour
     {
         // 지연 시간만큼 대기
         yield return new WaitForSecondsRealtime(startDelay);
-        Debug.Log("시작 지연 : " + startDelay + " 만큼 대기");
 
         StartCoroutine(GameOverSequentialActive());
     }
@@ -111,36 +107,8 @@ public class ScoreManager : MonoBehaviour
         {
             panelObject.SetActive(true);
             yield return new WaitForSecondsRealtime(delay);
-            Debug.Log(gameObject.ToString() + " : " + delay + " 지연 시간만큼 대기");
-
         }
     }
-
-    /// <summary>
-    /// 게임 종료 시 0.5초 뒤 팝업창의 일부분 등장
-    /// </summary>
-    /* public void PartOfGameOver()
-    {  
-        // 먼저 TXT_RecordList를 비활성화
-        GameOverList.SetActive(false);
-
-        // 1초 후에 ActivateRecordList 메서드 호출
-        Invoke("ActivateRecordList", 0.5f);
-    }
-
-    private void ActivateRecordList()
-    {
-        // 특정 게임 오브젝트를 활성화
-        SetActiveRecursively(GameOverList, true);
-    }
-    private void SetActiveRecursively(GameObject obj, bool state)
-    {
-        obj.SetActive(state);
-        foreach (Transform child in obj.transform)
-        {
-            SetActiveRecursively(child.gameObject, state);
-        }
-    } */
 
     /// <summary>
     /// 새로운 점수를 추가하고 정렬

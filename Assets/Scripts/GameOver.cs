@@ -13,7 +13,6 @@ public class GameOver : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("delay : " + delay);
         startPos = new Vector2(0, 225);
         endPos = new Vector2(0, -225);
 
@@ -25,11 +24,9 @@ public class GameOver : MonoBehaviour
     IEnumerator StartWithDelay(float delay)
     {
         Time.timeScale = 0f;
-        Debug.Log("timescale = 0");
 
         // 지연 시간만큼 대기
         yield return new WaitForSecondsRealtime(delay);
-        Debug.Log(delay + " 지연 시간만큼 대기");
 
         // 애니메이션 시작
         StartCoroutine(SlideDown());
@@ -54,9 +51,7 @@ public class GameOver : MonoBehaviour
             elapsedTime += Time.unscaledDeltaTime;
             yield return null;
         }
-        Debug.Log(elapsedTime + " 애니메이션 실행 시간");
 
         popupRect.anchoredPosition = endPos;
-        // Time.timeScale = 0f;
     }
 }

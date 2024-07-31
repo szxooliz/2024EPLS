@@ -17,19 +17,8 @@ public class SkinLoader : MonoBehaviour
     }
    void Start()
     {
-        // _CostumeScene 들어가지 않고 게임 시작하면 오류 뜸
-        
-        // if (Skin.lastUsedSkinInfo == null)
-        // {
-        //     Skin.lastUsedSkinInfo = SO_SkinInfo.SkinIDS.defaultSkin;
-        //     SkinManager.Inst.isNowDefault = true;
-        // }
-
-        // Debug.Log("lastUsedSkin 대체 뭔데 : " + Skin.lastUsedSkinInfo._skinName);
-
-        controllerID = PlayerPrefs.GetInt("lastSkin", (int)SO_SkinInfo.SkinIDS.defaultSkin);
-        // controllerID = (int)Skin.lastUsedSkinInfo._skinID;
-        
+        // PlayerPrefs 이용해서 마지막으로 적용한 스킨 불러오기
+        controllerID = PlayerPrefs.GetInt("lastSkin", (int)SO_SkinInfo.SkinIDS.defaultSkin);        
         animator.runtimeAnimatorController = skinAnimators[controllerID];
     }
 }

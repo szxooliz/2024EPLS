@@ -73,6 +73,7 @@ public class PopupManager : MonoBehaviour
     public void ClosePopup()
     {
         // 미리보기 원상 복귀
+        SkinManager.Inst.LastUsedSkin();
         SkinManager.Inst.img_Preview.sprite = Skin.lastUsedSkin.skinInfo._skinSprite;
 
         if (popUp_Active != null)
@@ -122,7 +123,6 @@ public class PopupManager : MonoBehaviour
     /// </summary>
     public void OnClickBuyYes(int selectedNumber)
     {
-
         // 구매 가능한 만큼 코인 보유 확인 및 차감
         bool ableToBuy = CoinManager.TryRemoveCoin(SkinManager.Inst.skinInShops[selectedNumber].skinInfo._skinPrice);
         ClosePopup();
@@ -187,7 +187,7 @@ public class PopupManager : MonoBehaviour
         // 미리보기 원상 복귀
         SkinManager.Inst.img_Preview.sprite = Skin.lastUsedSkin.skinInfo._skinSprite;
         SkinManager.Inst.skinInShops[selectedNumber].isSkinWorn = false;
-        Debug.Log("isSkinWorn - OnClickWearNo : " + SkinManager.Inst.skinInShops[selectedNumber].skinInfo._skinName + " = " + SkinManager.Inst.skinInShops[selectedNumber].isSkinWorn);
+        // Debug.Log("isSkinWorn - OnClickWearNo : " + SkinManager.Inst.skinInShops[selectedNumber].skinInfo._skinName + " = " + SkinManager.Inst.skinInShops[selectedNumber].isSkinWorn);
 
         SkinManager.Inst.skinInShops[selectedNumber].ChangeStateText(SkinManager.Inst.skinInShops[selectedNumber].isSkinWorn);
     }
@@ -204,7 +204,7 @@ public class PopupManager : MonoBehaviour
 
             if (skinInShop.IsSkinUnlocked() && isNotWorn)
             {
-                Debug.Log("착용 해제 시킬 스킨 : " + skinInShop.skinInfo._skinName);
+                // Debug.Log("착용 해제 시킬 스킨 : " + skinInShop.skinInfo._skinName);
                 skinInShop.isSkinWorn = false;
                 skinInShop.ChangeStateText(skinInShop.isSkinWorn);
             }

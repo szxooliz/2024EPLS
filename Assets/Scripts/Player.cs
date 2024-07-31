@@ -43,4 +43,5 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("LifeMinus-2")) { StartCoroutine(FlickerCharacter()); }
         if (collision.gameObject.CompareTag("Pipe")) { StartCoroutine(FlickerCharacter()); }
     }
+
 }

@@ -14,7 +14,7 @@ public class BirdJump : MonoBehaviour
 
     private Rigidbody2D rb;
     private int jumpCount = 0;
-    private bool isGrounded = true;
+    public static bool isGrounded = true;
     private float timer;
     private float acceleration;
     private float initialGravity = 3.5f;

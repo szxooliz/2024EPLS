@@ -24,7 +24,8 @@ public class SkinInShop : MonoBehaviour
     private void Start() 
     {
         // 이건 뭐지
-        isSkinWorn = Skin.lastUsedSkin.skinInfo._skinID == skinInfo._skinID;
+        // isSkinWorn = Skin.lastUsedSkin.skinInfo._skinID == skinInfo._skinID;
+        isSkinWorn = PlayerPrefs.GetInt("lastSkin") == (int)skinInfo._skinID;
         isSkinUnlocked = PlayerPrefs.GetInt(skinInfo._skinID.ToString()) == 1;
         InitializeBtn();
     }
@@ -41,7 +42,7 @@ public class SkinInShop : MonoBehaviour
     }
     
     /// <summary>
-    /// 해금 상태 확인
+    /// 해금 상태에 따라 미해금 버튼 삭제, 상태 텍스트 변경
     /// </summary>
     public bool IsSkinUnlocked()
     {
@@ -50,7 +51,6 @@ public class SkinInShop : MonoBehaviour
             isSkinUnlocked = true;
             Destroy(btn_Lock);
             ChangeStateText(isSkinWorn);
-            // Debug.Log("IsSkinUnlocked --- 해금 상태 변경 -> " + skinInfo._skinName + " " + skinInfo._skinID + " : " + PlayerPrefs.GetInt(skinInfo._skinID.ToString()));
         }
         return isSkinUnlocked;
     }
@@ -60,7 +60,8 @@ public class SkinInShop : MonoBehaviour
     /// </summary>
     public void OnClickLocked()
     {
-        SkinManager.Inst.CheckPreview(skinInfo);
+        // SkinManager.Inst.CheckPreview(skinInfo);
+        SkinManager.Inst.PreviewState(skinInfo);
 
         // 2nd click -> 구매 팝업 활성화
         if (SkinManager.Inst.isNowPreviewing)
@@ -74,7 +75,8 @@ public class SkinInShop : MonoBehaviour
         {
             // 1st click -> 미리보기 이미지 변경
             SkinManager.Inst.img_Preview.sprite = skinInfo._skinSprite;
-            SkinManager.Inst.txt_preview.SetActive(true);
+            // SkinManager.Inst.txt_preview.SetActive(true);
+            SkinManager.Inst.PreviewState(skinInfo);
         }
     }
 
@@ -83,8 +85,11 @@ public class SkinInShop : MonoBehaviour
     /// </summary>
     public void OnClickUnlocked()
     {
-        if (IsSkinUnlocked() && !isSkinWorn)
+        Debug.Log("클릭한 스킨 버튼 : " + skinInfo._skinName);
+        
+        if (isSkinUnlocked && !isSkinWorn)
         {
+            Debug.Log(skinInfo._skinName + "___ IsSkinUnlocked : " + isSkinUnlocked + " | !isSkinWorn : " + !isSkinWorn);
             // 미리보기 스킨 변경
             SkinManager.Inst.img_Preview.sprite = skinInfo._skinSprite;
 
@@ -92,11 +97,24 @@ public class SkinInShop : MonoBehaviour
             openPopup = PopupManager.Inst.OpenPopup(PopupManager.Inst.popUp_Wear, 0f);
             StartCoroutine(openPopup);
         }
-        else
-        {
-            // 예외 처리
-            return;
+        else if (isSkinUnlocked && isSkinWorn && SkinManager.Inst.isNowPreviewing)
+        {   
+            Debug.Log(skinInfo._skinName + "___ IsSkinUnlocked : " + isSkinUnlocked + " | isSkinWorn : " + isSkinWorn + " | SkinManager.Inst.isNowPreviewing : " + SkinManager.Inst.isNowPreviewing);
+            // 미해금 스킨 미리보기 중에 다시 착용 스킨으로 돌아오기
+            SkinManager.Inst.EquipSkin(skinInfo);
+            // SkinManager.Inst.img_Preview.sprite = skinInfo._skinSprite;
+            // SkinManager.Inst.CheckPreview(skinInfo);
+            // SkinManager.Inst.PreviewState(skinInfo);
+            Debug.Log(skinInfo._skinName + " isNowPreviewing : " + SkinManager.Inst.isNowPreviewing);
+
+            SkinManager.Inst.ClosePreviewText(SkinManager.Inst.isNowPreviewing);
+            SkinManager.Inst.isNowPreviewing = false;
+            /// SkinManager.Inst.ClosePreviewText(SkinManager.Inst.isNowPreviewing);
+
+            PopupManager.Inst.TakeOffSkin();
         }
+
+
     }
 
     /// <summary>
@@ -112,6 +130,7 @@ public class SkinInShop : MonoBehaviour
         }
         else
         {
+            Debug.Log(skinInfo._skinName + " 보유 중 텍스트");
             txt_State.text = "보유 중";
         }
     }
