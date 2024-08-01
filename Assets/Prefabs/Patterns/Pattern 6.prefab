@@ -124,7 +124,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3286771496471613356}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d647dedc50564da6990ba3e12a72295, type: 3}
   m_Name: 
@@ -139,6 +139,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5508997677484400421}
+  - component: {fileID: 4500056331964251504}
   m_Layer: 0
   m_Name: Pattern 6
   m_TagString: Untagged
@@ -165,6 +166,19 @@ Transform:
   - {fileID: 2237243227746728397}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4500056331964251504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7276282828283827710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d647dedc50564da6990ba3e12a72295, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  acceleration: 10
 --- !u!1 &7467229953974389829
 GameObject:
   m_ObjectHideFlags: 0
@@ -209,6 +223,10 @@ PrefabInstance:
     - target: {fileID: 1162434421486392676, guid: 8edef1947417d334e98c730e494ccf73, type: 3}
       propertyPath: m_Name
       value: Clover
+      objectReference: {fileID: 0}
+    - target: {fileID: 3545452842445556336, guid: 8edef1947417d334e98c730e494ccf73, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7343626604567993993, guid: 8edef1947417d334e98c730e494ccf73, type: 3}
       propertyPath: m_LocalPosition.x
@@ -498,6 +516,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Obstacle
       objectReference: {fileID: 0}
+    - target: {fileID: 8036456445696017304, guid: c5259f856a2c52a47afbdbacdc1f9a25, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -519,6 +541,10 @@ PrefabInstance:
     - target: {fileID: 1162434421486392676, guid: 8edef1947417d334e98c730e494ccf73, type: 3}
       propertyPath: m_Name
       value: Clover (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3545452842445556336, guid: 8edef1947417d334e98c730e494ccf73, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7343626604567993993, guid: 8edef1947417d334e98c730e494ccf73, type: 3}
       propertyPath: m_LocalPosition.x
@@ -622,6 +648,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Obstacle (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8036456445696017304, guid: c5259f856a2c52a47afbdbacdc1f9a25, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -702,6 +732,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 9200175597709260689}
     m_Modifications:
+    - target: {fileID: 2941764295778816246, guid: 11c4789abd51276439ab734fe777ac29, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4442698675642344958, guid: 11c4789abd51276439ab734fe777ac29, type: 3}
       propertyPath: m_Name
       value: basic_flower (2)
@@ -954,6 +988,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin_BIG (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6251925695176536752, guid: 5859f2d31e6309f44958761900148556, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7039820407784136831, guid: 5859f2d31e6309f44958761900148556, type: 3}
       propertyPath: m_LocalPosition.x
       value: 33.49
@@ -1202,6 +1240,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin_BIG
       objectReference: {fileID: 0}
+    - target: {fileID: 6251925695176536752, guid: 5859f2d31e6309f44958761900148556, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7039820407784136831, guid: 5859f2d31e6309f44958761900148556, type: 3}
       propertyPath: m_LocalPosition.x
       value: 13.49
@@ -1388,6 +1430,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Clover (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3545452842445556336, guid: 8edef1947417d334e98c730e494ccf73, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7343626604567993993, guid: 8edef1947417d334e98c730e494ccf73, type: 3}
       propertyPath: m_LocalPosition.x
       value: 57.45
@@ -1508,6 +1554,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 9200175597709260689}
     m_Modifications:
+    - target: {fileID: 2941764295778816246, guid: 11c4789abd51276439ab734fe777ac29, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4442698675642344958, guid: 11c4789abd51276439ab734fe777ac29, type: 3}
       propertyPath: m_Name
       value: basic_flower (3)
@@ -1608,6 +1658,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6314575666969893630, guid: 1d4aa6ab72e33d040b614a9e537a548c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7565113163286072988, guid: 1d4aa6ab72e33d040b614a9e537a548c, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8916335871104816335, guid: 1d4aa6ab72e33d040b614a9e537a548c, type: 3}
