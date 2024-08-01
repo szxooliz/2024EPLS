@@ -55,5 +55,4 @@ MonoBehaviour:
   - {fileID: 7276282828283827710, guid: bf5a017db55078047b6a5abe9ac3b213, type: 3}
   - {fileID: 7276282828283827710, guid: a94aa377b3f0461468d591cd19c6408a, type: 3}
   - {fileID: 7276282828283827710, guid: 9776dbdd21e39c64a882eb71662fa0d9, type: 3}
-  repeatInterval: 12.5
-  acceleration: 10
+  repeatInterval: 5

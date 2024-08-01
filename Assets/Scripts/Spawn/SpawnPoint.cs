@@ -5,27 +5,40 @@ using UnityEngine;
 public class SpawnPoint : MonoBehaviour
 {
     public GameObject[] prefabToSpawn;
+    public float repeatInterval;
     private GameObject newPattern;
-    public float spawnThresholdX = -30f;
-    public float destroyThresholdX = -70f;
+    private float speed;
+    [SerializeField] private float acceleration = 10f;
+    private float timer;
+    private float spawnTimer;
 
     public void Start()
     {
-        SpawnObject();
+        speed = BackGroundLoop.speed;
+        acceleration = BackGroundLoop.acceleration;
+        repeatInterval = 48 / speed;
     }
 
     private void Update()
     {
-        if (newPattern != null)
-        {
-            Destroy(newPattern, 15.0f);
+        speed = BackGroundLoop.speed;
+        acceleration = BackGroundLoop.acceleration;
+        DestroyPattern();
 
-            // Check if the current pattern's x position is less than or equal to the spawn threshold
-            if (newPattern.transform.position.x <= spawnThresholdX)
-            {
-                SpawnObject();
-                
-            }
+        timer += Time.deltaTime;
+        spawnTimer += Time.deltaTime;
+
+        if (spawnTimer >= repeatInterval)
+        {
+            SpawnObject();
+            spawnTimer = 0f;  // Reset the spawn timer
+        }
+
+        if (timer > acceleration)
+        {
+            speed += 2f;
+            repeatInterval = 48 / speed;
+            timer -= acceleration;
         }
     }
 
@@ -38,5 +51,10 @@ public class SpawnPoint : MonoBehaviour
             return newPattern;
         }
         return null;
+    }
+
+    public void DestroyPattern()
+    {
+        Destroy(newPattern, 11.0f);
     }
 }
