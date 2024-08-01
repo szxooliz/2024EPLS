@@ -1161,7 +1161,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &758682355
 Animator:
   serializedVersion: 5
@@ -2195,8 +2195,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4030592141731894878, guid: 8e58824bedc295540a44b3d3d40f9d81, type: 3}
+      propertyPath: x
+      value: -70
+      objectReference: {fileID: 0}
+    - target: {fileID: 4030592141731894878, guid: 8e58824bedc295540a44b3d3d40f9d81, type: 3}
       propertyPath: repeatInterval
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4030592141731894878, guid: 8e58824bedc295540a44b3d3d40f9d81, type: 3}
+      propertyPath: spawnThresholdX
+      value: -60
       objectReference: {fileID: 0}
     - target: {fileID: 8637985666675184000, guid: 8e58824bedc295540a44b3d3d40f9d81, type: 3}
       propertyPath: m_Name
