@@ -77,6 +77,7 @@ public class SkinManager : MonoBehaviour
     /// <param name="_isNowPreviewing"></param>
     public void ClosePreviewText(bool _isNowPreviewing)
     {
+        Debug.Log("ClosePreviewText 실행 | 매개변수 _isNowPreviewing : " + _isNowPreviewing);
         // 현재 상태가 미리보기 중이면 스킨 이름, 미리보기 상태 텍스트 비활성화
         if (_isNowPreviewing)
             {
@@ -85,6 +86,10 @@ public class SkinManager : MonoBehaviour
             }
     }
 
+    /// <summary>
+    /// PlayerPrefs에 착용한 스킨 아이디 저장
+    /// </summary>
+    /// <param name="_skinInfo"></param>
     public void EquipSkin(SO_SkinInfo _skinInfo)
     {
         if (_skinInfo == null)
@@ -101,6 +106,8 @@ public class SkinManager : MonoBehaviour
 
         // PlayerPrefs에 착용한 스킨 아이디 저장
         PlayerPrefs.SetInt(lastSkin, (int)_skinInfo._skinID);
+
+        Skin.lastUsedSkin = skinInShops[PlayerPrefs.GetInt(lastSkin)];
 
         Debug.Log("lastUsedSkin 그래서 뭔데.. EquipSkin 했잖아: " + Skin.lastUsedSkin.skinInfo._skinName);
 
