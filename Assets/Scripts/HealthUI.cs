@@ -37,7 +37,7 @@ public class HealthUI : MonoBehaviour
         // Debug.Log("----------- HealthManager UpdateHeartsUI foreach 시작 -----------");
         foreach (Image img in hearts)
         {
-            Debug.Log("빈 하트로 스프라이트");
+            // Debug.Log("빈 하트로 스프라이트");
             img.sprite = emptyHeart;
         }
         // Debug.Log("------------------------------------------------------------------");
@@ -46,7 +46,7 @@ public class HealthUI : MonoBehaviour
         for (int i = 0; i < Player.health; i++)
         {
             hearts[i].sprite = fullHeart;
-            Debug.Log("하트 채우기 i : " + i );
+            // Debug.Log("하트 채우기 i : " + i );
         }
         // Debug.Log("------------------------------------------------------------------");
 

@@ -52,7 +52,6 @@ public class Obstacle : MonoBehaviour
     /// </summary>
     private void HandleCloverCollision()
     {
-        // Destroy(gameObject); << 클로버 사라지지 않으므로 주석처리함
 
         if (animator != null)
         {

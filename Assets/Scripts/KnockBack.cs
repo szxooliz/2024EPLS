@@ -37,17 +37,19 @@ public class KnockBack : MonoBehaviour
         Move.instance.PauseMovement();
 
         float elapsedTime = 0f;
-        Vector3 originalPosition = transform.position; // 원래 캐릭터의 위치
-        Debug.Log(originalPosition);
-        Vector3 targetPosition = transform.position - new Vector3(BackGroundLoop.instance.backgroundWidth / 3, 0, 0);  // 왼쪽으로 밀려난 후 캐릭터의 위치
-        Debug.Log(targetPosition);
+        Vector3 originalPosition = transform.position; // 캐릭터의 원래 위치 저장
+        Vector3 targetPosition = transform.position - new Vector3(BackGroundLoop.instance.backgroundWidth / 3, 0, 0);  // 왼쪽으로 밀려난 위치 계산
+        float knockBackHeight = 4.0f;  // Y축으로 올라갈 높이
         cameraInitialPosition = mainCamera.transform.position;
 
-        // 캐릭터와 카메라를 왼쪽으로 이동
+        // 캐릭터와 카메라를 왼쪽으로 이동하며 Y축으로도 이동
         while (elapsedTime < knockBackDuration)
         {
-            transform.position = Vector3.Lerp(originalPosition, targetPosition, elapsedTime / knockBackDuration);
-            mainCamera.transform.position = cameraInitialPosition + (transform.position - originalPosition);
+            float progress = elapsedTime / knockBackDuration;
+            float xPosition = Mathf.Lerp(originalPosition.x, targetPosition.x, progress);
+            float yPosition = originalPosition.y + knockBackHeight * Mathf.Sin(Mathf.PI * progress);
+            transform.position = new Vector3(xPosition, yPosition, originalPosition.z);
+            mainCamera.transform.position = new Vector3(cameraInitialPosition.x + (xPosition - originalPosition.x), cameraInitialPosition.y, cameraInitialPosition.z);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
