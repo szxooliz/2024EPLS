@@ -59,7 +59,7 @@ public class Items : MonoBehaviour
     /// </summary>
     private void HandleTunaCollision()
     {
-        Debug.Log("목숨+1");
+        // Debug.Log("목숨+1");
         if (Player.health < 3)
         {
             Player.health++;
@@ -77,7 +77,7 @@ public class Items : MonoBehaviour
     {
         while (true)
         {
-            Debug.Log("목숨 - " + sub);
+            // Debug.Log("목숨 - " + sub);
             Player.health -= sub;
             HealthUI.Inst.UpdateHeartsUI();
             // AudioManager.Instance.PlaySFX("Cat_Attack");
@@ -96,6 +96,7 @@ public class Items : MonoBehaviour
     {
         Debug.Log("점수 + " + score);
         ScoreManager.scoreCount += score;
+        // Debug.Log("점수 증가 아이템 먹은 후 점수 scoreCount : " + ScoreManager.scoreCount);
         // AudioManager.Instance.PlaySFX("Item_Heal");
     }
 }

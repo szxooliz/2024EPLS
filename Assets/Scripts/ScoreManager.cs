@@ -46,14 +46,17 @@ public class ScoreManager : MonoBehaviour
 
     void Update()
     {
-        scoreTimer += Time.deltaTime;
-        PlayerPrefs.SetInt("Coin", CoinManager.coin);
-        
-        if (scoreTimer >= scoreInterval)
+        if (!GameManager.Inst.isGameOver)
         {
-            scoreCount++;
-            scoreTimer -= scoreInterval;
-            UpdateScoreText();
+            scoreTimer += Time.deltaTime;
+            PlayerPrefs.SetInt("Coin", CoinManager.coin);
+        
+            if (scoreTimer >= scoreInterval)
+            {
+                scoreCount++;
+                scoreTimer -= scoreInterval;
+                UpdateScoreText();
+            }
         }
     }
 
@@ -63,6 +66,7 @@ public class ScoreManager : MonoBehaviour
     private void UpdateScoreText()
     {
         text_DisplayScore.text = "점수 : " + scoreCount;
+        // Debug.Log("UpdateScoreText___scoreCount : " + scoreCount);
     }
     
     /// <summary>

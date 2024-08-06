@@ -13,7 +13,7 @@ public class Coin : MonoBehaviour
         // 코인이 플레이어와 충돌 시 획득
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("코인 +1");
+            // Debug.Log("코인 +1");
             
             CoinManager.Inst.playCoin++;
             CoinManager.Inst.AddCoin(amount);

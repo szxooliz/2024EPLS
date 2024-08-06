@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Inst;
+    public bool isGameOver = false;
 
     void Awake()
     {
@@ -53,11 +54,19 @@ public class GameManager : MonoBehaviour
         // 체력 0 이하 되어 게임 오버 되었을 때
         if (Player.health <= 0)
         {
-            if (BirdJump.isGrounded)
-            {
-                // Die 애니메이션 발동
-                Player.Inst.animator.SetTrigger("Dead");
-            }
+            // Die 애니메이션 발동
+            Player.Inst.animator.SetTrigger("Dead");
+            isGameOver = true;
+
+            // Move.instance.PauseMovement();
+            BackGroundLoop.instance.PauseMovement();
+            
+            // 땅에 떨어진 후 죽은 애니메이션은 코루틴으로 변경
+            // if (BirdJump.isGrounded)
+            // {
+            //     // Die 애니메이션 발동
+            //     Player.Inst.animator.SetTrigger("Dead");
+            // }
 
             // 새로운 점수 저장하고 최고 기록 정렬
             ScoreManager.Inst.AddNewScore(ScoreManager.scoreCount, DateTime.Now.ToString());

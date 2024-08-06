@@ -34,7 +34,7 @@ public class KnockBack : MonoBehaviour
         if (clover != null) { clover.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0); }
         isKnockedBack = true;
         BackGroundLoop.instance.PauseMovement();
-        Move.instance.PauseMovement();
+        // Move.instance.PauseMovement();
 
         float elapsedTime = 0f;
         Vector3 originalPosition = transform.position; // 캐릭터의 원래 위치 저장
@@ -72,7 +72,7 @@ public class KnockBack : MonoBehaviour
 
         isKnockedBack = false;
         BackGroundLoop.instance.ResumeMovement();
-        Move.instance.ResumeMovement();
+        // Move.instance.ResumeMovement();
 
         // if (clover != null) { Destroy(clover);}
         yield return null;

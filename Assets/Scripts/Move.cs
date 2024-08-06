@@ -7,7 +7,7 @@ public class Move : MonoBehaviour
     public static Move instance;
     private float speed;
 
-    private bool isPaused = false;
+    // private bool isPaused = false;
 
     [SerializeField] private float acceleration = 10f;
     private float timer;
@@ -25,22 +25,22 @@ public class Move : MonoBehaviour
     void Update()
     {
         // Debug.Log(isPaused);
-        if (!isPaused)
+        if (!BackGroundLoop.instance.isPaused)
         {
             speed = BackGroundLoop.speed;
             transform.position += Vector3.left * (speed * Time.deltaTime);
         }
     }
 
-    public void PauseMovement()
-    {
-        isPaused = true;
-        Debug.Log("Move Paused");
-    }
+    // public void PauseMovement()
+    // {
+    //     isPaused = true;
+    //     Debug.Log(gameObject + " : Move Paused");
+    // }
 
-    public void ResumeMovement()
-    {
-        isPaused = false;
-        Debug.Log("Move Resumed");
-    }
+    // public void ResumeMovement()
+    // {
+    //     isPaused = false;
+    //     Debug.Log("Move Resumed");
+    // }
 }

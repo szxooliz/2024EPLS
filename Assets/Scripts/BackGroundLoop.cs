@@ -12,7 +12,7 @@ public class BackGroundLoop : MonoBehaviour
     private Vector3 startPosition;
     public static float timer;
     public static float acceleration = 10f;
-    private bool isPaused = false;
+    public bool isPaused = false;
 
     public Transform[] backgrounds; // 배열로 여러 배경을 담음
 

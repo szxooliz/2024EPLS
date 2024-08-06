@@ -43,7 +43,7 @@ public class Obstacle : MonoBehaviour
         HealthUI.Inst.UpdateHeartsUI();
         //AudioManager.Instance.PlaySFX("Cat_Attack");
         //AudioManager.Instance.PlaySFX("Item_Kill");
-        Debug.Log("Obstacle - HandlePipeCollision ___ " + Player.health);
+        // Debug.Log("Obstacle - HandlePipeCollision ___ " + Player.health);
         GameManager.Inst.CheckGameOver();
     }
 
@@ -60,6 +60,6 @@ public class Obstacle : MonoBehaviour
         }
 
         KnockBack.instance.TriggerKnockBack();
-        Debug.Log("Clover");
+        // Debug.Log("Clover");
     }
 }
