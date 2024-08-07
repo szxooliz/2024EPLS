@@ -24,7 +24,6 @@ public class SpawnPoint : MonoBehaviour
             if (newPattern.transform.position.x <= spawnThresholdX)
             {
                 SpawnObject();
-                
             }
         }
     }

@@ -11,7 +11,6 @@ public class PlayerJump : MonoBehaviour
     private int maxJumpCount = 2;
     public float jumpCheckRadius = 0.1f;
     public LayerMask groundLayer;
-
     private Rigidbody2D rb;
     private int jumpCount = 0;
     public static bool isGrounded = true;
@@ -21,8 +20,6 @@ public class PlayerJump : MonoBehaviour
     [SerializeField] private float gravityIncreaseRate = 1f;
     private float maxGravity = 20f;
     private float currentGravity;
-
-    // private bool didInvokedGameOver = false;
 
     void Start()
     {
@@ -40,7 +37,6 @@ public class PlayerJump : MonoBehaviour
 
         if(transform.position.y < -6 && !GameManager.Inst.isGameOver)
         {
-            Debug.Log("BirdJump ___ 목숨 : " + Player.health);
             Player.health = 0;
 
             GameManager.Inst.CheckGameOver();

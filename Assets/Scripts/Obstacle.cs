@@ -27,7 +27,7 @@ public class Obstacle : MonoBehaviour
     }
 
     /// <summary>
-    /// 스크립트가 부착된 장애물이 파이프, 덩굴인 경우
+    /// 스크립트가 부착된 장애물이 끈끈이주걱, 덩굴인 경우
     /// </summary>
     /// <param name="player"></param>
     private void HandlePipeCollision()
@@ -43,7 +43,6 @@ public class Obstacle : MonoBehaviour
         HealthUI.Inst.UpdateHeartsUI();
         //AudioManager.Instance.PlaySFX("Cat_Attack");
         //AudioManager.Instance.PlaySFX("Item_Kill");
-        // Debug.Log("Obstacle - HandlePipeCollision ___ " + Player.health);
         GameManager.Inst.CheckGameOver();
     }
 

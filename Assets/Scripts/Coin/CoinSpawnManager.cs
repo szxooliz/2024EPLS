@@ -4,17 +4,15 @@ using UnityEngine;
 
 public class CoinSpawnManager : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> itemPrefabs; // ������ �������� ���� ����Ʈ
-    private float timeDiff; // ������ ������ ������ �ð�
-    private float timer = 0; // ���� �ð�
+    [SerializeField] private List<GameObject> itemPrefabs;
+    private float timeDiff;
+    private float timer = 0;
     
-    // Start is called before the first frame update
     void Start()
     {
         timeDiff = Random.Range(6.0f, 9.0f);
     }
 
-    // Update is called once per frame
     void Update()
     {
         timer += Time.deltaTime;

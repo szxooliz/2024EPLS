@@ -28,7 +28,6 @@ public class MakePipe : MonoBehaviour
             // x축 생성 범위를 10-20에서 해야함!!!
         }
     }
-    // Start is called before the first frame update
     void Start()
     {
         acceleration = BackGroundLoop.acceleration;
@@ -36,7 +35,6 @@ public class MakePipe : MonoBehaviour
         probability = Mathf.Floor(1 / probability * 100f) / 100f;
     }
 
-    // Update is called once per frame
     void Update()
     {
         timer += Time.deltaTime;
@@ -45,17 +43,13 @@ public class MakePipe : MonoBehaviour
             GameObject newpipe = Instantiate(pipe);
             newpipe.transform.position = new Vector3(10, Random.Range(-6.5f, -4f), 0);// 새로운 파이프 생성 위치
 
-            //hyoju inset 
             GameObject newobstacle = Instantiate(obstacle);
             ProbabilityRespawn (newobstacle);
-            //hyoju end
 
             timer = 0;
             Destroy(newpipe, 11.0f);
 
-            //hyoju insert
             Destroy(newobstacle, 11.0f);
-            //hyoju end
         }
 
         if (timeDiffTimer > acceleration)

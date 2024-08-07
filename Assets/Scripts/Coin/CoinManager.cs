@@ -8,7 +8,7 @@ using UnityEngine;
 /// </summary>
 public class CoinManager : MonoBehaviour
 {
-    public static CoinManager Inst; //Singleton
+    public static CoinManager Inst; // Singleton
     public static int coin = 0; // 플레이어가 보유하고 있는 코인
     public int playCoin = 0; // 게임 플레이 내에서 획득한 코인
 
@@ -37,8 +37,6 @@ public class CoinManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("Coin", coin);
         }
-        
-        // CoinUIManager.Inst.UpdateCoinUI(); // 초기 UI 업데이트
     }
 
     void Update()

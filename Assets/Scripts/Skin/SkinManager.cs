@@ -8,7 +8,6 @@ using TMPro;
 public class SkinManager : MonoBehaviour
 {    
     public static SkinManager Inst;
-    // public static SkinInShop lastUsedSkin; // 가장 마지막에 착용한 코스튬 << SkinLoader로 옮김
     public SkinInShop[] skinInShops;
 
     public Image img_Preview; // 미리보기 코스튬 파츠
@@ -30,54 +29,31 @@ public class SkinManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        Inst = this;
-        
 
-        // 유니티 에디터에서 테스트 용이하도록 추가한 코드
-        // #if UNITY_EDITOR
-        // PlayerPrefs.DeleteAll();
-        // #endif
-        
+        Inst = this;        
         LastUsedSkin();
-        
-        /*
-        // foreach (SkinInShop skinInShop in skinInShops)
-        // {
-        //     if (skinInShop.isSkinWorn)
-        //     {
-        //         Skin.lastUsedSkin = skinInShop;
-        //     }
-        // }
-
-        // if (Skin.lastUsedSkin == skinInShops[(int)SO_SkinInfo.SkinIDS.defaultSkin])
-        // {
-        //     isNowDefault = true;
-        // }
-
-        // if (Skin.lastUsedSkin == null)
-        // {
-        //     Skin.lastUsedSkin = skinInShops[(int)SO_SkinInfo.SkinIDS.defaultSkin];
-        //     isNowDefault = true;
-        // } */
     }
 
     private void Start() 
     {
         EquipSkin(Skin.lastUsedSkin.skinInfo);
     }
-
+    
+    /// <summary>
+    /// 마지막에 적용한 스킨 불러오기
+    /// </summary>
     public void LastUsedSkin()
     {
         lastUsedID = PlayerPrefs.GetInt(lastSkin, (int)SO_SkinInfo.SkinIDS.defaultSkin);
         Skin.lastUsedSkin = Array.Find(skinInShops, dummyFind => (int)dummyFind.skinInfo._skinID == lastUsedID);
     }
+
     /// <summary>
     /// 미리보기 텍스트 비활성화
     /// </summary>
     /// <param name="_isNowPreviewing"></param>
     public void ClosePreviewText(bool _isNowPreviewing)
     {
-        Debug.Log("ClosePreviewText 실행 | 매개변수 _isNowPreviewing : " + _isNowPreviewing);
         // 현재 상태가 미리보기 중이면 스킨 이름, 미리보기 상태 텍스트 비활성화
         if (_isNowPreviewing)
             {
@@ -100,17 +76,11 @@ public class SkinManager : MonoBehaviour
         }
 
         // 미리보기 이미지 적용
-        // Skin.lastUsedSkin.skinInfo = _skinInfo;
         img_Preview.sprite = _skinInfo._skinSprite;
-        // Skin.lastUsedSkin.skinInfo = _skinInfo;
 
         // PlayerPrefs에 착용한 스킨 아이디 저장
         PlayerPrefs.SetInt(lastSkin, (int)_skinInfo._skinID);
-
         Skin.lastUsedSkin = skinInShops[PlayerPrefs.GetInt(lastSkin)];
-
-        Debug.Log("lastUsedSkin 그래서 뭔데.. EquipSkin 했잖아: " + Skin.lastUsedSkin.skinInfo._skinName);
-
         CheckInit();
     }
 
@@ -129,16 +99,6 @@ public class SkinManager : MonoBehaviour
             isNowDefault = false;
         }
     }
-
-    // public void CheckPreview(SO_SkinInfo skinInfo)
-    // {
-    //     // 현재 미리보기 이미지와 선택한 스킨이 같은지 확인
-    //     isNowPreviewing = img_Preview.sprite == skinInfo._skinSprite;
-    
-    //     // 미리보기 이름 표시
-    //     txt_previewName.gameObject.SetActive(isNowPreviewing);
-    //     txt_previewName.text = skinInfo._skinName;
-    // }
 
     /// <summary>
     /// isNowPreviewing 판정에 따른 미리보기 상태 오브젝트 활성화 결정

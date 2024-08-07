@@ -164,9 +164,7 @@ public class PopupManager : MonoBehaviour
         {
             // 선택된 스킨 적용
             SkinManager.Inst.EquipSkin(SkinManager.Inst.skinInShops[selectedNumber].skinInfo);
-            SkinManager.Inst.skinInShops[selectedNumber].isSkinWorn = true;
-            Debug.Log("OnClickWearYes --- isSkinWorn 값 확인 : " + SkinManager.Inst.skinInShops[selectedNumber].skinInfo._skinName + " = " + SkinManager.Inst.skinInShops[selectedNumber].isSkinWorn);
-            
+            SkinManager.Inst.skinInShops[selectedNumber].isSkinWorn = true;            
             SkinManager.Inst.skinInShops[selectedNumber].ChangeStateText(SkinManager.Inst.skinInShops[selectedNumber].isSkinWorn);
             ClosePopup();
         }
@@ -175,9 +173,6 @@ public class PopupManager : MonoBehaviour
             ClosePopup();
             return;
         }
-
-        // SkinManager.Inst.isNowDefault = false;
-        // TakeOffSkin();
     }
     /// <summary>
     /// 착용하시겠습니까 팝업에서 no 버튼 클릭 시
@@ -187,7 +182,6 @@ public class PopupManager : MonoBehaviour
         // 미리보기 원상 복귀
         SkinManager.Inst.img_Preview.sprite = Skin.lastUsedSkin.skinInfo._skinSprite;
         SkinManager.Inst.skinInShops[selectedNumber].isSkinWorn = false;
-        // Debug.Log("isSkinWorn - OnClickWearNo : " + SkinManager.Inst.skinInShops[selectedNumber].skinInfo._skinName + " = " + SkinManager.Inst.skinInShops[selectedNumber].isSkinWorn);
 
         SkinManager.Inst.skinInShops[selectedNumber].ChangeStateText(SkinManager.Inst.skinInShops[selectedNumber].isSkinWorn);
     }
@@ -197,15 +191,12 @@ public class PopupManager : MonoBehaviour
     /// </summary>
     public void TakeOffSkin()
     {
-        Debug.Log("TakeOffSkin 1번째 ___ 다른 해금 스킨 적용할 떄");
         foreach (SkinInShop skinInShop in SkinManager.Inst.skinInShops)
         {
             bool isNotWorn = skinInShop != SkinManager.Inst.skinInShops[wear_SelectedNumber];
-            // && skinInShop.skinInfo != Skin.lastUsedSkin.skinInfo;
 
             if (skinInShop.IsSkinUnlocked() && isNotWorn)
             {
-                Debug.Log("착용 해제 시킬 스킨 : " + skinInShop.skinInfo._skinName);
                 skinInShop.isSkinWorn = false;
                 skinInShop.ChangeStateText(skinInShop.isSkinWorn);
             }
@@ -214,14 +205,12 @@ public class PopupManager : MonoBehaviour
 
     public void TakeOffSkin(bool _isNowPreviewing)
     {
-        Debug.Log("TakeOffSkin 2번째 ___ 미리보기 중 원래로 돌아올 때");
         foreach (SkinInShop skinInShop in SkinManager.Inst.skinInShops)
         {
             bool isNotWorn = skinInShop != SkinManager.Inst.skinInShops[wear_SelectedNumber] && skinInShop.skinInfo != Skin.lastUsedSkin.skinInfo;
 
             if (skinInShop.IsSkinUnlocked() && isNotWorn)
             {
-                Debug.Log("착용 해제 시킬 스킨 : " + skinInShop.skinInfo._skinName);
                 skinInShop.isSkinWorn = false;
                 skinInShop.ChangeStateText(skinInShop.isSkinWorn);
             }

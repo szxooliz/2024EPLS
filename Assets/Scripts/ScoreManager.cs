@@ -66,7 +66,6 @@ public class ScoreManager : MonoBehaviour
     private void UpdateScoreText()
     {
         text_DisplayScore.text = "점수 : " + scoreCount;
-        // Debug.Log("UpdateScoreText___scoreCount : " + scoreCount);
     }
     
     /// <summary>

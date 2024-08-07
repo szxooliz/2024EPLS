@@ -9,7 +9,7 @@ public class PatternSpawn : MonoBehaviour
 {
     public static PatternSpawn Inst; // Singleton
     public GameObject[] patternToSpawn; // 패턴 프리팹 저장
-    public Queue<GameObject> patternQueue = new Queue<GameObject>(); // 현재 스폰 되어있는 패턴들
+    public Queue<GameObject> patternQueue = new Queue<GameObject>(); // 현재 스폰되어있는 패턴들
     private GameObject headPattern; // 삭제될 선두 패턴
     public float duration = 9f; // 패턴 유지 시간
     private bool isDestroyed = false; // 선두 패턴이 삭제 되었는지 확인하는 용도

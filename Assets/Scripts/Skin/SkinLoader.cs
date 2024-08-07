@@ -5,9 +5,6 @@ using UnityEngine;
 
 public class SkinLoader : MonoBehaviour
 {
-    // public SpriteRenderer playerSR;
-    // public static SkinLoader Inst;
-    // public static SkinInShop lastUsedSkin; // 가장 마지막에 착용한 코스튬
     public RuntimeAnimatorController[] skinAnimators; // 스킨 별 애니메이션 컨트롤러
     public Animator animator; // Player의 컴포넌트
     public int controllerID;

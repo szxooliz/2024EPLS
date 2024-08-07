@@ -16,7 +16,6 @@ public class CoinUIManager : MonoBehaviour
         if (Inst == null)
         {
             Inst = this;
-            // DontDestroyOnLoad(gameObject);
             InitializeUIReferences();
         }
         else

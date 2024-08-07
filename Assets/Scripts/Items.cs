@@ -12,13 +12,8 @@ public class Items : MonoBehaviour
     // 점수 관련 아이템
     private const string ITEM_FEATHER = "ScorePlus";
     private const string ITEM_MOUSE = "ScorePlus+15";
-
     private const string ITEM_FISH_DOLL = "ScorePlus+25";
 
-    private void Start()
-    {
-        
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -65,7 +60,6 @@ public class Items : MonoBehaviour
             Player.health++;
             HealthUI.Inst.UpdateHeartsUI();
             // AudioManager.Instance.PlaySFX("Item_Heal");
-            // Debug.Log("Items - HandleTunaCollision ___ " + Player.health);
         }
     }
 
@@ -82,7 +76,6 @@ public class Items : MonoBehaviour
             HealthUI.Inst.UpdateHeartsUI();
             // AudioManager.Instance.PlaySFX("Cat_Attack");
             // AudioManager.Instance.PlaySFX("Item_Kill");
-            // Debug.Log("Items - HandleRottenItemCollision ___ health : " + Player.health);
             GameManager.Inst.CheckGameOver();
             break;
         }
@@ -96,7 +89,6 @@ public class Items : MonoBehaviour
     {
         Debug.Log("점수 + " + score);
         ScoreManager.scoreCount += score;
-        // Debug.Log("점수 증가 아이템 먹은 후 점수 scoreCount : " + ScoreManager.scoreCount);
         // AudioManager.Instance.PlaySFX("Item_Heal");
     }
 }
