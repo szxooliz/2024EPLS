@@ -21,14 +21,8 @@ public class PatternManager : MonoBehaviour
 
     private void Start()
     {
-        SetUpScene();
-    }
-
-    public void SetUpScene()
-    {
         SpawnPattern();
     }
-
     public void SpawnPattern()
     {
         if(patternSpawnPoint != null)
