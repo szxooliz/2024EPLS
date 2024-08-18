@@ -5,7 +5,7 @@ using UnityEngine;
 public class Clover : MonoBehaviour
 {
     [SerializeField] private float moveDistance = 5f; // 이동할 거리
-    [SerializeField] private float duration = 2f; // 이동하는 데 걸리는 시간
+    [SerializeField] private float duration = 2f; // 이동 소요 시간
     public Animator animator;
 
     private void Awake() 
@@ -32,9 +32,9 @@ public class Clover : MonoBehaviour
     /// <returns></returns>
     public IEnumerator MoveAllPatterns()
     {
-        Debug.Log("_____패턴 움직이기 시작!______");
         BackGroundLoop.instance.PauseMovement();
 
+        // 패턴과 배경 움직이기
         foreach (GameObject pattern in PatternSpawn.Inst.patternQueue)
         {
             StartCoroutine(MovePattern(pattern));
@@ -45,21 +45,19 @@ public class Clover : MonoBehaviour
             StartCoroutine(MovePattern(backGround));
         }
 
+        // 지속 시간동안 대기
         yield return new WaitForSeconds(duration);
-        Debug.Log("______패턴 움직이기 끝!______");
 
         BackGroundLoop.instance.ResumeMovement();
     }
 
     /// <summary>
-    /// 개별 오브젝트를 오른쪽으로 이동
+    /// 오브젝트를 오른쪽으로 이동
     /// </summary>
     /// <param name="pattern"></param>
     /// <returns></returns>
     public IEnumerator MovePattern(GameObject pattern)
     {
-        Debug.Log("MovePattern : " + pattern);
-
         Vector3 startPos = pattern.transform.position;
         Vector3 endPos = startPos + Vector3.right * moveDistance;
         float elapsedTime = 0f;
@@ -82,16 +80,15 @@ public class Clover : MonoBehaviour
     }
 
     /// <summary>
-    /// 플레이어 튀어오르는 효과
+    /// 플레이어가 튀어오르는 효과
     /// </summary>
     /// <returns></returns>
     public IEnumerator SpringPlayer()
     {
-        Debug.Log("______플레이어 튀어오르기 시작!______");
         // 캐릭터의 원래 위치 저장
         Vector3 originalPosition = Player.Inst.transform.position;
         float knockBackHeight = 4.0f;  // y축으로 올라갈 높이
-        float elapsedTime = 0f;
+        float elapsedTime = 0f; // 효과 지속 시간
 
         while (elapsedTime <  duration)
         {
@@ -101,10 +98,9 @@ public class Clover : MonoBehaviour
             Player.Inst.transform.position = new Vector3(originalPosition.x, originalPosition.y + yOffset, originalPosition.z);
             elapsedTime += Time.deltaTime;
             
-            Debug.Log("______플레이어 튀어오르기 하는 중!______");
             yield return null;
         }
-        Debug.Log("______플레이어 튀어오르기 끝!______");
+
         // 최종적으로 원래 위치로 돌아가기
         Player.Inst.transform.position = originalPosition;
     }

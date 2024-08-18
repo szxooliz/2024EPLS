@@ -23,7 +23,7 @@ public class SkinInShop : MonoBehaviour
 
     private void Start() 
     {
-        isSkinWorn = PlayerPrefs.GetInt("lastSkin") == (int)skinInfo._skinID;
+        isSkinWorn = PlayerPrefs.GetInt(SkinManager.lastSkin) == (int)skinInfo._skinID;
         isSkinUnlocked = PlayerPrefs.GetInt(skinInfo._skinID.ToString()) == 1;
         InitializeBtn();
     }
@@ -113,7 +113,7 @@ public class SkinInShop : MonoBehaviour
     }
 
     /// <summary>
-    /// 코스튬 착용 상태 텍스트 변경
+    /// 버튼 위 코스튬 착용 상태 텍스트 변경
     /// </summary>
     /// <param name="_isSkinWorn"></param>
     public void ChangeStateText(bool _isSkinWorn)

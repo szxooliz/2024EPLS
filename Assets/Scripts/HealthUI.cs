@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class HealthUI : MonoBehaviour
 {
     public static HealthUI Inst;
-
     public Image[] hearts;
     public Sprite fullHeart;
     public Sprite emptyHeart;
@@ -27,7 +26,7 @@ public class HealthUI : MonoBehaviour
     }
 
     /// <summary>
-    /// 목숨 하트 UI 변경
+    /// 하트 UI 변경
     /// </summary>
     public void UpdateHeartsUI()
     {

@@ -7,15 +7,25 @@ using UnityEngine;
 /// </summary>
 public class Coin : MonoBehaviour
 {
+    private const string COIN_SMALL = "CoinSmall";
+    private const string COIN_BIG = "CoinBig";
+
     [SerializeField] private int amount;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // 코인이 플레이어와 충돌 시 획득
         if (collision.gameObject.CompareTag("Player"))
         {
-            // Debug.Log("코인 +1");
+            if (gameObject.CompareTag(COIN_SMALL))
+            {
+                amount = 5;
+            }
+            else if (gameObject.CompareTag(COIN_BIG))
+            {
+                amount = 10;
+            }
             
-            CoinManager.Inst.playCoin++;
+            CoinManager.Inst.playCoin += amount;
             CoinManager.Inst.AddCoin(amount);
             ScoreManager.Inst.UpdateCoinText();
             // AudioManager.Instance.PlaySFX("Item_Heal");

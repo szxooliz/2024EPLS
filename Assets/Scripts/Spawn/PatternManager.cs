@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PatternManager : MonoBehaviour
 {
-    public SpawnPoint patternSpawnPoint;
+    public PatternSpawn patternSpawnPoint;
     public static PatternManager sharedInstance = null;
 
     private void Awake()
@@ -16,18 +16,6 @@ public class PatternManager : MonoBehaviour
         else
         {
             sharedInstance = this;
-        }
-    }
-
-    private void Start()
-    {
-        SpawnPattern();
-    }
-    public void SpawnPattern()
-    {
-        if(patternSpawnPoint != null)
-        {
-            GameObject pattern = patternSpawnPoint.SpawnObject();
         }
     }
 }

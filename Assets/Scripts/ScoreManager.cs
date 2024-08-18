@@ -16,7 +16,7 @@ public class ScoreManager : MonoBehaviour
     public TextMeshProUGUI text_DisplayCoin;
     public static int scoreCount;
     private float scoreTimer;
-    [SerializeField] private const float scoreInterval = 1f; // 1�ʸ��� ���� ����
+    [SerializeField] private const float scoreInterval = 1f;
 
     // 게임 오버 팝업 점수 표시 용도
     public GameObject popup_GameOver;
@@ -66,7 +66,6 @@ public class ScoreManager : MonoBehaviour
     /// </summary>
     private void UpdateScoreText()
     {
-        // text_DisplayScore.text = "점수 : " + scoreCount;
         text_DisplayScore.text = scoreCount.ToString();
     }
 

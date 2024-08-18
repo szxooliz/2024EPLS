@@ -18,7 +18,7 @@ public class SkinManager : MonoBehaviour
     public bool isNowPreviewing = false; // 미리보기 여부
 
     [SerializeField] private SO_SkinInfo[] allSkins;
-    private const string lastSkin = "lastSkin";
+    public const string lastSkin = "lastSkin";
     private int lastUsedID;
 
     private void Awake() 
@@ -44,6 +44,7 @@ public class SkinManager : MonoBehaviour
     /// </summary>
     public void LastUsedSkin()
     {
+        Debug.Log("lastUsedID : " + PlayerPrefs.GetInt(lastSkin));
         lastUsedID = PlayerPrefs.GetInt(lastSkin, (int)SO_SkinInfo.SkinIDS.defaultSkin);
         Skin.lastUsedSkin = Array.Find(skinInShops, dummyFind => (int)dummyFind.skinInfo._skinID == lastUsedID);
     }
@@ -85,7 +86,7 @@ public class SkinManager : MonoBehaviour
     }
 
     /// <summary>
-    /// 현재 초기화 상태인지 ID 비교 체크 및 isNowDefault 값 변경 
+    /// 현재 초기화 상태인지 ID 체크
     /// </summary>
     /// <param name="skinInfo"></param>
     public void CheckInit()

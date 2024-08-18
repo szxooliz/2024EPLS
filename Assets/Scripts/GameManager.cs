@@ -17,6 +17,11 @@ public class GameManager : MonoBehaviour
             Inst = this;
             DontDestroyOnLoad(Inst);
         }
+
+        // 테스트용 코드
+        // #if UNITY_EDITOR
+        // PlayerPrefs.DeleteAll();
+        // #endif
     }
 
     // ------------ Scene 전환 함수들 ------------
@@ -51,6 +56,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void CheckGameOver()
     {
+        Debug.Log("CheckGameOver");
         // 체력 0 이하 되어 게임 오버 되었을 때
         if (Player.health <= 0)
         {

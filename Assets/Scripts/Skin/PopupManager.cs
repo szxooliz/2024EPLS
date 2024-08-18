@@ -130,12 +130,14 @@ public class PopupManager : MonoBehaviour
         if(ableToBuy)
         {
             // lock 버튼 삭제
-            SkinManager.Inst.skinInShops[selectedNumber].IsSkinUnlocked();
             Destroy(SkinManager.Inst.skinInShops[selectedNumber].btn_Lock);
 
             // PlayerPrefs에 스킨 해금 정보 저장
             PlayerPrefs.SetInt(SkinManager.Inst.skinInShops[selectedNumber].skinInfo._skinID.ToString(), 1);
             PlayerPrefs.Save();
+
+            // 해금 정보 저장 bool 값 변경
+            SkinManager.Inst.skinInShops[selectedNumber].IsSkinUnlocked();
 
             // 구매 완료 팝업 활성화
             openPopup = OpenPopup(popUp_Purchase, delayTime);

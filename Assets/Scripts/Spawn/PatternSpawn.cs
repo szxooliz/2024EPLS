@@ -12,7 +12,6 @@ public class PatternSpawn : MonoBehaviour
     public Queue<GameObject> patternQueue = new Queue<GameObject>(); // 현재 스폰되어있는 패턴들
     private GameObject headPattern; // 삭제될 선두 패턴
     public float duration = 9f; // 패턴 유지 시간
-    private bool isDestroyed = false; // 선두 패턴이 삭제 되었는지 확인하는 용도
 
     private void Awake() 
     {
@@ -23,10 +22,7 @@ public class PatternSpawn : MonoBehaviour
     }
     public void Start()
     {
-        Debug.Log("Game Start");
-
         Setpattern();
-
         StartCoroutine(SpawnNewPattern());
     }
 
@@ -57,12 +53,10 @@ public class PatternSpawn : MonoBehaviour
         {
             // 스폰할 패턴 랜덤으로 정하기
             int index = UnityEngine.Random.Range(0, patternToSpawn.Length); 
-            Debug.Log("Setpattern___index" + index);
 
             // 스폰할 패턴 큐에 삽입 및 Instantiate
             GameObject patternInstance = Instantiate(patternToSpawn[index], startPosition, UnityEngine.Quaternion.identity);
             patternQueue.Enqueue(patternInstance);
-            Debug.Log("Setpattern : " + patternInstance);
         }
     }
 
@@ -77,7 +71,6 @@ public class PatternSpawn : MonoBehaviour
         {
             GameObject firstPattern = patternQueue.Peek();
             yield return new WaitUntil(() => firstPattern.transform.position.x < -66.89f);
-            Debug.Log("SpawnNewPattern___WaitUntil(() => firstPattern.transform.position.x < -66.89f) : " + (firstPattern.transform.position.x < -66.89f));
         }
 
         UnityEngine.Vector3 spawnPosition = new UnityEngine.Vector3(-19.3f, 5.121895f, 0f);
@@ -90,14 +83,11 @@ public class PatternSpawn : MonoBehaviour
             {
                 // 스폰할 패턴 랜덤으로 정하기
                 int index = UnityEngine.Random.Range(0, patternToSpawn.Length); 
-                Debug.Log("SpawnNewPattern___index : " + index);
 
                 // 스폰할 패턴 큐에 삽입 및 Instantiate
                 GameObject patternInstance = Instantiate(patternToSpawn[index], spawnPosition, UnityEngine.Quaternion.identity);
                 patternQueue.Enqueue(patternInstance);
-                Debug.Log("SpawnNewPattern___SpawnPattern : " + patternInstance);
 
-                Debug.Log("SpawnNewPattern___WaitUntil(() => patternInstance.transform.position.x < -66.89f) : " + (patternInstance.transform.position.x < -66.89f));
                 yield return new WaitUntil(() => patternInstance.transform.position.x < -66.89f);
             }
         }
@@ -109,20 +99,14 @@ public class PatternSpawn : MonoBehaviour
     /// <returns></returns>
     public IEnumerator DestroyPattern()
     {
-        // 활성화 된 패턴이 3개 초과일 때까지 기다림
+        // 활성화 된 패턴이 3개 초과일 때까지 대기
         yield return new WaitUntil(() => patternQueue.Count > 3);
-        Debug.Log("DestroyPattern___patternQueue.Count > 3 " + (patternQueue.Count > 3));
         
         if (patternQueue.Count > 3)
         {
             // 이후 패턴 삭제 실행
             headPattern = patternQueue.Dequeue();
-            Debug.Log("DestroyPattern " + headPattern + " ___isDestroyed : " + isDestroyed);
-            // Debug.Log("SpawnPattern : " + headPattern);
-
             Destroy(headPattern);
-
-            isDestroyed = true;
         }
     }
 

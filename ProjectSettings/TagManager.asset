@@ -4,7 +4,6 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Coin
   - LifePlus
   - ScoreMinus
   - Pipe
@@ -16,6 +15,9 @@ TagManager:
   - ScorePlus+15
   - ScorePlus+25
   - Ground
+  - CoinBig
+  - CoinSmall
+  - Coin
   layers:
   - Default
   - TransparentFX

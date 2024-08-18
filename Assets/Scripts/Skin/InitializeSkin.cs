@@ -37,8 +37,6 @@ public class InitializeSkin : MonoBehaviour
 
         // 최근 착용한 스킨 착용 해제 상태 만들기 
         Skin.lastUsedSkin.ChangeStateText(Skin.lastUsedSkin.isSkinWorn);
-
-        // Debug.Log("lastUsedSkin 착용 해제");
         PopupManager.Inst.TakeOffSkin();
     }
 }
