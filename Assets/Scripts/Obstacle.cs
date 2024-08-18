@@ -15,14 +15,16 @@ public class Obstacle : MonoBehaviour
         // 해당 장애물이 플레이어와 충돌 시
         if (collision.gameObject.CompareTag("Player"))
         {
-            if (gameObject.CompareTag("Pipe"))
-            {
-                HandlePipeCollision();
-            }
-            else if (gameObject.CompareTag("Clover"))
-            {
-                HandleCloverCollision();
-            }
+            HandlePipeCollision();
+
+            // if (gameObject.CompareTag("Pipe"))
+            // {
+            //     HandlePipeCollision();
+            // }
+            // else if (gameObject.CompareTag("Clover"))
+            // {
+            //     HandleCloverCollision();
+            // }
         }
     }
 
@@ -49,16 +51,17 @@ public class Obstacle : MonoBehaviour
     /// <summary>
     /// 스크립트가 부착된 장애물이 클로버인 경우
     /// </summary>
-    private void HandleCloverCollision()
-    {
+    // private void HandleCloverCollision()
+    // {
 
-        if (animator != null)
-        {
-            // 피격 애니메이션 발동
-            animator.SetTrigger("Active");
-        }
+    //     if (animator != null)
+    //     {
+    //         // 피격 애니메이션 발동
+    //         animator.SetTrigger("Active");
+    //     }
 
-        KnockBack.instance.TriggerKnockBack();
+        // StartCoroutine(Clover.Inst.MoveAllPatterns());
+        // KnockBack.instance.TriggerKnockBack();
         // Debug.Log("Clover");
-    }
+    // }
 }

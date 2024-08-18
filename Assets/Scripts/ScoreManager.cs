@@ -13,6 +13,7 @@ public class ScoreManager : MonoBehaviour
     
     // 플레이 중 점수 표시 용도
     public TextMeshProUGUI text_DisplayScore;
+    public TextMeshProUGUI text_DisplayCoin;
     public static int scoreCount;
     private float scoreTimer;
     [SerializeField] private const float scoreInterval = 1f; // 1�ʸ��� ���� ����
@@ -65,7 +66,16 @@ public class ScoreManager : MonoBehaviour
     /// </summary>
     private void UpdateScoreText()
     {
-        text_DisplayScore.text = "점수 : " + scoreCount;
+        // text_DisplayScore.text = "점수 : " + scoreCount;
+        text_DisplayScore.text = scoreCount.ToString();
+    }
+
+    /// <summary>
+    /// 게임 내 코인 UI 표시
+    /// </summary>
+    public void UpdateCoinText()
+    {
+        text_DisplayCoin.text = CoinManager.Inst.playCoin.ToString();
     }
     
     /// <summary>
@@ -106,6 +116,8 @@ public class ScoreManager : MonoBehaviour
     /// <returns></returns>
     IEnumerator GameOverSequentialActive()
     {
+        Debug.Log("GameOverSequentialActive 시작");
+
         foreach(GameObject panelObject in panelObjects)
         {
             panelObject.SetActive(true);

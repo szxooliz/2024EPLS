@@ -14,7 +14,7 @@ public class BackGroundLoop : MonoBehaviour
     public static float acceleration = 10f;
     public bool isPaused = false;
 
-    public Transform[] backgrounds; // 배열로 여러 배경을 담음
+    public GameObject[] backgrounds; // 배열로 여러 배경을 담음
 
     void Awake()
     {
@@ -36,12 +36,12 @@ public class BackGroundLoop : MonoBehaviour
         {
             for (int i = 0; i < backgrounds.Length; i++)
             {
-                backgrounds[i].position += Vector3.left * speed * Time.deltaTime;
+                backgrounds[i].transform.position += Vector3.left * speed * Time.deltaTime;
 
                 // 배경 이미지가 화면 밖으로 나가면 재배치
-                if (backgrounds[i].position.x < -backgroundWidth)
+                if (backgrounds[i].transform.position.x < -backgroundWidth)
                 {
-                    backgrounds[i].position += new Vector3(backgroundWidth * backgrounds.Length, 0, 0);
+                    backgrounds[i].transform.position += new Vector3(backgroundWidth * backgrounds.Length, 0, 0);
                 }
             }
 

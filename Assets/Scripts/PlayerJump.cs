@@ -68,6 +68,13 @@ public class PlayerJump : MonoBehaviour
             jumpCount = 0;
             isGrounded = true;
         }
+        else if (collision.gameObject.CompareTag("Clover"))
+        {
+            Debug.Log("______플레이어가 클로버 밟음!______");
+
+            // 피격 애니메이션 발동
+            Player.Inst.animator.SetTrigger("Jump");
+        }
     }
 
     public void Jump()

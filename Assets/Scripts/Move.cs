@@ -30,6 +30,10 @@ public class Move : MonoBehaviour
             speed = BackGroundLoop.speed;
             transform.position += Vector3.left * (speed * Time.deltaTime);
         }
+        else
+        {
+            Debug.Log("Move 스크립트 업데이트문 if 정지");
+        }
     }
 
     // public void PauseMovement()
