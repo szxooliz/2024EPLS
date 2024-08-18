@@ -1233,7 +1233,7 @@ SpriteRenderer:
   m_Size: {x: 0.9, y: 0.6}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &758682357
@@ -1387,7 +1387,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 780575657}
-  - component: {fileID: 780575656}
+  - component: {fileID: 780575658}
   m_Layer: 0
   m_Name: PatternManager
   m_TagString: Untagged
@@ -1395,19 +1395,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &780575656
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 780575655}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5ab1a58732a31c4896f7866585f5450, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  patternSpawnPoint: {fileID: 4030592141731894878, guid: 8e58824bedc295540a44b3d3d40f9d81, type: 3}
 --- !u!4 &780575657
 Transform:
   m_ObjectHideFlags: 0
@@ -1423,6 +1410,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &780575658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 780575655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73952655ebd628a408f3ab01b7c10f47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  patternSpawnPoint: {fileID: 0}
 --- !u!1 &783624592
 GameObject:
   m_ObjectHideFlags: 0
@@ -1633,6 +1633,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88c7ff6f859d73b45b4f67744257d917, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGameOver: 0
 --- !u!1 &998103584
 GameObject:
   m_ObjectHideFlags: 0
@@ -1883,9 +1884,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backgroundWidth: 0
+  isPaused: 0
   backgrounds:
-  - {fileID: 1012222137}
-  - {fileID: 1357120252}
+  - {fileID: 1012222135}
+  - {fileID: 1357120250}
 --- !u!1 &1045210012
 GameObject:
   m_ObjectHideFlags: 0
@@ -1916,6 +1918,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text_DisplayScore: {fileID: 1517787970}
+  text_DisplayCoin: {fileID: 0}
   popup_GameOver: {fileID: 1812296234}
   panel: {fileID: 664705711}
   text_Score: {fileID: 2052696132}
@@ -2263,11 +2266,44 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4030592141731894878, guid: 8e58824bedc295540a44b3d3d40f9d81, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8637985666675184000, guid: 8e58824bedc295540a44b3d3d40f9d81, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1203715776}
   m_SourcePrefab: {fileID: 100100000, guid: 8e58824bedc295540a44b3d3d40f9d81, type: 3}
+--- !u!1 &1203715775 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8637985666675184000, guid: 8e58824bedc295540a44b3d3d40f9d81, type: 3}
+  m_PrefabInstance: {fileID: 1203715774}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1203715776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1203715775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e095d70a0fab1444d827f8506af5235f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  patternToSpawn:
+  - {fileID: 7276282828283827710, guid: 1682cbdf5912f79468a0a01a82dc204d, type: 3}
+  - {fileID: 7276282828283827710, guid: 8083c82ac7fbf6649bf09ab1612b1c08, type: 3}
+  - {fileID: 7276282828283827710, guid: 1caae437409a96941bbbca2c7c69447b, type: 3}
+  - {fileID: 7276282828283827710, guid: 7551eb41b75ca4e4c9d1c9bd9c7264d3, type: 3}
+  - {fileID: 7276282828283827710, guid: 454f14990a7cda4478f5d913ba800b89, type: 3}
+  - {fileID: 7276282828283827710, guid: 8ea4eba0ae5bc0d4db97dfc57ae9fcf7, type: 3}
+  - {fileID: 7276282828283827710, guid: 84c016874b2735a4abaed8259d29a7f1, type: 3}
+  - {fileID: 7276282828283827710, guid: bf5a017db55078047b6a5abe9ac3b213, type: 3}
+  - {fileID: 7276282828283827710, guid: a94aa377b3f0461468d591cd19c6408a, type: 3}
+  - {fileID: 7276282828283827710, guid: 9776dbdd21e39c64a882eb71662fa0d9, type: 3}
+  duration: 9.5
 --- !u!1 &1232445779
 GameObject:
   m_ObjectHideFlags: 0

@@ -61,39 +61,6 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void PauseMusic(string name)
-    {
-        Sound s = Array.Find(musicSounds, x => x.name == name);
-
-        if (s == null)
-        {
-            Debug.Log("Sound Not Found");
-        }
-
-        else
-        {
-            musicSource.clip = s.clip;
-            musicSource.Pause();
-            pausedTime = musicSource.time;
-        }
-    }
-    public void ResumeMusic(string name)
-    {
-        Sound s = Array.Find(musicSounds, x => x.name == name);
-
-        if (s == null)
-        {
-            Debug.Log("Sound Not Found");
-        }
-
-        else
-        {
-            musicSource.clip = s.clip;
-            musicSource.Play();
-            musicSource.time = pausedTime;
-        }
-    }
-
     public void ToggleSFX()
     {
         sfxSource.mute = !sfxSource.mute;
