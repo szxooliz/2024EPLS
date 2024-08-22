@@ -75,8 +75,8 @@ public class Items : MonoBehaviour
             Player.health -= sub;
             HealthUI.Inst.UpdateHeartsUI();
             // AudioManager.Instance.PlaySFX("Cat_Attack");
-            // AudioManager.Instance.PlaySFX("Item_Kill");
-            GameManager.Inst.CheckGameOver();
+            if(Time.timeScale != 0)
+                GameManager.Inst.CheckGameOver();
             break;
         }
     }

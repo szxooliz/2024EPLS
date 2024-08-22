@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("_PlayScene");
+        isGameOver = false;
         //AudioManager.Instance.PlaySFX("Button_UI");
     }
     // -------------------------------------------
@@ -66,13 +67,6 @@ public class GameManager : MonoBehaviour
 
             // Move.instance.PauseMovement();
             BackGroundLoop.instance.PauseMovement();
-            
-            // 땅에 떨어진 후 죽은 애니메이션은 코루틴으로 변경
-            // if (BirdJump.isGrounded)
-            // {
-            //     // Die 애니메이션 발동
-            //     Player.Inst.animator.SetTrigger("Dead");
-            // }
 
             // 새로운 점수 저장하고 최고 기록 정렬
             ScoreManager.Inst.AddNewScore(ScoreManager.scoreCount, DateTime.Now.ToString());

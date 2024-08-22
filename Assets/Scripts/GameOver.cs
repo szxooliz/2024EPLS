@@ -18,7 +18,8 @@ public class GameOver : MonoBehaviour
 
         popupRect.anchoredPosition = startPos;
 
-        StartCoroutine(StartWithDelay(delay));
+        if(Player.health <= 0)
+            StartCoroutine(StartWithDelay(delay));
     }
 
     IEnumerator StartWithDelay(float delay)

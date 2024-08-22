@@ -38,7 +38,8 @@ public class PatternSpawn : MonoBehaviour
         {
             StopCoroutine(SpawnNewPattern());
             StopCoroutine(DestroyPattern());
-            GameManager.Inst.CheckGameOver();
+            if (Time.timeScale != 0)
+                GameManager.Inst.CheckGameOver();
         }
     }
 

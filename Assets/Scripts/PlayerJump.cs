@@ -20,7 +20,6 @@ public class PlayerJump : MonoBehaviour
     [SerializeField] private float gravityIncreaseRate = 1f;
     private float maxGravity = 20f;
     private float currentGravity;
-
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -35,15 +34,16 @@ public class PlayerJump : MonoBehaviour
             Jump();
         }
 
-        if(transform.position.y < -6 && !GameManager.Inst.isGameOver)
+        /*if(Player.Inst.isFallen)
         {
             Player.health = 0;
+            Debug.Log("떨어져 쥬금 ㅋ");
 
             GameManager.Inst.CheckGameOver();
             HealthUI.Inst.UpdateHeartsUI();
 
             GameManager.Inst.isGameOver = true;
-        }
+        }*/
     }
 
     private void FixedUpdate()
