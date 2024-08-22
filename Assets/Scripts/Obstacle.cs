@@ -36,7 +36,6 @@ public class Obstacle : MonoBehaviour
         HealthUI.Inst.UpdateHeartsUI();
         //AudioManager.Instance.PlaySFX("Cat_Attack");
         //AudioManager.Instance.PlaySFX("Item_Kill");
-        if (Time.timeScale != 0)
-            GameManager.Inst.CheckGameOver();
+        GameManager.Inst.CheckGameOver();
     }
 }
