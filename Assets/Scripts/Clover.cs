@@ -89,6 +89,8 @@ public class Clover : MonoBehaviour
     {
         // 캐릭터의 원래 위치 저장
         Vector3 originalPosition = Player.Inst.transform.position;
+        Debug.Log("돌아갈 위치" + originalPosition);
+
         float knockBackHeight = 4.0f;  // y축으로 올라갈 높이
         float elapsedTime = 0f; // 효과 지속 시간
 
@@ -104,6 +106,7 @@ public class Clover : MonoBehaviour
         }
 
         // 최종적으로 원래 위치로 돌아가기
+        Debug.Log("돌아갈 위치" + originalPosition);
         Player.Inst.transform.position = originalPosition;
         isCloverTriggered = false;
     }

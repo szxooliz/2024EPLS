@@ -52,7 +52,7 @@ public class ScoreManager : MonoBehaviour
             scoreTimer += Time.deltaTime;
             PlayerPrefs.SetInt("Coin", CoinManager.coin);
         
-            if (scoreTimer >= scoreInterval && !Clover.isCloverTriggered)
+            if (scoreTimer >= scoreInterval)
             {
                 scoreCount++;
                 scoreTimer -= scoreInterval;

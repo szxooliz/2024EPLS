@@ -18,7 +18,7 @@ public class CoinManager : MonoBehaviour
         if(Inst == null) 
         {
             Inst = this; 
-            DontDestroyOnLoad(gameObject);  
+            // DontDestroyOnLoad(gameObject);  
         }
         else
         {
@@ -29,6 +29,8 @@ public class CoinManager : MonoBehaviour
 
     void Start()
     {
+        Debug.Log("플레이 내 코인 : " + playCoin);
+
         if (PlayerPrefs.HasKey("Coin"))
         {
             coin = PlayerPrefs.GetInt("Coin");

@@ -38,12 +38,10 @@ public class PlayerJump : MonoBehaviour
         if(transform.position.y < -6 && !GameManager.Inst.isGameOver)
         {
             Player.health = 0;
-
-            Debug.Log("PlayerJump-Update ___ CheckGameOver");
-            GameManager.Inst.CheckGameOver();
             HealthUI.Inst.UpdateHeartsUI();
 
-            GameManager.Inst.isGameOver = true;
+            Debug.Log("PlayerJump-Update ___ SetGameOver");
+            GameManager.Inst.SetGameOver();
         }
     }
 
