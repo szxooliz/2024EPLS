@@ -23,8 +23,11 @@ public class ScoreBoard : MonoBehaviour
     {
         for(int i = 0; i < 3; i++)
         {
-            text_highScores[i].text = PlayerPrefs.GetInt("HighScore" + i).ToString();
-            text_highScoreTimes[i].text = PlayerPrefs.GetString("HighScoreTime" + i);
+            if (PlayerPrefs.HasKey("HighScore" + i))
+            {
+                text_highScores[i].text = PlayerPrefs.GetInt("HighScore" + i).ToString();
+                text_highScoreTimes[i].text = PlayerPrefs.GetString("HighScoreTime" + i);
+            }
         }
     }
 }

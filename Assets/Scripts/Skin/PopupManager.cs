@@ -39,7 +39,6 @@ public class PopupManager : MonoBehaviour
             Destroy(gameObject);
         }
     
-
         foreach (Button btn_Locked in btns_Locked)
         {
             btn_Locked.onClick.AddListener(() => OnClickLockedBtn(btn_Locked));

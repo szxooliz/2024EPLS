@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour
     public void OnClickReplay()
     {
         Time.timeScale = 1f;
+        isGameOver = false;
         SceneManager.LoadScene("_PlayScene");
         //AudioManager.Instance.PlaySFX("Button_UI");
     }
@@ -56,23 +57,18 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void CheckGameOver()
     {
-        Debug.Log("CheckGameOver");
         // 체력 0 이하 되어 게임 오버 되었을 때
         if (Player.health <= 0)
         {
+            Debug.Log("CheckGameOver___게임 오버요");
             // Die 애니메이션 발동
             Player.Inst.animator.SetTrigger("Dead");
             isGameOver = true;
 
-            // Move.instance.PauseMovement();
             BackGroundLoop.instance.PauseMovement();
             
             // 땅에 떨어진 후 죽은 애니메이션은 코루틴으로 변경
-            // if (BirdJump.isGrounded)
-            // {
-            //     // Die 애니메이션 발동
-            //     Player.Inst.animator.SetTrigger("Dead");
-            // }
+
 
             // 새로운 점수 저장하고 최고 기록 정렬
             ScoreManager.Inst.AddNewScore(ScoreManager.scoreCount, DateTime.Now.ToString());
@@ -82,6 +78,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            Debug.Log("아직 게임오버 아님");
             return;
         }
     }
@@ -90,4 +87,6 @@ public class GameManager : MonoBehaviour
     {
         ScoreManager.Inst.DisplayPopupGameOver();
     }
+
+    
 }

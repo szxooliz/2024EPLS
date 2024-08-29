@@ -39,6 +39,7 @@ public class PlayerJump : MonoBehaviour
         {
             Player.health = 0;
 
+            Debug.Log("PlayerJump-Update ___ CheckGameOver");
             GameManager.Inst.CheckGameOver();
             HealthUI.Inst.UpdateHeartsUI();
 
@@ -80,7 +81,6 @@ public class PlayerJump : MonoBehaviour
         if (jumpCount < maxJumpCount)
         {
             Player.Inst.animator.SetTrigger("Jump");
-            Debug.Log("점프 애니메이션");
 
             rb.velocity = Vector2.zero;
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);

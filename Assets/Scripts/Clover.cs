@@ -7,6 +7,7 @@ public class Clover : MonoBehaviour
     [SerializeField] private float moveDistance = 5f; // 이동할 거리
     [SerializeField] private float duration = 2f; // 이동 소요 시간
     public Animator animator;
+    public static bool isCloverTriggered = false;
 
     private void Awake() 
     {
@@ -18,6 +19,7 @@ public class Clover : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("______클로버 충돌!______");
+            isCloverTriggered = true;
 
             // 피격 애니메이션 발동
             animator.SetTrigger("Active");
@@ -103,5 +105,6 @@ public class Clover : MonoBehaviour
 
         // 최종적으로 원래 위치로 돌아가기
         Player.Inst.transform.position = originalPosition;
+        isCloverTriggered = false;
     }
 }

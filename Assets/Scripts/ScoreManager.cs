@@ -52,7 +52,7 @@ public class ScoreManager : MonoBehaviour
             scoreTimer += Time.deltaTime;
             PlayerPrefs.SetInt("Coin", CoinManager.coin);
         
-            if (scoreTimer >= scoreInterval)
+            if (scoreTimer >= scoreInterval && !Clover.isCloverTriggered)
             {
                 scoreCount++;
                 scoreTimer -= scoreInterval;
@@ -115,8 +115,6 @@ public class ScoreManager : MonoBehaviour
     /// <returns></returns>
     IEnumerator GameOverSequentialActive()
     {
-        Debug.Log("GameOverSequentialActive 시작");
-
         foreach(GameObject panelObject in panelObjects)
         {
             panelObject.SetActive(true);

@@ -34,8 +34,11 @@ public class Obstacle : MonoBehaviour
         }
 
         HealthUI.Inst.UpdateHeartsUI();
+
+        Debug.Log("HandlePipeCollision ___ CheckGameOver");
+        GameManager.Inst.CheckGameOver();
+
         //AudioManager.Instance.PlaySFX("Cat_Attack");
         //AudioManager.Instance.PlaySFX("Item_Kill");
-        GameManager.Inst.CheckGameOver();
     }
 }

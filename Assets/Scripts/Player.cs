@@ -27,6 +27,14 @@ public class Player : MonoBehaviour
         playerRenderer = GetComponent<SpriteRenderer>();
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // 특정 아이템과 충돌할 경우, 캐릭터를 깜빡입니다.
+        if (collision.gameObject.CompareTag("LifeMinus")) { StartCoroutine(FlickerCharacter()); }
+        if (collision.gameObject.CompareTag("LifeMinus-2")) { StartCoroutine(FlickerCharacter()); }
+        if (collision.gameObject.CompareTag("Pipe")) { StartCoroutine(FlickerCharacter()); }
+    }
+
     public IEnumerator FlickerCharacter()
     {
         playerRenderer.color = new Color(1, 0, 0, 0.7f);
@@ -34,14 +42,8 @@ public class Player : MonoBehaviour
         playerRenderer.color = Color.white;
     }
 
-    /// <summary>
-    /// 특정 아이템과 충돌할 경우, 캐릭터를 깜빡입니다.
-    /// </summary>
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("LifeMinus")) { StartCoroutine(FlickerCharacter()); }
-        if (collision.gameObject.CompareTag("LifeMinus-2")) { StartCoroutine(FlickerCharacter()); }
-        if (collision.gameObject.CompareTag("Pipe")) { StartCoroutine(FlickerCharacter()); }
-    }
-
+    // public IEnumerator FallDown()
+    // {
+    //     yield return new WaitUntil(() => );
+    // }
 }
