@@ -46,8 +46,7 @@ public class GameManager : MonoBehaviour
     public void OnClickReplay()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("_PlayScene");
-        // isGameOver = false;        
+        SceneManager.LoadScene("_PlayScene");    
         //AudioManager.Instance.PlaySFX("Button_UI");
     }
     // -------------------------------------------
