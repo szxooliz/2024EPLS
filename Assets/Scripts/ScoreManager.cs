@@ -129,15 +129,20 @@ public class ScoreManager : MonoBehaviour
     /// <param name="time"> 점수가 기록된 시간 </param>
     public void AddNewScore(int score, string time)
     {
-        highScores.Add(new Record(score, time));
-        highScores.Sort((x, y) => y.score.CompareTo(x.score));
-
-        if (highScores.Count > 3)
+        // 이미 같은 점수가 존재하는지 확인
+        if (!highScores.Exists(record => record.score == score))
         {
+            highScores.Add(new Record(score, time));
+            highScores.Sort((x, y) => y.score.CompareTo(x.score));
+
             // 최고 기록 3개까지만 유지
-            highScores.RemoveAt(3);
+            if (highScores.Count > 3)
+            {
+                highScores.RemoveAt(3);
+            }
         }
     }
+
 
     /// <summary>
     /// 이전에 저장된 최고 기록을 불러옴
