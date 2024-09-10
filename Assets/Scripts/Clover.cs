@@ -87,6 +87,8 @@ public class Clover : MonoBehaviour
     /// <returns></returns>
     public IEnumerator SpringPlayer()
     {
+        ScoreManager.isSpringing = true;
+
         // 캐릭터의 원래 위치 저장
         Vector3 originalPosition = Player.Inst.transform.position;
         Debug.Log("돌아갈 위치" + originalPosition);
@@ -108,6 +110,8 @@ public class Clover : MonoBehaviour
         // 최종적으로 원래 위치로 돌아가기
         Debug.Log("돌아갈 위치" + originalPosition);
         Player.Inst.transform.position = originalPosition;
+
+        ScoreManager.isSpringing = false;
         isCloverTriggered = false;
     }
 }

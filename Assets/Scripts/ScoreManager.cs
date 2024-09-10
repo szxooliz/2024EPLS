@@ -17,6 +17,7 @@ public class ScoreManager : MonoBehaviour
     public static int scoreCount;
     private float scoreTimer;
     [SerializeField] private const float scoreInterval = 1f;
+    public static bool isSpringing = false;
 
     // 게임 오버 팝업 점수 표시 용도
     public GameObject popup_GameOver;
@@ -51,8 +52,8 @@ public class ScoreManager : MonoBehaviour
         {
             scoreTimer += Time.deltaTime;
             PlayerPrefs.SetInt("Coin", CoinManager.coin);
-        
-            if (scoreTimer >= scoreInterval)
+
+            if (scoreTimer >= scoreInterval && !ScoreManager.isSpringing)
             {
                 scoreCount++;
                 scoreTimer -= scoreInterval;
