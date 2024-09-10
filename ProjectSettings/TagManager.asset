@@ -18,6 +18,7 @@ TagManager:
   - CoinBig
   - CoinSmall
   - Coin
+  - DieBlock
   layers:
   - Default
   - TransparentFX

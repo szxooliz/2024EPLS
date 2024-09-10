@@ -20,7 +20,7 @@ public class PlayerJump : MonoBehaviour
     [SerializeField] private float gravityIncreaseRate = 1f;
     private float maxGravity = 20f;
     private float currentGravity;
-
+    private Vector3 firstPosition = new Vector3 (0, 0, 0);
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -34,15 +34,7 @@ public class PlayerJump : MonoBehaviour
         {
             Jump();
         }
-
-        if(transform.position.y < -6 && !GameManager.Inst.isGameOver)
-        {
-            Player.health = 0;
-            HealthUI.Inst.UpdateHeartsUI();
-
-            Debug.Log("PlayerJump-Update ___ SetGameOver");
-            GameManager.Inst.SetGameOver();
-        }
+        //fallDown();
     }
 
     private void FixedUpdate()
@@ -71,7 +63,16 @@ public class PlayerJump : MonoBehaviour
         {
             // 피격 애니메이션 발동
             Player.Inst.animator.SetTrigger("Jump");
-        }     
+        }  
+        else if (collision.gameObject.CompareTag("DieBlock"))
+        {
+            Debug.Log("으앙 부딪힘!");
+            Player.health = 0;
+            HealthUI.Inst.UpdateHeartsUI();
+
+            Debug.Log("PlayerJump-Update ___ SetGameOver");
+            GameManager.Inst.SetGameOver();
+        }
     }
 
     public void Jump()
@@ -91,5 +92,19 @@ public class PlayerJump : MonoBehaviour
     public void isWalking()
     {
         //AudioManager.Instance.PlaySFX("Cat_Walk");
+    }
+
+    private void fallDown()
+    {
+        // 구멍으로 떨어지면 죽음
+        // 얘가 리플레이가 안되는 문제의 원인임!! 얘가 리플레이하면 1 프레임을 가져와서 오류 발생
+        if (transform.position.y < -6 && !GameManager.Inst.isGameOver)
+        {
+            Player.health = 0;
+            HealthUI.Inst.UpdateHeartsUI();
+
+            Debug.Log("PlayerJump-Update ___ SetGameOver");
+            GameManager.Inst.SetGameOver();
+        }
     }
 }
