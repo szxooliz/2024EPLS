@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Player : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class Player : MonoBehaviour
     public static int health = 3; // 플레이어 체력
     public Animator animator; // 플레이어 애니메이터
     public static SpriteRenderer playerRenderer;
+    public float defaultY = -2.43f;
     void Awake()
     {
         if (Inst == null)
@@ -42,8 +44,17 @@ public class Player : MonoBehaviour
         playerRenderer.color = Color.white;
     }
 
-    // public IEnumerator FallDown()
-    // {
-    //     yield return new WaitUntil(() => );
-    // }
+    /// <summary>
+    /// 고양이 하강
+    /// </summary>
+    /// <returns></returns>
+    public IEnumerator FallDown()
+    {
+        Debug.Log("고양이 내려가요~~");
+        // 고양이 Y축 변경
+        transform.DOMoveY(defaultY, 1f);
+        yield return new WaitForSeconds(1f);
+
+        animator.SetTrigger("Dead");
+    }
 }

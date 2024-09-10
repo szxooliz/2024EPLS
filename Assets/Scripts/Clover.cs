@@ -96,6 +96,8 @@ public class Clover : MonoBehaviour
         float knockBackHeight = 4.0f;  // y축으로 올라갈 높이
         float elapsedTime = 0f; // 효과 지속 시간
 
+        StartCoroutine(SetCloverAnimator());
+
         while (elapsedTime <  duration)
         {
             float progress = elapsedTime / duration;
@@ -113,5 +115,11 @@ public class Clover : MonoBehaviour
 
         ScoreManager.isSpringing = false;
         isCloverTriggered = false;
+    }
+
+    private IEnumerator SetCloverAnimator()
+    {
+        Player.Inst.animator.SetTrigger("Jump");
+        yield return new WaitUntil(()=> isCloverTriggered == false);
     }
 }
