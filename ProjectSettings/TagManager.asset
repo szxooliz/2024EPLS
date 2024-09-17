@@ -6,7 +6,6 @@ TagManager:
   tags:
   - LifePlus
   - ScoreMinus
-  - Pipe
   - LifeMinus
   - LockedBtn
   - ScorePlus
@@ -19,6 +18,9 @@ TagManager:
   - CoinSmall
   - Coin
   - DieBlock
+  - Sticky
+  - Dungul
+  - Pipe
   layers:
   - Default
   - TransparentFX

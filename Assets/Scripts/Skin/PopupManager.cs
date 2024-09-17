@@ -89,6 +89,8 @@ public class PopupManager : MonoBehaviour
     /// <param name="clickedBtn"></param>
     public void OnClickLockedBtn(Button clickedBtn)
     {
+        AudioManager.Instance.PlaySFX("Button_UI");
+
         // 클릭된 버튼의 인덱스 찾기
         for (int i = 0; i < btns_Locked.Length; i++)
         {
@@ -106,6 +108,8 @@ public class PopupManager : MonoBehaviour
     /// <param name="clickedBtn"></param>
     public void OnClickUnlockedBtn(Button clickedBtn)
     {
+        AudioManager.Instance.PlaySFX("Button_UI");
+
         // 클릭된 버튼의 인덱스 찾기
         for (int i = 0; i < btns_Unlocked.Length; i++)
         {
@@ -122,6 +126,8 @@ public class PopupManager : MonoBehaviour
     /// </summary>
     public void OnClickBuyYes(int selectedNumber)
     {
+        AudioManager.Instance.PlaySFX("Skin_Buy");
+
         // 구매 가능한 만큼 코인 보유 확인 및 차감
         bool ableToBuy = CoinManager.TryRemoveCoin(SkinManager.Inst.skinInShops[selectedNumber].skinInfo._skinPrice);
         ClosePopup();
@@ -142,7 +148,6 @@ public class PopupManager : MonoBehaviour
             openPopup = OpenPopup(popUp_Purchase, delayTime);
             StartCoroutine(openPopup);
 
-            // txt_State.text = "보유 중";
             SkinManager.Inst.skinInShops[selectedNumber].ChangeStateText(SkinManager.Inst.skinInShops[selectedNumber].isSkinWorn);
         }
         else
@@ -157,8 +162,10 @@ public class PopupManager : MonoBehaviour
     /// 착용하시겠습니까 팝업에서 yes 버튼 클릭 시
     /// </summary>
     public void OnClickWearYes(int selectedNumber)
-    {
+    {        
+        AudioManager.Instance.PlaySFX("Button_UI");
         SkinManager.Inst.isNowDefault = false;
+
         TakeOffSkin();
         
         if(SkinManager.Inst.skinInShops[selectedNumber].IsSkinUnlocked())
@@ -180,6 +187,8 @@ public class PopupManager : MonoBehaviour
     /// </summary>
     public void OnClickWearNo(int selectedNumber)
     {
+        AudioManager.Instance.PlaySFX("Button_UI");
+
         // 미리보기 원상 복귀
         SkinManager.Inst.img_Preview.sprite = Skin.lastUsedSkin.skinInfo._skinSprite;
         SkinManager.Inst.skinInShops[selectedNumber].isSkinWorn = false;

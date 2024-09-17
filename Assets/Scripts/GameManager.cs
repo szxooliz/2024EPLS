@@ -29,25 +29,30 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("_PlayScene");
-        //AudioManager.Instance.PlaySFX("Button_UI");
+        AudioManager.Instance.PlaySFX("Button_UI");
     }
 
     public void OnClickCostumeRoom()
     {
         SceneManager.LoadScene("_CostumeScene");
-        //AudioManager.Instance.PlaySFX("Button_UI");
+        AudioManager.Instance.PlaySFX("Button_UI");
     }
     public void OnClickBack()
     {
         SceneManager.LoadScene("_StartScene");
-        //AudioManager.Instance.PlaySFX("Button_UI");
+        AudioManager.Instance.PlaySFX("Button_UI");
     }
 
     public void OnClickReplay()
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("_PlayScene");    
-        //AudioManager.Instance.PlaySFX("Button_UI");
+        AudioManager.Instance.PlaySFX("Button_UI");
+    }
+
+    public void OnClickSettings()
+    {
+        AudioManager.Instance.PlaySFX("Button_UI");
     }
     // -------------------------------------------
 

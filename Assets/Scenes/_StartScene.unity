@@ -1347,6 +1347,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1435150230}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: OnClickSettings
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &285355369
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1834,6 +1846,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1435150230}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: OnClickSettings
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &340629908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2003,7 +2027,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: deb10eba8d97fc547b4cb6fc3932d5f0, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 158e98e222a740e4e8a8beaa12ccd0ab, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -3785,6 +3809,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1435150230}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: OnClickSettings
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1198864679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4191,6 +4227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88c7ff6f859d73b45b4f67744257d917, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGameOver: 0
 --- !u!1 &1454777112
 GameObject:
   m_ObjectHideFlags: 0
@@ -4575,18 +4612,22 @@ MonoBehaviour:
   - name: Cat_Walk
     clip: {fileID: 8300000, guid: d92ee5100a9c99d48baea5a067523c92, type: 3}
   sfxSounds:
+  - name: Button_UI
+    clip: {fileID: 8300000, guid: 81f194f6d0aef4c4dacec223a6834d51, type: 3}
+  - name: Cat_Attack
+    clip: {fileID: 8300000, guid: 738faa7fe59afb742afe54d4dfaf6823, type: 3}
   - name: Cat_Jump
     clip: {fileID: 8300000, guid: 92f36bcfb404dcc43a8b442812e1fc46, type: 3}
-  - name: item_Heal
+  - name: Cat_Walk
+    clip: {fileID: 8300000, guid: d92ee5100a9c99d48baea5a067523c92, type: 3}
+  - name: Item_Heal
     clip: {fileID: 8300000, guid: 674fbfeb4ef04a848aa09837df6146e9, type: 3}
   - name: Item_Kill
     clip: {fileID: 8300000, guid: e33b0a6afe0671544b21edd46e13d96b, type: 3}
-  - name: Cat_Attack
-    clip: {fileID: 8300000, guid: 738faa7fe59afb742afe54d4dfaf6823, type: 3}
-  - name: Button_UI
-    clip: {fileID: 8300000, guid: 81f194f6d0aef4c4dacec223a6834d51, type: 3}
-  - name: Cat_Walk
-    clip: {fileID: 8300000, guid: d92ee5100a9c99d48baea5a067523c92, type: 3}
+  - name: OB_Clover
+    clip: {fileID: 8300000, guid: 5e101a5ba3ec80743b86b3d631109688, type: 3}
+  - name: OB_ggeunggeunii
+    clip: {fileID: 8300000, guid: 9f33fb6f9a7d04142b8607caf31dc922, type: 3}
   - name: Skin_Buy
     clip: {fileID: 8300000, guid: e01b52ef90b842d478d0a59077b5b25a, type: 3}
   musicSource: {fileID: 476547808}
@@ -4706,6 +4747,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1435150230}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: OnClickSettings
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

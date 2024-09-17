@@ -21,6 +21,8 @@ public class Clover : MonoBehaviour
             Debug.Log("______클로버 충돌!______");
             isCloverTriggered = true;
 
+            AudioManager.Instance.PlaySFX("OB_Clover");
+
             // 피격 애니메이션 발동
             animator.SetTrigger("Active");
 
@@ -87,7 +89,7 @@ public class Clover : MonoBehaviour
     /// <returns></returns>
     public IEnumerator SpringPlayer()
     {
-        ScoreManager.isSpringing = true;
+        //ScoreManager.isSpringing = true;
 
         // 캐릭터의 원래 위치 저장
         Vector3 originalPosition = Player.Inst.transform.position;
@@ -114,7 +116,7 @@ public class Clover : MonoBehaviour
         Debug.Log("돌아갈 위치" + originalPosition);
         Player.Inst.transform.position = originalPosition;
 
-        ScoreManager.isSpringing = false;
+        //ScoreManager.isSpringing = false;
         isCloverTriggered = false;
     }
 

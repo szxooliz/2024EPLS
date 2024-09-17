@@ -60,7 +60,7 @@ public class Items : MonoBehaviour
             Player.health++;
             HealthUI.Inst.UpdateHeartsUI();
 
-            // AudioManager.Instance.PlaySFX("Item_Heal");
+            AudioManager.Instance.PlaySFX("Item_Heal");
         }
     }
 
@@ -76,8 +76,7 @@ public class Items : MonoBehaviour
         //    HealthUI.Inst.UpdateHeartsUI();
         //    GameManager.Inst.CheckGameOver();
 
-        //    // AudioManager.Instance.PlaySFX("Cat_Attack");
-        //    // AudioManager.Instance.PlaySFX("Item_Kill");
+        //    
 
         //    break;
         //}
@@ -85,7 +84,9 @@ public class Items : MonoBehaviour
         Player.health -= sub;
         HealthUI.Inst.UpdateHeartsUI();
 
-        Debug.Log("HandleRottenItemCollision ___ CheckGameOver");
+        AudioManager.Instance.PlaySFX("Cat_Attack");
+        AudioManager.Instance.PlaySFX("Item_Kill");
+
         GameManager.Inst.CheckGameOver();
     }
 
@@ -98,6 +99,6 @@ public class Items : MonoBehaviour
         Debug.Log("점수 + " + score);
         ScoreManager.scoreCount += score;
 
-        // AudioManager.Instance.PlaySFX("Item_Heal");
+        AudioManager.Instance.PlaySFX("Item_Heal");
     }
 }

@@ -6,6 +6,10 @@ public class Obstacle : MonoBehaviour
 {
     public Animator animator;
 
+    private const string STICKY = "Sticky";
+    private const string DUNGUL = "Dungul";
+
+
     private void Awake() 
     {
         animator = GetComponent<Animator>();    
@@ -15,18 +19,27 @@ public class Obstacle : MonoBehaviour
         // 해당 장애물이 플레이어와 충돌 시
         if (collision.gameObject.CompareTag("Player"))
         {
-            HandlePipeCollision();
+            if (gameObject.CompareTag(STICKY))
+            {
+                Debug.Log("STICKY");
+                HandleStickyCollision();
+            }
+            else if (gameObject.CompareTag(DUNGUL))
+            {
+                Debug.Log("DUNGUL");
+                HandleObstacleCollision();
+            }
         }
     }
-
     /// <summary>
-    /// 스크립트가 부착된 장애물이 끈끈이주걱, 덩굴인 경우
+    /// 스크립트가 부착된 장애물이 덩굴인 경우
     /// </summary>
     /// <param name="player"></param>
-    private void HandlePipeCollision()
+
+    private void HandleObstacleCollision()
     {
         Player.health--;
-        
+
         if (animator != null)
         {
             // 피격 애니메이션 발동
@@ -38,7 +51,20 @@ public class Obstacle : MonoBehaviour
         Debug.Log("HandlePipeCollision ___ CheckGameOver");
         GameManager.Inst.CheckGameOver();
 
-        //AudioManager.Instance.PlaySFX("Cat_Attack");
-        //AudioManager.Instance.PlaySFX("Item_Kill");
+        AudioManager.Instance.PlaySFX("Cat_Attack");
     }
+
+    /// <summary>
+    /// 스크립트가 부착된 장애물이 끈끈이 주걱인 경우
+    /// </summary>
+    /// <param name="player"></param>
+    private void HandleStickyCollision()
+    {
+        HandleObstacleCollision();
+        AudioManager.Instance.PlaySFX("OB_ggeunggeunii");
+    }
+
+
+
+
 }

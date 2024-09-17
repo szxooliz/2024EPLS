@@ -85,13 +85,13 @@ public class PlayerJump : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
             jumpCount++;
             isGrounded = false;
-            //AudioManager.Instance.PlaySFX("Cat_Jump");
+            AudioManager.Instance.PlaySFX("Cat_Jump");
         }
     }
 
-    public void isWalking()
+    public void WalkSound()
     {
-        //AudioManager.Instance.PlaySFX("Cat_Walk");
+        AudioManager.Instance.PlaySFX("Cat_Walk");
     }
 
     private void fallDown()
