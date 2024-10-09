@@ -126,7 +126,7 @@ public class PopupManager : MonoBehaviour
     /// </summary>
     public void OnClickBuyYes(int selectedNumber)
     {
-        AudioManager.Instance.PlaySFX("Skin_Buy");
+        
 
         // 구매 가능한 만큼 코인 보유 확인 및 차감
         bool ableToBuy = CoinManager.TryRemoveCoin(SkinManager.Inst.skinInShops[selectedNumber].skinInfo._skinPrice);
@@ -147,7 +147,7 @@ public class PopupManager : MonoBehaviour
             // 구매 완료 팝업 활성화
             openPopup = OpenPopup(popUp_Purchase, delayTime);
             StartCoroutine(openPopup);
-
+            AudioManager.Instance.PlaySFX("Skin_Buy");
             SkinManager.Inst.skinInShops[selectedNumber].ChangeStateText(SkinManager.Inst.skinInShops[selectedNumber].isSkinWorn);
         }
         else

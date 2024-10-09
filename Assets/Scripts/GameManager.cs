@@ -19,9 +19,9 @@ public class GameManager : MonoBehaviour
         }
 
         // 테스트용 코드
-        // #if UNITY_EDITOR
-        // PlayerPrefs.DeleteAll();
-        // #endif
+#if UNITY_EDITOR
+        PlayerPrefs.DeleteAll();
+#endif
     }
 
     // ------------ Scene 전환 함수들 ------------

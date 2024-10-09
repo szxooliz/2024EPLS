@@ -14,7 +14,7 @@ public class GameOver : MonoBehaviour
     void Start()
     {
         startPos = new Vector2(0, 225);
-        endPos = new Vector2(0, -225);
+        endPos = new Vector2(0, -196);
 
         popupRect.anchoredPosition = startPos;
 
