@@ -27,7 +27,7 @@ public class BackGroundLoop : MonoBehaviour
         startSpeed = 4f;
         speed = startSpeed;
         startPosition = transform.position;
-        backgroundWidth = backgrounds[0].GetComponent<SpriteRenderer>().bounds.size.x;
+        backgroundWidth = 57f;
     }
 
     void Update()

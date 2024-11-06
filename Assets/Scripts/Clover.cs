@@ -5,7 +5,7 @@ using UnityEngine;
 public class Clover : MonoBehaviour
 {
     [SerializeField] private float moveDistance = 5f; // 이동할 거리
-    [SerializeField] private float duration = 2f; // 이동 소요 시간
+    [SerializeField] private float duration = 1.6f; // 이동 소요 시간
     public Animator animator;
     public static bool isCloverTriggered = false;
 

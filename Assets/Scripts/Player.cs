@@ -34,7 +34,8 @@ public class Player : MonoBehaviour
         // 특정 아이템과 충돌할 경우, 캐릭터를 깜빡입니다.
         if (collision.gameObject.CompareTag("LifeMinus")) { StartCoroutine(FlickerCharacter()); }
         if (collision.gameObject.CompareTag("LifeMinus-2")) { StartCoroutine(FlickerCharacter()); }
-        if (collision.gameObject.CompareTag("Pipe")) { StartCoroutine(FlickerCharacter()); }
+        if (collision.gameObject.CompareTag("Dungul")) { StartCoroutine(FlickerCharacter()); }
+        if (collision.gameObject.CompareTag("Sticky")) { StartCoroutine(FlickerCharacter()); }
     }
 
     public IEnumerator FlickerCharacter()
